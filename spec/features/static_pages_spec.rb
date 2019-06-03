@@ -7,7 +7,7 @@ RSpec.feature "StaticPages", type: :feature do
 
   scenario "home page has a correct title" do
     visit root_path
-    expect(page.title).to eq "Home#{@base_title}"
+    expect(page.title).to eq "NewApp"
   end
 
   scenario "help page has a correct title" do
