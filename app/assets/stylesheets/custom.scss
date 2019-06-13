@@ -1,0 +1,56 @@
+/* universal */
+
+.icon-bell {
+  position: relative;
+  /* 値は調整してください */
+  top: 1.8px;
+  left: 0px;
+}
+
+.icon-edit {
+  position: relative;
+  /* 値は調整してください */
+  top: 0.5px;
+  left: 0px;
+}
+
+
+.hoge {
+  display: flex;
+  align-items: center;
+  margin: -1rem 0;
+}
+
+.nav-link {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.new-post {
+  border-radius:5px;
+  border:1px solid #999c9f;
+  &:hover {
+    border-color: #cccecf;
+  }
+}
+
+.log-in {
+  border-radius:5px;
+  border:1px solid #999c9f;
+  &:hover {
+    border-color: #cccecf;
+  }
+}
+
+/* home */
+
+.jumbotron {
+  font-family: "Helvetica Neue";
+}
+
+
+/* footer */
+
+footer {
+  border-top: 1px solid #7e7e7e;
+  color: #777;
+}

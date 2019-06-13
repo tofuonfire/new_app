@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-5">
+  <div class="container">
+    <%= link_to "blogapp", root_path, class: "navbar-brand" %>
+
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+          <div class="hoge">
+            <a class="nav-link" href="#"><i class="fas fa-bell icon-bell" style="font-size: 1.3rem; margin-right: 3px;"></i> Notifications</a>
+            <a class="nav-link" href="#"><i class="fas fa-edit icon-edit" style="font-size: 1.2rem"></i> Create Post</a>
+            
+            <li class="nav-item avatar dropdown">
+              <%= link_to image_tag("user_icon.jpeg", size: "30x30", class: "rounded-circle z-depth-0", alt: "avatar image"), "#",
+                        { class: "nav-link dropdown-toggle", id: "navbarDropdownMenuLink-55", "data-toggle" => "dropdown",
+                          "aria-haspopup" => "true", "aria-expanded" => "false"} %>
+              <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-55">
+                <h6 class="dropdown-header">Header</h6>
+                <a class="dropdown-item" href="#">Link</a>
+                <a class="dropdown-item" href="#">Link</a>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+              </div>
+            </li>
+          </div>
+      
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "About", about_path, class: "nav-link" %>
+          </li>
+          <form class="form-inline">
+            <li class="nav-item">
+              <%= link_to "Log in", new_user_session_path, class: "log-in nav-link py-1 px-3 ml-2" %>
+            </li>
+          </form>
+
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+</nav>
