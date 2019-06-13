@@ -95,4 +95,8 @@ Rails.application.configure do
   # MySQL
   config.assets.compile = true
   config.assets.initialize_on_precompile=false
+
+  # mailer setting
+  host = 'blogapp-nt.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host }
 end
