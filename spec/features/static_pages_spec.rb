@@ -11,10 +11,7 @@ RSpec.feature "StaticPages", type: :feature do
   end
 
   describe "layout" do
-
-    before do
-      visit root_path
-    end
+    before {visit root_path}
 
     scenario "has a correct home link " do
       click_link "blogapp"
