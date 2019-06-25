@@ -13,8 +13,8 @@ require 'rails_helper'
 RSpec.describe ApplicationHelper, type: :helper do
  
   describe "full_title helper" do
-    it { expect(full_title).to eq "blogapp" }
-    it { expect(full_title("About")).to eq "About | blogapp" }
+    it { expect(full_title).to eq website_name }
+    it { expect(full_title("About")).to eq "About | #{website_name}" }
   end
 
 end

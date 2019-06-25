@@ -14,20 +14,14 @@ RSpec.feature "StaticPages", type: :feature do
     before {visit root_path}
 
     scenario "has a correct home link " do
-      click_link "blogapp"
+      click_link "#{website_name}"
       expect(page).to have_current_path("/")
-      expect(page).to have_selector 'h1', text: 'Welcome to blogapp!'
-    end
-
-    scenario "has a correct about link " do
-      click_link "About"
-      expect(page).to have_current_path("/about")
-      expect(page).to have_selector 'h1', text: 'About'
+      # expect(page).to have_selector 'h1', text: "Welcome to #{website_name}!"
     end
 
     # scenario "has a correct log-in link" do
     #   click_link "Log in"
-    #   expect(page).to have_current_path("#")
+    #   expect(page).to have_current_path("/users/log_in")
     #   expect(page).to have_selector 'h1', text: 'Log in'
     # end
 
