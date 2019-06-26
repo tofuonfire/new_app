@@ -20,7 +20,8 @@ module NewApp
         view_specs: false
     end
 
-    # libディレクトリ以下のファイルが、下記のディレクトリ・ファイル構成と命名の規約に従うと、自動的に読み込まれるようになります
-    config.autoload_paths += %W(#{config.root}/lib)
+    # libディレクトリ以下のファイルが、下記のディレクトリ・ファイル構成と命名の規約に従うと、
+    # development環境ではAutoloadされ、production環境ではEagerLoadされるようになります
+    config.paths.add 'lib', eager_load: true
   end
 end
