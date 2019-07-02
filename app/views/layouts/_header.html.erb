@@ -17,7 +17,10 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Post</a>
         </li>
-        <%= render 'layouts/dropdown' %>
+        <li class="nav-item">
+          <%= link_to image_tag("user_icon.jpeg", size: "35x35", class: "rounded-circle z-depth-0",
+                                alt: "avatar image"), user_path(current_user), class: "nav-link" %>
+        </li>
       </ul>
     </div>
   </nav>
@@ -35,9 +38,12 @@
             <a class="nav-link" href="#">Notifications</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Create Post</a>
+            <a class="nav-link" href="#">Post</a>
           </li>
-          <%= render 'layouts/dropdown' %>
+          <li class="nav-item">
+            <%= link_to image_tag("user_icon.jpeg", size: "35x35", class: "rounded-circle z-depth-0",
+                                  alt: "avatar image"), user_path(current_user), class: "nav-link" %>
+          </li>
         </ul>
       </div>
     </div>
