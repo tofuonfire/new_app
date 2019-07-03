@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable,
          :rememberable, :validatable, :confirmable, authentication_keys: [:login]
   validates :username, namespace: true, presence: true, uniqueness: true, length: { maximum: 50 }
-  attr_writer :login
+            attr_writer :login
+  validates :name, presence: true
 
   def to_param
     username
