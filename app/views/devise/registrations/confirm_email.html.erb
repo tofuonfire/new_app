@@ -1,0 +1,13 @@
+<% provide :title, "Confirm email" %>
+
+<div class="custom-form">
+  <div class="container">
+    <div class="col-10 offset-1 col-sm-6 offset-sm-3 text-center">
+      <h1 class="mb-4">Confirm your email</h1>
+      <p class="mb-5">
+        A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.
+      </p>
+      <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class: "custom-link" %><br />
+    </div>
+  </div>
+</div>

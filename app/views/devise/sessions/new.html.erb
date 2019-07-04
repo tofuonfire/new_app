@@ -1,7 +1,7 @@
 <% provide :title, "Log in" %>
 
-<div class="simple-form">
-  <div class="jumbotron">
+<div class="custom-form">
+  <div class="container">
     <div class="col-10 offset-1 col-sm-6 offset-sm-3">
       <h1 class="mb-4 text-center">Log in</h1>
 
@@ -26,10 +26,13 @@
           </div>
         <% end %>
 
-        <div class="actions text-center mb-3">
+        <div class="actions text-center mb-4">
           <%= f.submit "Log in to #{website_name}", { class: "btn" } %>
         </div>
       <% end %>
+      <div class="text-center">
+        <%= link_to "Forgot password?", new_password_path(resource_name), class: "custom-link forgot-pass" %>
+      </div>
     </div>
   </div>
 </div>
