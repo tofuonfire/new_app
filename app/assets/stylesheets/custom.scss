@@ -21,31 +21,19 @@
   max-width: 960px;
 }
 
+.custom-link {
+  color: rgba(33,37,41,0.5);
+  transition: color 0.15s ease-in-out;
+  &:hover {
+    text-decoration: none;
+    color: rgba(33,37,41,0.8);
+  }
+}
+
 /* header */
 
 .navbar {
   height: 67px;
-}
-
-.avatar {
-  .dropdown {
-    position: relative;
-  }
-
-  .dropdown-toggle {
-    white-space: nowrap;
-    margin: 0 0;
-  }
-
-  // クリック時の青いアウトラインを非表示
-  .show > .dropdown-toggle {
-    outline: none;
-  }
-
-  // ボタン横の矢印を削除する
-  .dropdown-toggle::after {
-    display: none;
-  }
 }
 
 // ナビゲーションリンクのホバー時のエフェクトを滑らかにする
@@ -79,14 +67,12 @@ footer {
 }
 
 
-/* sign-up/log-in forms */
+/* devise forms */
 
-.simple-form {
-  .jumbotron {
+.custom-form {
+  .container {
     padding: 2.5rem 0;
-    background-color: #fff;
-    // background: url(bg-paper.jpg) center no-repeat; background-size: cover;
-    min-height: 35rem;
+    min-height: 36rem;
   }
 
   h1 {
@@ -139,6 +125,10 @@ footer {
 
   .form-control.with-ig {
     padding: 0.375rem 0.125rem;
+  }
+
+  .forgot-pass {
+    font-size: 0.9rem;
   }
 
   p.note {
@@ -218,7 +208,6 @@ footer {
   }
 
   .comment-btn {
-
     font-size: 1.5rem;
     color: #999c9f;
     // position: relative;
@@ -234,7 +223,6 @@ footer {
   }
 
   .share-btn {
-
     font-size: 1.4rem;
     color: #999c9f;
     // position: relative;
