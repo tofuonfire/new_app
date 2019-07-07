@@ -35,6 +35,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def confirm_email
   end
 
+  def complete_profile
+    render layout: false
+  end
+
   # GET /resource/edit
   # def edit
   #   super
