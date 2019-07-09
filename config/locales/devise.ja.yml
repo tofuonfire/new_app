@@ -4,7 +4,7 @@
 ja:
   devise:
     confirmations:
-      confirmed: "アカウントの確認が完了しました、おめでとうございます！"
+      confirmed: "メールアドレスの確認が完了しました、おめでとうございます！"
       send_instructions: "アカウントの確認方法を数分以内にメールでご連絡します。"
       send_paranoid_instructions: "ご登録のメールアドレスが保存されている場合、アカウントの確認方法をメールでご連絡します。"
     failure:
