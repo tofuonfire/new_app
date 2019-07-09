@@ -10,10 +10,10 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get 'confirm_email', to: 'users/registrations#confirm_email'
-    get 'complete_profile', to: 'users/registrations#complete_profile'
   end
 
   resources :users, :only => [:index]
+
   constraints(UrlConstrainer.new) do
     resources :users, param: :username, path: '/', :only => [:show]
   end

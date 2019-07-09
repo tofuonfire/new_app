@@ -1,10 +1,13 @@
 <!-- ユーザー登録時の確認メールを再送するときのページ -->
-<% provide :title, "Resend confirmation instructions" %>
+<% provide :title, "確認メールの再発行" %>
 
 <div class="custom-form">
   <div class="container">
     <div class="col-10 offset-1 col-sm-6 offset-sm-3">
-      <h1 class="mb-4 text-center">Resend confirmation instructions</h1>
+      <h1 class="form-title mb-4 text-center">確認メールの再発行</h1>
+      <p class="mb-5 text-justify">
+        登録確認のメッセージが届かない場合は、以下のフォームに登録に使用したメールアドレスを入力してください。確認メールを再発行致します。
+      </p>
 
       <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -16,7 +19,7 @@
         </div>
 
         <div class="actions text-center mb-4">
-          <%= f.submit "Resend", { class: "btn" }  %>
+          <%= f.submit " 再発行する ", { class: "btn" }  %>
         </div>
       <% end %>
       

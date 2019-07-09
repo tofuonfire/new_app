@@ -1,16 +1,31 @@
-<% provide :title, "Log in" %>
+<% provide :title, "ログイン" %>
 
 <div class="custom-form">
   <div class="container">
     <div class="col-10 offset-1 col-sm-6 offset-sm-3">
-      <h1 class="mb-4 text-center">Log in</h1>
+      <h1 class="form-title mb-4 text-center">ログイン</h1>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <% if notice %><h2 class="alert alert-notice text-center"><%= notice %></h2><% end %>
-        <% if alert %><h2 class="alert text-center"><%= alert %></h2><% end %>
+        <div class="error_explanation">
+          <% if notice %>
+            <p class="alert alert-notice"><%= notice %>
+              <% if flash[:notice] == "アカウントの確認が完了しました、おめでとうございます！" %>
+                今すぐログインして<%= website_name %>をはじめましょう:-)
+              <% end %>
+            </p>
+          <% end %>
+          <% if alert %>
+            <p class="alert">
+              <i class="fas fa-exclamation-circle mr-1"></i> <%= alert %>
+              <% if flash[:alert] == "アカウントが有効化されていません。ユーザー登録の際に送信されたメールをご確認ください。" %>
+                メールが届いていない場合は<%= link_to("こちら", new_confirmation_path(resource_name), class: "custom-link") %>から再発行できます。
+              <% end %>
+            </p>
+          <% end %>
+        </div>
 
         <div class="field form-group">
-          <p><%= f.label "username or email address" %><br />
+          <p><%= f.label "ユーザーネーム/メールアドレス" %><br />
           <%= f.text_field :login, class: "form-control" %></p>
         </div>
 
@@ -22,16 +37,16 @@
         <% if devise_mapping.rememberable? %>
           <div class="field form-group mb-5">
             <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <%= f.label :remember_me, "ログイン状態を保持" %>
           </div>
         <% end %>
 
         <div class="actions text-center mb-4">
-          <%= f.submit "Log in to #{website_name}", { class: "btn" } %>
+          <%= f.submit "ログインする", { class: "btn" } %>
         </div>
       <% end %>
       <div class="text-center">
-        <%= link_to "Forgot password?", new_password_path(resource_name), class: "custom-link forgot-pass" %>
+        <%= link_to "パスワードを忘れた場合はこちら", new_password_path(resource_name), class: "custom-link forgot-password" %>
       </div>
     </div>
   </div>

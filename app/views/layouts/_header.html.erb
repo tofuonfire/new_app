@@ -1,48 +1,15 @@
 <% if user_signed_in? %>
-  <!-- ナビゲーションバー小：sm未満（xs）で表示 -->
-  <nav class="navbar navbar-expand navbar-light bg-transparent mb-3 d-sm-none">
-    <div class="collapse navbar-collapse justify-content-around" id="navbarNavDropdown">
-      <ul class="navbar-nav align-items-center" id="navbar-nav-xs">
-        <li class="nav-item active">
-          <%= link_to root_path, class: "nav-link" do %>
-            <i class="fas fa-home"></i>
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Notifications</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Post</a>
-        </li>
-        <li class="nav-item">
-          <%= link_to image_tag("user_icon.jpeg", size: "35x35", class: "rounded-circle z-depth-0",
-                                alt: "avatar image"), user_path(current_user), class: "nav-link" %>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ナビゲーションバー大：sm以上で表示 -->
-  <nav class="navbar navbar-expand navbar-light bg-transparent mb-3 d-none d-sm-block">
+  <nav class="navbar navbar-expand navbar-light bg-transparent mb-3">
     <div class="container">
       <%= link_to website_name, root_path, class: "navbar-brand ml-1" %>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="navbar-nav align-items-center">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Search</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Notifications</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Post</a>
-          </li>
+        <ul class="navbar-nav justify-content-end align-items-center" style="min-width: 148px;">
           <li class="nav-item">
             <%= link_to image_tag("user_icon.jpeg", size: "35x35", class: "rounded-circle z-depth-0",
                                   alt: "avatar image"), user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item ml-1">
+            <button type="button" class="post-btn btn btn-dark rounded-pill">投稿する</button>
           </li>
         </ul>
       </div>
@@ -50,17 +17,17 @@
   </nav>
 
 <% else %>
-  <!-- ナビゲーションバー：未ログイン状態で表示 -->
   <nav class="navbar navbar-expand navbar-light bg-transparent mb-3">
     <div class="container">
       <%= link_to website_name, root_path, class: "navbar-brand ml-1" %>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav align-items-center">
           <li class="nav-item">
-            <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+            <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign up", new_user_registration_path, class: "signup-btn nav-link py-1 px-3 ml-2 mr-1" %>
+            <%= link_to "登録", new_user_registration_path, class: "signup-btn nav-link py-1 px-3 ml-2 mr-1 d-sm-none" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "signup-btn nav-link py-1 px-3 ml-2 mr-1 d-none d-sm-block" %>
           </li>
         </ul>
       </div>
