@@ -23,5 +23,7 @@ module NewApp
     # libディレクトリ以下のファイルが、下記のディレクトリ・ファイル構成と命名の規約に従うと、
     # development環境ではAutoloadされ、production環境ではEagerLoadされるようになります
     config.paths.add 'lib', eager_load: true
+
+    config.i18n.default_locale = :ja
   end
 end

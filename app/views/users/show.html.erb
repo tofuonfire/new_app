@@ -1,6 +1,6 @@
 <% provide(:title, @user.username) %>
 <h3>
-  <%= @user.username %>/<%= @user.email %>
+  <%= @user.name %>/<%= @user.username %>/<%= @user.email %>
 </h3>
 
 <%= link_to "Log out", destroy_user_session_path, method: :delete %>
