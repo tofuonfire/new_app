@@ -71,9 +71,11 @@ ja:
       user:
         name: 名前
         username: ユーザーネーム
+        bio: 自己紹介
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワードの再入力
+        current_password: 現在のパスワード
     errors:
       models:
         user:

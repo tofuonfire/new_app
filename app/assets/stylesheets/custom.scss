@@ -33,39 +33,49 @@
 /* header */
 
 .navbar {
-  height: 67px;
+  height: 65px;
 }
 
-// ナビゲーションリンクのホバー時のエフェクトを滑らかにする
-.nav-link {
-  transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out;
-}
-
-.signup-btn {
-  border-radius: 5px;
-  border: 1px solid #999c9f;
-  &:hover {
-    border-color: #4c4c4c;
+.nav-item {
+  margin-left: 0.8rem;
+  .avatar-img {
+    width: 32px;
+    height: 32px;
+  }
+  @media (min-width: 576px) {
+    .avatar-img {
+      width: 40px;
+      height: 40px;
+    }
   }
 }
 
-#navbar-nav-xs {
-  width: 100%;
-  justify-content: space-between
+.nav-link {
+  font-weight: 500;
+  font-size: 0.8rem;
 }
 
-.fa-home {
-  font-size: 1.3rem;
-  position: relative;
-  top: 1.4px; left: 0px
+.nav-btn {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.8rem;
+  height: 32px;
+}
+@media (min-width: 576px) {
+  .nav-btn {
+    height: 40px;
+    padding-right: 1.2rem;
+    padding-left: 1.2rem;
+  }
 }
 
-.post-btn {
-  height: 35px;
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;
-  font-size: 0.875rem;
+.btn-white {
+  color: #212529;
+  background-color: transparent;
+  border-color: #212529;
 }
+
 
 /* footer */
 
@@ -92,12 +102,12 @@ footer {
   }
 
   .form-title {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 
   @media (min-width: 576px) {
     .form-title {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
   }
 
@@ -157,12 +167,110 @@ footer {
     font-size: 0.8rem;
   }
 
-  .btn {
+  .submit-btn {
     font-weight: 700;
     border-radius: 5px;
     border: 2px solid #212529;
   }
+
+  .upload-avatar-btn {
+    height: 35px;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+    font-size: 0.875rem;
+  }
 }
+
+/* user-profile */
+
+.user-header {
+  width: 100%;
+  overflow: hidden;
+  line-height: 23px;
+
+  .user-name {
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user-username {
+    color: #aaaaaa;
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .user-edit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    height: 32px;
+  }
+}
+@media (min-width: 576px) {
+  .user-header {
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 1.2rem;
+  }
+}
+
+.user-bio-cell {
+  padding: 1.2rem 0;
+  font-size: 0.9rem;
+}
+@media (min-width: 576px) {
+  .user-bio-cell {
+    border-bottom: 1px solid #aaa;
+  }
+}
+
+.user-status-cell {
+  padding-bottom: 0.9rem;
+}
+@media (min-width: 576px) {
+  .user-status-cell {
+    padding: 0.9rem 0;
+  }
+}
+
+.user-status {
+  text-align: center;
+  line-height: 18px;
+  white-space: nowrap;
+
+  .status-name {
+    color: #777;
+    white-space: nowrap;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline;
+  }
+  @media (min-width: 576px) {
+    .status-name {
+      font-size: 0.7rem;
+      font-weight: 500;
+      display: block;
+    }
+  }
+
+  .status-value {
+    display: inline;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  @media (min-width: 576px) {
+    .status-value {
+      font-size: 0.95rem;
+    }
+  }
+}
+
 
 /* post */
 
@@ -173,7 +281,6 @@ footer {
     background-color: transparent;
     border-bottom: none;
   }
-
   @media (min-width: 576px) {
     .card-header {
       padding: 0.75rem 1.25rem;
