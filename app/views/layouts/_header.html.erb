@@ -1,37 +1,27 @@
-<% if user_signed_in? %>
-  <nav class="navbar navbar-expand navbar-light bg-transparent mb-3">
-    <div class="container">
-      <%= link_to website_name, root_path, class: "navbar-brand ml-1" %>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-        <ul class="navbar-nav justify-content-end align-items-center" style="min-width: 148px;">
+<nav class="navbar navbar-expand navbar-light mb-3">
+  <div class="container">
+    <%= link_to website_name, root_path, class: "navbar-brand font-weight-bold" %>
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav align-items-center">
+        <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to image_tag("user_icon.jpeg", size: "35x35", class: "rounded-circle z-depth-0",
-                                  alt: "avatar image"), user_path(current_user), class: "nav-link" %>
+            <%= link_to image_tag("user_icon.jpeg", class: "avatar-img rounded-circle z-depth-0",
+                                  alt: "avatar image"), user_path(current_user), class: "nav-link p-0" %>
           </li>
-          <li class="nav-item ml-1">
-            <button type="button" class="post-btn btn btn-dark rounded-pill">投稿する</button>
+          <li class="nav-item">
+            <%= link_to "投稿する", "#", class: "btn btn-dark nav-btn" %>
           </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
-<% else %>
-  <nav class="navbar navbar-expand navbar-light bg-transparent mb-3">
-    <div class="container">
-      <%= link_to website_name, root_path, class: "navbar-brand ml-1" %>
-      <div class="collapse navbar-collapse justify-content-end">
-        <ul class="navbar-nav align-items-center">
+        <% else %>
           <li class="nav-item">
-            <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+            <%= link_to "ログイン", new_user_session_path, class: "nav-link active px-0" %>
           </li>
           <li class="nav-item">
-            <%= link_to "登録", new_user_registration_path, class: "signup-btn nav-link py-1 px-3 ml-2 mr-1 d-sm-none" %>
-            <%= link_to "新規登録", new_user_registration_path, class: "signup-btn nav-link py-1 px-3 ml-2 mr-1 d-none d-sm-block" %>
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-white nav-btn" %>
           </li>
-        </ul>
-      </div>
+        <% end %>
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>
  
-<% end %>
