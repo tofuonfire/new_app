@@ -221,22 +221,18 @@ footer {
 }
 
 .user-bio-cell {
-  padding: 1.2rem 0;
+  padding-top: 1.2rem;
   font-size: 0.9rem;
 }
 @media (min-width: 576px) {
   .user-bio-cell {
+    padding: 1.2rem 0;
     border-bottom: 1px solid #aaa;
   }
 }
 
 .user-status-cell {
-  padding-bottom: 0.9rem;
-}
-@media (min-width: 576px) {
-  .user-status-cell {
-    padding: 0.9rem 0;
-  }
+  padding: 0.9rem 0;
 }
 
 .user-status {
