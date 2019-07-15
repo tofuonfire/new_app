@@ -37,11 +37,11 @@
 }
 
 .nav-item {
-  margin-left: 0.8rem;
+  margin-left: 10px;
   .avatar-img {
     width: 32px;
     height: 32px;
-  }
+    }
   @media (min-width: 576px) {
     .avatar-img {
       width: 40px;
@@ -181,6 +181,12 @@ footer {
   }
 }
 
+/* user-profile-edit */
+
+.hidden {
+  display: none;
+}
+
 /* user-profile */
 
 .user-header {
@@ -211,6 +217,17 @@ footer {
     font-size: 0.8rem;
     white-space: nowrap;
     height: 32px;
+  }
+
+  .user-edit-btn-sm {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  @media (min-width: 576px) {
+    .user-edit-btn-sm {
+      padding-right: 0.75rem;
+      padding-left: 0.75rem;
+    }
   }
 }
 @media (min-width: 576px) {
