@@ -5,8 +5,14 @@
       <ul class="navbar-nav align-items-center">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to image_tag("user_icon.jpeg", class: "avatar-img rounded-circle z-depth-0",
+          <% if current_user.avatar?%>
+            <%= link_to image_tag(current_user.avatar.mini.url, class: "avatar-img rounded-circle z-depth-0",
                                   alt: "avatar image"), user_path(current_user), class: "nav-link p-0" %>
+          <% else %>
+            <%= link_to image_tag("no_user.png", class: "avatar-img rounded-circle z-depth-0",
+                                  alt: "avatar image"), user_path(current_user), class: "nav-link p-0" %>
+          <% end %>
+            
           </li>
           <li class="nav-item">
             <%= link_to "投稿する", "#", class: "btn btn-dark nav-btn" %>

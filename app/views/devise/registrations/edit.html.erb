@@ -3,6 +3,8 @@
 <div class="custom-form">
   <div class="container" style="max-width: 730px; padding: 2.5rem 30px;">
     <h1 class="form-title mb-4 text-center">プロフィールを編集</h1>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 no-gutters" style="padding: 0;">
       <%= render "devise/shared/error_messages", resource: resource %>
     </div>
@@ -11,17 +13,50 @@
 
       <!-- プロフィール画像編集カラム -->
       <div class="col-sm-4 d-flex d-sm-flex justify-content-center justify-content-sm-start mb-4 mb-sm-0 pl-sm-0">
+        
+
         <div>
-          <%= image_tag("user_icon.jpeg", size: "150x150", class: "rounded-circle z-depth-0 mb-4", alt: "avatar image") %>
+          <img id="avatar_img_prev" src="#" class='hidden rounded-circle z-depth-0 mb-4' style="width: 150px; height: 150px; object-fit: cover" alt="avatar image"/>
+          <% if resource.avatar? %>
+            <%= image_tag resource.avatar.url, size: "150x150", class: 'avatar_present_img rounded-circle z-depth-0 mb-4', alt: "avatar image" %>
+          <% else %>
+            <%= image_tag 'no_user.png', class: 'avatar_present_img d-block rounded-circle z-depth-0 mb-4', size: "150x150", alt: "avatar image" %>
+            <%= f.hidden_field :avatar_cache %>
+          <% end %>
           <div class="d-flex justify-content-center">
-            <button type="button" class="btn submit-btn"><div style="white-space: nowrap;">画像を変更</div></button>
+            <label for="post_img" class="btn submit-btn" style="cursor:pointer;">
+              <div style="white-space: nowrap;">画像を変更</div>
+              <%= f.file_field :avatar, id: 'post_img', class: "d-none" %>
+            </label>
           </div>
+
+          <script type="text/javascript">
+            $( document ).on('turbolinks:load', function() {
+              function readURL(input) {
+                if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+            
+                  reader.onload = function (e) {
+                    $('#avatar_img_prev').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(input.files[0]);
+                }
+              }
+            
+              $("#post_img").change(function(){
+                $('#avatar_img_prev').removeClass('hidden');
+                $('.avatar_present_img').remove();
+                readURL(this);
+              });
+            });
+          </script>
+          
         </div>
       </div>
 
       <div class="col-sm-8 no-gutters" style="padding: 0;">
 
-        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+        
 
           <div class="field form-group">
             <%= f.label :name %>
@@ -70,11 +105,11 @@
             <%= f.submit "変更を保存する", { class: "btn submit-btn" } %>
           </div>
 
-        <% end %>
+        
 
       </div>
       
     </div><!-- row -->
-
+    <% end %>
   </div><!-- container -->
 </div><!-- custom-form -->

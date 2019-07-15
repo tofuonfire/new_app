@@ -7,6 +7,8 @@ ruby '2.6.3'
 gem 'rails', '~> 5.2.3'
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
