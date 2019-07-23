@@ -1,0 +1,67 @@
+<% provide :title, "新規投稿" %>
+      
+<div class="custom-form">
+  <div class="container pt-0" style="max-width: 800px;">
+    <%= form_for @post do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    
+    <div class="row create-post-col no-gutters mb-3">
+      <!-- 画像アップロードカラム -->
+      <div class="col-md-5 upload-img-col d-flex d-md-flex justify-content-center justify-content-md-start mb-4 mb-md-0">
+        <div class="d-flex align-items-center justify-content-center" id="img_field" onClick="$('#file').click()">
+          <% if @post.image.url.present? %>
+            <%= image_tag(@post.image.url, class: "preview", width: "100%") %>
+          <% end %>
+        </div>
+        <i class="fas fa-camera" onClick="$('#file').click()"></i>
+
+        <%= f.file_field :image, class: "image", style: "display: none;", id: "file", accept: 'image/jpeg,image/gif,image/png' %>
+        <%= f.hidden_field :image_cache %>
+      </div>
+
+      <div class="col-md-7 pl-md-4" style="padding: 0;">
+        <div class="field form-group m-0">
+          <%= f.text_area :caption, class: "form-control custom-text-area", placeholder: "キャプションを入力" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions text-right mr-3 mb-4">
+      <%= link_to "キャンセル", root_path, class: "btn submit-btn mr-2", style: "border: none;" %>
+      <%= f.submit "投稿を送信", { class: "btn submit-btn" } %>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-autosize@1.18.18/jquery.autosize.min.js"></script>
+<script>
+  $(function(){
+    $fileField = $('#file')
+
+    // 選択された画像を取得し表示
+    $($fileField).on('change', $fileField, function(e) {
+      file = e.target.files[0]
+      reader = new FileReader(),
+      $preview = $("#img_field");
+
+      reader.onload = (function(file) {
+        return function(e) {
+          $preview.empty();
+          $preview.append($('<img>').attr({
+            src: e.target.result,
+            width: "100%",
+            class: "preview",
+            title: file.name
+          }));
+        };
+      })(file);
+      reader.readAsDataURL(file);
+    });
+  });
+
+  $(function(){
+    $('textarea').autosize();
+  });
+</script>

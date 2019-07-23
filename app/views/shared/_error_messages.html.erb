@@ -1,0 +1,13 @@
+<% if object.errors.any? %>
+  <div class="mx-4 mb-3">
+    <div class="error_explanation">
+        <span class="fas fa-exclamation-circle mr-1"></span>
+        <% object.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+    </div>
+    <ul>
+
+    </ul>
+  </div>
+<% end %>

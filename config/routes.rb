@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, :only => [:index]
+  resources :posts, :except => [:index]
 
   constraints(UrlConstrainer.new) do
     resources :users, param: :username, path: '/', :only => [:show]

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
+  has_many :posts, dependent: :destroy
   validates :name, presence: true, length: { maximum: 20 }
   validates :username, namespace: true, presence: true, uniqueness: { case_sensitive: :false }, length: { minimum: 4, maximum: 20 },
                        format: { with: /\A[a-z0-9_]+\z/ }

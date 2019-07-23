@@ -76,6 +76,9 @@ ja:
         password: パスワード
         password_confirmation: パスワードの再入力
         current_password: 現在のパスワード
+      post:
+        image: 画像
+        caption: キャプション
     errors:
       models:
         user:
@@ -106,3 +109,9 @@ ja:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が一致しません。"
+        post:
+          attributes:
+            image:
+              blank: "が選択されていません。"
+            caption:
+              too_long: "は%{count}文字以下に設定して下さい。"
