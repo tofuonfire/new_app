@@ -1,3 +1,5 @@
+<% provide(:title, "#{@user.name} (@#{@user.username})") %>
+
 <div class="container" style="max-width: 600px;">
   <div class="row">
     <div class="col-sm-6 px-0 d-none d-sm-block">
@@ -24,16 +26,19 @@
             <div class="col-8 col-sm-12 d-flex align-items-center">
               <div class="" style="width: 100%;">
                 <div class="user-name font-weight-bold"><%= @user.name %></div>
-                <div class="user-username mb-2">@<%= @user.username %></div>
-                <div class="d-flex">
-                  <% if @user == current_user %>
-                    <%= link_to "プロフィールを編集", edit_user_registration_path, class: "btn btn-white user-edit-btn user-edit-btn-sm mr-2" %>
-                    <%= link_to "ログアウト", destroy_user_session_path, class: "btn btn-white user-edit-btn user-edit-btn-sm", method: :delete %>
-                  <% else %>
-                    <%= link_to "フォローする", "#", class: "btn btn-white user-edit-btn" %>
-                  <% end %>
+                <div class="user-username">@<%= @user.username %></div>
+              </div>
+
+              <div class="dropdown mr-1">
+                <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10",
+                                  aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <%= link_to "プロフィールを編集", edit_user_registration_path, class: "dropdown-item" %>
+                  <div class="dropdown-divider"></div>
+                  <%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item",method: :delete %>
                 </div>
               </div>
+              
             </div>
           </div>
         </div>
@@ -45,7 +50,7 @@
         <% end %>
 
         <div class="user-status-cell">
-          <div class="d-flex" style="width: 100%">
+          <div class="d-flex justify-content-center justify-content-sm-start" style="width: 100%">
             <div class="user-status" style="margin-right: 1.5rem;">
               <div class="status-name">投稿</div>
               <div class="status-value">0</div>
