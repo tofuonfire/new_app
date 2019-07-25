@@ -14,6 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
+//= require infinite-scroll.pkgd.min.js
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .

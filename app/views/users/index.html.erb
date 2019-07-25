@@ -1,2 +1,41 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<% provide(:title, 'すべてのユーザー') %>
+
+<div class="d-flex justify-content-center mb-4 mb-sm-5" style="width: 100%;">
+  <div class="user-cards-header d-flex justify-content-center align-items-center">すべてのユーザー</div>
+</div>
+
+<div class="row user-cards-container">
+
+  <% @users.each do |user| %>
+    <div class="user-card-frame col-sm-6 col-md-4">
+      <div class="user-card d-flex align-items-center">
+        <div class="" style="width: 100%">
+          <div class="d-flex align-items-end justify-content-center mt-1 mb-3">
+            <% if user.avatar? %>
+              <%= link_to image_tag(user.avatar.url, size: "100x100",
+                                    class: "rounded-circle z-depth-0",alt: "avatar image"), user_path(user) %>
+            <% else %>
+              <%= link_to image_tag("no_user.png", size: "100x100",
+                                    class: "rounded-circle z-depth-0", alt: "avatar image"), user_path(user) %>
+            <% end %>
+          </div>
+          
+          <div class="user-card-names d-flex justify-content-center">
+            <div class="text-center">
+              <a href="#" class="user-name font-weight-bold"><%= user.name %></a><br>
+              <a href="#" class="user-username">@<%= user.username %></a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= paginate @users %>
+
+</div>
+</div>
+
+<script>
+</script>
+

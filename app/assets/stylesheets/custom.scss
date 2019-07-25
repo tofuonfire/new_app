@@ -207,25 +207,137 @@ footer {
 
 .user-header {
   width: 100%;
-  overflow: hidden;
   line-height: 23px;
 
-  .user-name {
-    font-size: 1.2rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  .user-name { font-size: 1.2rem }
 
   .user-username {
     color: #aaaaaa;
     font-size: 0.85rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  }
+}
+
+.setting-btn {
+  color: #212529;
+  &:hover { color: #212529 }
+}
+.dropdown-toggle::after {
+  display: none;
+}
+.show > .dropdown-toggle {
+  outline: none;
+}
+
+.user-bio-cell {
+  padding-top: 0.9rem;
+  font-size: 0.9rem;
+}
+@media (min-width: 576px) {
+  .user-bio-cell {
+    padding-top: 0.8rem;
+  }
+}
+
+.user-status-cell {
+  padding: 0.9rem 0;
+  margin: 0.9rem -15px 0 -15px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+@media  (min-width: 576px) {
+  .user-status-cell {
+    padding: 0;
+    margin: 0.8rem 0 0 0;
+    border-top: none;
+    border-bottom: none;
+  }
+}
+
+.user-status {
+  text-align: center;
+  line-height: 18px;
+  white-space: nowrap;
+  margin-right: auto;
+  margin-left: auto;
+
+  .status-name {
+    color: #777;
     white-space: nowrap;
+    font-size: 0.7rem;
+    font-weight: 500;
+    display: block;
   }
 
-  .user-edit-btn {
+  .status-value {
+    display: inline;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+}
+@media  (min-width: 576px) {
+  .user-status {
+    margin: 0;
+  }
+}
+
+/* user-index */
+
+.user-cards-header {
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-bottom: 1px solid #212529;
+}
+@media (min-width: 576px) {
+  .user-cards-header {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 576px) {
+  .user-cards-container {
+    padding: 0 10px;
+  }
+}
+
+.user-card-frame {
+  padding: 0 10px 10px 10px;
+}
+@media (min-width: 576px) {
+  .user-card-frame {
+    padding-bottom: 20px;
+  }
+}
+
+.user-card {
+  height: 260px;
+  padding: 10px;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  a {
+    line-height: 20px;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .user-card-names {
+    width: 100%;
+    line-height: 23px;
+  
+    .user-name {
+      color: #212529;
+      font-size: 1.2rem
+    }
+
+    .user-username {
+      color: rgba(0, 0, 0, 0.4);
+      font-size: 0.85rem;
+    }
+  }
+
+  .user-card-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -234,70 +346,10 @@ footer {
     white-space: nowrap;
     height: 32px;
   }
-
-  .user-edit-btn-sm {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-  }
-  @media (min-width: 576px) {
-    .user-edit-btn-sm {
-      padding-right: 0.75rem;
-      padding-left: 0.75rem;
-    }
-  }
-}
-@media (min-width: 576px) {
-  .user-header {
-    border-bottom: 1px solid #d6d6d6;
-    padding-bottom: 1.2rem;
-  }
 }
 
-.user-bio-cell {
-  padding-top: 1.2rem;
-  font-size: 0.9rem;
-}
-@media (min-width: 576px) {
-  .user-bio-cell {
-    padding: 1.2rem 0;
-    border-bottom: 1px solid #d6d6d6;
-  }
-}
-
-.user-status-cell {
-  padding: 0.9rem 0;
-}
-
-.user-status {
-  text-align: center;
-  line-height: 18px;
-  white-space: nowrap;
-
-  .status-name {
-    color: #777;
-    white-space: nowrap;
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: inline;
-  }
-  @media (min-width: 576px) {
-    .status-name {
-      font-size: 0.7rem;
-      font-weight: 500;
-      display: block;
-    }
-  }
-
-  .status-value {
-    display: inline;
-    font-weight: 600;
-    font-size: 0.8rem;
-  }
-  @media (min-width: 576px) {
-    .status-value {
-      font-size: 0.95rem;
-    }
-  }
+nav.pagination {
+  display: none;
 }
 
 /* post new */
@@ -378,11 +430,11 @@ footer {
     border-top: 2px solid rgba(0, 0, 0, 0.05);
     border-bottom: 2px solid rgba(0, 0, 0, 0.05);
   }
+  @media (min-width: 576px) {
+    img { border-radius: 0.5rem }
+  }
 }
 @media (min-width: 576px) {
-  img {
-    border-radius: 0.5rem;
-  }
   .img-col::after {
     border-radius: 0.5rem;
     border: 1px solid rgba(0, 0, 0, 0.125);

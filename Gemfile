@@ -9,6 +9,9 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'faker'
+gem 'rails-i18n'
+gem 'kaminari'
 
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
