@@ -6,5 +6,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by!(username: params[:username])
+    @posts = @user.posts.page(params[:page]).per(36)
   end
 end

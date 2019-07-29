@@ -1,0 +1,45 @@
+<%= render 'layouts/toast' %>
+
+<div class="post-container no-gutters mx-sm-auto" style="max-width: 700px">
+  <div class="post-header d-flex align-items-center" style="">
+    <% if @post.user.avatar?%>
+      <%= link_to image_tag(@post.user.avatar.mini.url, size: "50x50", class: "rounded-circle z-depth-0",
+                            alt: "avatar image"), user_path(@post.user), class: "mr-3" %>
+    <% else %>
+      <%= link_to image_tag("no_user.png", size: "50x50", class: "rounded-circle z-depth-0",
+                            alt: "avatar image"), user_path(@post.user), class: "mr-3" %>
+    <% end %>
+    <div class="" style="width: 100%; line-height: 20px;">
+      <%= link_to @post.user.name, user_path(@post.user), class: "post-header-name" %><br>
+      <%= link_to "@#{@post.user.username}", user_path(@post.user), class: "post-header-username" %></a>
+    </div>
+    <div class="dropdown mr-1">
+      <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10",
+                        aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
+      <div class="dropdown-menu dropdown-menu-right">
+        <%= link_to edit_post_path(@post), class: "dropdown-item d-flex align-items-center" do %>
+          <div style="width: 100%">投稿を編集</div><i class="far fa-edit" style="position: relative; left: 4px;"></i>
+        <% end %>
+        <div class="dropdown-divider"></div>
+        <%= link_to post_path(@post), class: "dropdown-item d-flex align-items-center", style: "color: #f90e43;", method: :delete, data: { confirm: "投稿を削除しますか？" } do %>
+          <div style="width: 100%">投稿を削除</div><i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col img-col">
+    <%= image_tag @post.image.url, size: "1100x1100", class: "img-fluid" %>
+  </div>
+  <div class="col">
+    <div class="post-body">
+      <% if !@post.caption.blank? %>
+        <%= simple_format(@post.caption, class: "post-text") %>
+      <% end %>
+      <p class="post-text"><small class="text-muted">3分前</small></p>
+    </div>
+    <div class="post-footer">
+      <i class="far fa-heart"></i> 15
+      <i class="far fa-comment-alt ml-2"></i> 15
+    </div>
+  </div>
+</div>
