@@ -4,7 +4,19 @@
 
 $(document).on 'turbolinks:load', ->
   $('.user-cards-container').infiniteScroll
-    path: "nav.pagination a[rel=next]"
+    path: ".next a"
+    hideNav: '.pagination',
     append: ".user-card-frame"
     history: false
     prefill: true
+    status: '.page-load-status'
+
+$(document).on 'turbolinks:load', ->
+  $('.post-cards').infiniteScroll
+    path: "nav.pagination a[rel=next]"
+    hideNav: '.pagination'
+    append: ".post-card"
+    history: false
+    status: '.page-load-status'
+    button: '.loadmore-btn'
+    scrollThreshold: false

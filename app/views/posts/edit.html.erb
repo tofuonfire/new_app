@@ -1,7 +1,7 @@
-<% provide :title, "新規投稿" %>
+<% provide :title, "投稿を編集" %>
 
 <div class="d-flex justify-content-center mb-4" style="width: 100%;">
-  <div class="page-header d-flex justify-content-center align-items-center">新しい投稿</div>
+  <div class="page-header d-flex justify-content-center align-items-center">投稿を編集</div>
 </div>
       
 <div class="custom-form">
@@ -32,7 +32,7 @@
 
     <div class="actions text-right mr-3 mb-4">
       <%= link_to "キャンセル", root_path, class: "btn submit-btn mr-2", style: "border: none;" %>
-      <%= f.submit "投稿を送信", { class: "btn submit-btn" } %>
+      <%= f.submit "変更を保存", { class: "btn submit-btn" } %>
     </div>
 
     <% end %>
