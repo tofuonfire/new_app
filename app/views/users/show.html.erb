@@ -57,7 +57,7 @@
           <div class="d-flex justify-content-center justify-content-md-start" style="width: 100%">
             <div class="user-status" style="margin-right: 1.5rem;">
               <div class="status-name">投稿</div>
-              <div class="status-value">0</div>
+              <div class="status-value"><%= @user.posts.count.to_s(:delimited) %></div>
             </div>
             <div class="user-status" style="margin-right: 1.5rem;">
               <div class="status-name">フォロー中</div>
@@ -85,7 +85,7 @@
           role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-post", "aria-selected" => "true"} do %>
         <div class="user-status d-md-none">
           <div class="status-name p-0">投稿</div>
-          <div class="status-value">0</div>
+          <div class="status-value"><%= @user.posts.count %></div>
         </div>
         <div class="user-status-md d-none d-md-block">投稿</div>
       <% end %>
@@ -125,7 +125,7 @@
 
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-post" role="tabpanel" aria-labelledby="pills-post-tab">
-    <% if @posts.any? %>
+    <% if @user.posts.any? %>
       <div class="post-cards">
         <% @posts.each do |post| %>
           <div class="post-card">

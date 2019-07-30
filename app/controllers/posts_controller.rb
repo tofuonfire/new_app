@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: :show
+  before_action :correct_user,       only: [:edit, :update, :destroy]
 
   def show
-    @post = Post.find_by!(id: params[:id])
+    @post = Post.find_by!(url_token: params[:url_token])
   end
 
   def new
@@ -20,11 +22,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by!(id: params[:id])
+    @post = Post.find_by!(url_token: params[:url_token])
   end
 
   def update
-    @post = Post.find_by!(id: params[:id])
+    @post = Post.find_by!(url_token: params[:url_token])
     if @post.update_attributes(post_params)
       flash[:success] = "投稿が更新されました"
       redirect_to @post
@@ -34,7 +36,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find_by!(id: params[:id]).destroy
+    Post.find_by!(url_token: params[:url_token]).destroy
     flash[:success] = "投稿は正常に削除されました"
     redirect_to current_user
   end
@@ -43,5 +45,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:image, :image_cache, :caption, :user_id)
+  end
+
+  def correct_user
+    @post = Post.find_by!(url_token: params[:url_token])
+    redirect_to(root_url) unless @post.user == current_user
   end
 end
