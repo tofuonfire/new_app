@@ -123,7 +123,7 @@
   </ul>
 </div>
 
-<div class="tab-content" id="pills-tabContent">
+<div class="tab-content user-profile-contents" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-post" role="tabpanel" aria-labelledby="pills-post-tab">
     <% if @user.posts.any? %>
       <div class="post-cards">
@@ -135,7 +135,7 @@
       </div>
       <%= paginate @posts %>
       <div class="loadmore-btn-wrapper p-0 d-flex">
-        <button class="loadmore-btn btn btn-dark active mx-auto">さらに表示する</button>
+        <button class="loadmore-btn btn btn-dark active mx-auto">さらに表示</button>
       </div>
     <% else %>
       <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
