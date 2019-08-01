@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def website_name
-    "Untitled"
+    "Cateye"
   end
 
   # ページごとの完全なタイトルを返します
