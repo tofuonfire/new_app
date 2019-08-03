@@ -472,14 +472,15 @@ footer {
 }
 
 .loadmore-btn-wrapper {
-  margin: 10px -5px 0 -5px;
+  margin: 20px 5px 0 5px;
 
-  .btn { color: rgba(255, 255, 255, 0.8); background-color: rgb(171, 170, 171); border: none; }
+  .btn { color: rgba(0, 0, 0, 0.5); font-weight: 700; background-color: rgba(0, 0, 0, 0.1); border: none; }
 
   .loadmore-btn {
-    font-size: 0.95rem;
-    border-radius: 0.3rem;
-    height: 40px;
+    font-size: 1rem;
+    
+    border-radius: 0.6rem;
+    height: 43px;
     width: 100%;
   }
   @media (min-width: 576px) {

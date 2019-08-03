@@ -15,7 +15,7 @@
             
           </li>
           <li class="nav-item">
-            <%= link_to "投稿する", new_post_path, class: "btn btn-dark nav-btn", style: "background-color: #23272b" %>
+            <%= link_to new_post_path, class: "btn btn-dark nav-btn", style: "background-color: #23272b" do %><i class="far fa-edit mr-1"></i>投稿<% end %>
           </li>
 
         <% else %>
