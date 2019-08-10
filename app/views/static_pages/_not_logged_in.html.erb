@@ -1,0 +1,60 @@
+<div class="home-contents">
+  <div class="home-header d-flex flex-column align-items-center">
+    <div class="home-catch text-center font-weight-bold mx-auto mb-2">
+      友達と写真や<br class="d-sm-none">アートを共有しよ<div class="d-inline" style="position: relative">う<div class="d-inline" style="position: absolute">。</div></div>
+    </div>
+    <%= link_to "#", class: "home-catch-link font-weight-bold" do %>さらに詳しく<i class="fas fa-chevron-right" style="position: relative; abusolute; top: -2px; left: 2px; font-size: 0.75rem"></i><% end %>
+  </div>
+
+  <div class="post-cards-nav d-flex align-items-center">
+    <div class="post-cards-nav-header mr-auto">すべての投稿</div>
+    <ul class="nav nav-pills" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pills-latest-tab" data-toggle="pill" href="#pills-latest" role="tab" aria-controls="pills-latest" aria-selected="true">新着</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="pills-popular-tab" data-toggle="pill" href="#pills-popular" role="tab" aria-controls="pills-popular" aria-selected="false">人気</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="post-cards row">
+    <% @latest_posts.each do |post| %>
+      <div class="post-card col-6 col-sm-4">
+        <%= link_to image_tag(post.image.url, class: "post-card-img img-fluid", alt: "post image"), post_path(post) %>
+        <div class="post-card-footer d-flex align-items-center">
+          <% if post.user.avatar?%>
+            <%= link_to image_tag(post.user.avatar.mini.url, size: "35x35", class: "rounded-circle z-depth-0",
+                                  alt: "avatar image"), user_path(post.user), class: "mr-3" %>
+          <% else %>
+            <%= link_to image_tag("no_user.png", size: "35x35", class: "rounded-circle z-depth-0",
+                                  alt: "avatar image"), user_path(post.user), class: "mr-3" %>
+          <% end %>
+          <div class="post-footer-names" style="line-height: 20px;">
+            <%= link_to post.user.name, user_path(post.user), class: "post-footer-name" %><br>
+            <%= link_to "@#{post.user.username}", user_path(post.user), class: "post-footer-username" %></a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <%= paginate @latest_posts %>
+  <div class="loadmore-btn-wrapper p-0 d-flex">
+    <button class="loadmore-btn btn active mx-auto">さらに表示</button>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $('.post-cards').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
+      path : 'nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
+      append : '.post-card',  // 読まれたら追加していくタグのクラス
+      history: false,  // ページが読まれてもURLを変えない
+      prefill: true,  // 一番下まで読まれる前にpathを読み込む
+      button: '.loadmore-btn',
+      scrollThreshold: false,
+      hideNav: '.pagination'
+    })
+  })
+</script>

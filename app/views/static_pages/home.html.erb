@@ -1,19 +1,5 @@
-<div class="home-contents">
-  <div class="home-header d-flex flex-column align-items-center">
-    <div class="home-catch text-center font-weight-bold mx-auto mb-2">
-      友達と写真や<br class="d-sm-none">アートを共有しよ<div class="d-inline" style="position: relative">う<div class="d-inline" style="position: absolute">。</div></div>
-    </div>
-    <%= link_to "#", class: "home-catch-link font-weight-bold" do %>さらに詳しく<i class="fas fa-chevron-right" style="position: relative; abusolute; top: -2px; left: 2px; font-size: 0.75rem"></i><% end %>
-  </div>
-  <div class="post-cards">
-    <% @posts.each do |post| %>
-      <div class="post-card">
-        <%= link_to image_tag(post.image.url, class: "img-fluid", alt: "post image"), post_path(post) %>
-      </div>
-    <% end %>
-  </div>
-  <%= paginate @posts %>
-  <div class="loadmore-btn-wrapper p-0 d-flex">
-    <button class="loadmore-btn btn active mx-auto">さらに表示</button>
-  </div>
-</div>
+<% if user_signed_in? %>
+  <%= render 'static_pages/logged_in' %>
+<% else %>
+  <%= render 'static_pages/not_logged_in' %>
+<% end %>
