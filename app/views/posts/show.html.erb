@@ -1,67 +1,14 @@
 <%= render 'layouts/toast' %>
 
 <div class="post-container no-gutters mx-sm-auto" style="max-width: 700px">
-  <div class="post-header d-flex align-items-center">
-    <% if @post.user.avatar?%>
-      <%= link_to image_tag(@post.user.avatar.mini.url, size: "50x50", class: "rounded-circle z-depth-0",
-                            alt: "avatar image"), user_path(@post.user), class: "mr-3" %>
-    <% else %>
-      <%= link_to image_tag("no_user.png", size: "50x50", class: "rounded-circle z-depth-0",
-                            alt: "avatar image"), user_path(@post.user), class: "mr-3" %>
-    <% end %>
-    <div class="mr-auto" style="line-height: 20px;">
-      <%= link_to @post.user.name, user_path(@post.user), class: "post-header-name" %><br>
-      <%= link_to "@#{@post.user.username}", user_path(@post.user), class: "post-header-username" %></a>
-    </div>
-
-    <% if user_signed_in? %>
-      <% if @post.user == current_user %>
-        <div class="dropdown mr-1">
-          <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10",
-                            aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
-          <div class="dropdown-menu dropdown-menu-right">
-            <%= link_to edit_post_path(@post), class: "dropdown-item d-flex align-items-center" do %>
-              <div style="width: 100%">投稿を編集</div><i class="far fa-edit" style="position: relative; left: 4px;"></i>
-            <% end %>
-            <div class="dropdown-divider"></div>
-
-            <a class="dropdown-item d-flex align-items-center" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#modal1">
-              <div style="width: 100%">投稿を削除</div><i class="fas fa-trash-alt"></i>
-            </a>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  <%= render 'posts/post_header', object: @post %>
   <div class="col img-col">
     <%= image_tag @post.image.url, size: "1100x1100", class: "img-fluid" %>
   </div>
   <div class="col">
-    <div class="post-body">
-      <% if !@post.caption.blank? %>
-        <%= simple_format(@post.caption, class: "post-text") %>
-      <% end %>
-      <p class="post-text"><small class="text-muted">3分前</small></p>
-    </div>
-    <div class="post-footer d-flex align-items-center">
-      <div class="mr-2" style="font-size: 0.9rem"><b>15</b>件のコメント</div>
-      <div style="font-size: 0.9rem"><b>15</b>件のいいね</div>
-      <i class="far fa-heart ml-auto mr-1" style="font-size: 1.2rem"></i>
-    </div>
+    <%= render 'posts/post_body', object: @post %>
+    <%= render 'posts/post_footer', object: @post %>
   </div>
 </div>
 
-<div class="modal" id="modal1" tabindex="-1"
-      role="dialog" aria-labelledby="label1" aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        投稿を削除しますか？
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn" data-dismiss="modal">キャンセル</button>
-        <%= link_to "削除", post_path(@post), class: "btn", style: "color: #f90e43;", method: :delete %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'posts/post_modal', object: @post %>

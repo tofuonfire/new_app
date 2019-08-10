@@ -1,0 +1,32 @@
+<div class="post-header d-flex align-items-center">
+  <% if object.user.avatar? %>
+    <%= link_to image_tag(object.user.avatar.mini.url, size: "50x50", class: "rounded-circle z-depth-0",
+                          alt: "avatar image"), user_path(object.user), class: "mr-3" %>
+  <% else %>
+    <%= link_to image_tag("no_user.png", size: "50x50", class: "rounded-circle z-depth-0",
+                          alt: "avatar image"), user_path(object.user), class: "mr-3" %>
+  <% end %>
+  <div class="mr-auto" style="line-height: 20px;">
+    <%= link_to object.user.name, user_path(object.user), class: "post-header-name" %><br>
+    <%= link_to "@#{object.user.username}", user_path(object.user), class: "post-header-username" %></a>
+  </div>
+
+  <% if user_signed_in? %>
+    <% if object.user == current_user %>
+      <div class="dropdown mr-1">
+        <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10",
+                          aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <%= link_to edit_post_path(object), class: "dropdown-item d-flex align-items-center" do %>
+            <div style="width: 100%">投稿を編集</div><i class="far fa-edit" style="position: relative; left: 4px;"></i>
+          <% end %>
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item d-flex align-items-center" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#modal1">
+            <div style="width: 100%">投稿を削除</div><i class="fas fa-trash-alt"></i>
+          </a>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

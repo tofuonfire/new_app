@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @posts = Post.page(params[:page]).per(36)
+    @following_posts = Post.page(params[:page]).per(12)
+    @latest_posts = Post.page(params[:page]).per(24)
   end
 
   def help
