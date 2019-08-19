@@ -157,33 +157,6 @@
     }
   });
 
-  // window.onbeforeunload = function() {
-  //   // IE用。ここは空でOKです
-  // };
-  // window.onunload = function() {
-  //     // IE以外用。ここは空でOKです
-  // };
-
-  window.onpageshow = function(event) {
-    if (event.persisted) {
-      window.location.reload();
-    }
-  };
-
-  if (window.performance) {
-    if (performance.navigation.type === 2) {
-      window.location.reload();
-    }
-  }
-
-  // window.addEventListener("pageshow", function(event){
-  //   if (event.persisted) {
-  //     // ここにキャッシュ有効時の処理を書く
-  //     alert('こんにちわ');
-  //     $('#pills-follower').load(location.href + ' #pills-follower .user-cards')
-  //   }
-  // });
-
   $(function () {
     var index = 0;
     var userindexInit = function() {
