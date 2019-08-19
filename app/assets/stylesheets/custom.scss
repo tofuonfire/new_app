@@ -6,6 +6,10 @@
   box-sizing:         border-box;
 }
 
+@mixin sm { @media (min-width: 576px) { @content; } }
+@mixin md { @media (min-width: 768px) { @content; } }
+@mixin lg { @media (min-width: 992px) { @content; } }
+
 /* miscellaneous */
 
 .debug_dump {
@@ -58,7 +62,7 @@
   height: 65px;
 }
 
-@media (min-width: 576px) {
+@include sm {
   .navbar-brand {
     font-size: 1.5rem;
   }
@@ -70,14 +74,14 @@
     width: 32px;
     height: 32px;
     }
-  @media (min-width: 576px) {
+  @include sm {
     .avatar-img {
       width: 40px;
       height: 40px;
     }
   }
 }
-@media (min-width: 576px) {
+@include sm {
   .nav-item { margin-left: 15px }
 }
 
@@ -93,7 +97,7 @@
   font-size: 0.8rem;
   height: 32px;
 }
-@media (min-width: 576px) {
+@include sm {
   .nav-btn {
     height: 40px;
     padding-right: 1.2rem;
@@ -131,7 +135,7 @@ footer {
     max-width: 500px;
     min-height: 36rem;
   }
-  @media (min-width: 768px) {
+  @include md {
     .container {
       max-width: 800px;
     }
@@ -142,7 +146,7 @@ footer {
     font-size: 1.7rem;
   }
 
-  @media (min-width: 576px) {
+  @include sm {
     .form-title {
       font-size: 2rem;
     }
@@ -177,7 +181,7 @@ footer {
     border-bottom: none;
     resize: none;
   }
-  @media (min-width: 768px) {
+  @include md {
     .form-control.custom-text-area {
       height: 288px;
       max-height: 288px;
@@ -253,34 +257,23 @@ footer {
       width: fit-content;
       font-size: 2rem;
       line-height: 45px;
-      // background-color: rgba(0, 0, 0, 0.5)
       z-index: 2;
     }
-    @media (min-width: 768px) {
+    @include md {
       .home-catch {
         font-size: 2.5rem;
       }
     }
     
     .home-catch-link{
-      // background-color: rgba(0, 0, 0, 0.5);
       color: #fff;
       font-size: 1.1rem;
       z-index: 2;
     }
-
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: block;
-      background-color: rgba(0, 0, 0, 0.1);
-      z-index: 1;
-    }
   }
-  @media (min-width: 768px) {
+  @include md {
     .home-header {
+      border-radius: 0.25rem;
       margin: 0 5px 0px 5px;
       padding: 60px 60px;
     }
@@ -294,7 +287,7 @@ footer {
       font-size: 1.5rem;
       font-weight: 700;
     }
-    @media (min-width: 768px) { .post-cards-nav-header { font-size: 1.8rem; } }
+    @include md { .post-cards-nav-header { font-size: 1.8rem; } }
 
     .nav {
       padding-left: 20px;
@@ -306,7 +299,7 @@ footer {
       color: #fff;
     }
   }
-  @media (min-width: 768px) {
+  @include md {
     .post-cards-nav {
       margin: 15px 5px 0 5px;
       padding: 0
@@ -319,6 +312,10 @@ footer {
     .post-card {
       padding: 0 10px;
       margin-bottom: 20px;
+
+      .post-card-img {
+        border-radius: 0.25rem;
+      }
     }
 
     .post-card-footer {
@@ -396,7 +393,7 @@ footer {
 
     &.active { background-color: #212529 }
   }
-  @media (min-width: 576px) {
+  @include sm {
     .nav-link {
       font-size: 0.9rem;
       height: 40px;
@@ -406,7 +403,7 @@ footer {
   .following-posts-container {
     margin: 0 -15px;
   }
-  @media (min-width: 576px) {
+  @include sm {
     .post-container {
       margin: 0;
     }
@@ -416,17 +413,36 @@ footer {
     margin: 0;
 
     .post-header {
-      padding: 1.25rem 15px;
-      @media (min-width: 576px) { & { padding: 1.25rem 0 } }
+      height: auto;
+      padding: 1.25rem 15px 15px 15px;
+      @include sm { & { padding: 1.25rem 0 15px 0 } }
     }
   
     .post-footer {
       padding-bottom: 1.25rem;
     }
+
+    &:first-child {
+      .post-header {
+        padding: 1.5rem 15px 15px 15px;
+        @include sm { & { padding: 2rem 0 15px 0 } }
+      }
+    }
+
+    &:last-child {
+      .post-footer {
+        padding-bottom: 2rem;
+      }
+      @include md {
+        .post-footer {
+          padding-bottom: 3rem;
+        }
+      }
+    }
   }
 
   .latest-post-cards {
-    margin: 20px -15px 20px -15px;
+    margin: 20px -15px;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
@@ -434,11 +450,18 @@ footer {
 
     .post-card {
       padding: 0;
+      @include md { & img { border-radius: 0.25rem; } }
     }
   }
-  @media (min-width:768px) {
+  @include sm {
     .latest-post-cards {
-      margin: 20px 5px 20px 5px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+  @include md {
+    .latest-post-cards {
+      margin: 35px 5px 35px 5px;
       gap: 20px;
     }
   }
@@ -457,7 +480,7 @@ footer {
   line-height: 23px;
 
   .user-name { font-size: 1.2rem }
-  @media (min-width: 768px) {
+  @include sm {
     .user-name { font-size: 1.5rem }
   }
 
@@ -465,7 +488,7 @@ footer {
     color: #aaaaaa;
     font-size: 0.85rem;
   }
-  @media (min-width: 768px) {
+  @include sm {
     .user-username { font-size: 0.9rem }
   }
 
@@ -473,14 +496,45 @@ footer {
     color: #212529;
     &:hover { color: #212529 }
   }
-  @media (min-width: 768px) {
+  @include sm {
     .setting-btn {
       font-size: 1.2rem
     }
   }
 }
-@media (min-width: 768px) {
+@include md {
   .user-header { line-height: 28px; }
+}
+
+.follow-form {
+  width: fit-content;
+
+  .btn {
+    font-size: 0.8rem;
+    font-weight: 700;
+    min-width: 100px;
+    height: 32px;
+
+    &.follow {
+      background-color: #f90e43;
+      color: #fff;
+    }
+
+    &.unfollow {
+      background-color: rgba(0, 0, 0, 0.1);
+      color: #f90e43;
+    }
+  }
+}
+
+.btn.you {
+  font-size: 0.8rem;
+  font-weight: 700;
+  min-width: 100px;
+  height: 32px;
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 
@@ -492,11 +546,12 @@ footer {
 }
 
 .user-bio-cell {
-  padding-top: 0.9rem;
+  margin: 0 -15px;
+  padding: 0.9rem 15px 0 15px;
   font-size: 0.9rem;
 }
-@media (min-width: 576px) { .user-bio-cell { font-size: 1rem } }
-@media (min-width: 768px) {
+@include sm { .user-bio-cell { font-size: 1rem } }
+@include md {
   .user-bio-cell {
     padding-top: 0.8rem;
   }
@@ -516,13 +571,7 @@ footer {
       width: 100%; height: 100%;
       display: block;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       z-index: 1
-    }
-    @media (min-width: 768px) {
-      &::after {
-        border-bottom: none;
-      }
     }
   }
 
@@ -530,7 +579,7 @@ footer {
     margin: 0;
     z-index: 2;
   }
-  @media (min-width: 768px) {
+  @include md {
     .nav-item {
       margin: 0 2.5rem 0 0;
       
@@ -572,28 +621,32 @@ footer {
     .status-name {
       white-space: nowrap;
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 400;
       display: block;
+      @include md {
+        display: inline;
+        font-size: 0.95rem
+      }
     }
   
     .status-value {
       display: inline;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.95rem;
     }
+
+    .status-unit {
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
   }
-  @media (min-width: 768px) {
+  @include md {
     .user-status {
       margin: 0;
     }
   }
-
-  .user-status-md {
-    font-weight: 700;
-    font-size: 0.9rem;
-  }
 }
-@media  (min-width: 768px) {
+@include md {
   .user-status-cell {
     margin: 0.8rem 5px 0 5px;
   }
@@ -611,10 +664,16 @@ footer {
       padding: 0;
     }
   }
-  @media (min-width:768px) {
+  @include sm {
     .post-cards {
-      margin: 0 5px 20px 5px;
+      margin-bottom: 30px;
+    }
+  }
+  @include md {
+    .post-cards {
+      margin: 0 5px 35px 5px;
       gap: 20px;
+      img {border-radius: 0.25rem;}
     }
   }
 }
@@ -631,7 +690,7 @@ footer {
     height: 43px;
     width: 100%;
   }
-  @media (min-width: 576px) {
+  @include sm {
     .loadmore-btn {
       width: 420px;
     }
@@ -653,32 +712,34 @@ footer {
   font-weight: 700;
   border-bottom: 1px solid #212529;
 }
-@media (min-width: 576px) {
+@include sm {
   .page-header {
     font-size: 1.8rem;
   }
 }
 
-@media (min-width: 576px) {
-  .user-cards-container {
-    padding: 0 10px;
-  }
-}
-
-.user-card-frame {
-  padding: 0 10px 10px 10px;
-}
-@media (min-width: 576px) {
-  .user-card-frame {
-    padding-bottom: 20px;
-  }
+.user-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 0 15px;
+  margin-bottom: 15px;
+  @include sm { & { grid-template-columns: 1fr 1fr 1fr; margin-bottom: 25px; } }
+  @include md { & { gap: 20px; padding: 0 20px; margin-bottom: 30px; } }
 }
 
 .user-card {
-  height: 260px;
-  padding: 10px;
-  border-radius: 0.5rem;
   background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  height: 230px;
+  @include md { & { height: 280px; } }
+  padding: 13px;
+  overflow: hidden;
+
+  img {
+    width: 90px; height: 90px;
+    @include md { & { width: 120px; height: 120px; } }
+  }
 
   a {
     line-height: 20px;
@@ -687,18 +748,24 @@ footer {
     }
   }
 
-  .user-card-names {
+  .user-card-names-container {
     width: 100%;
     line-height: 23px;
   
-    .user-name {
-      color: #212529;
-      font-size: 1.2rem
-    }
+    .user-card-names {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
 
-    .user-username {
-      color: rgba(0, 0, 0, 0.4);
-      font-size: 0.85rem;
+      .user-name {
+        color: #212529;
+        font-size: 1.2rem
+      }
+
+      .user-username {
+        color: rgba(0, 0, 0, 0.4);
+        font-size: 0.85rem;
+      }
     }
   }
 
@@ -711,6 +778,11 @@ footer {
     white-space: nowrap;
     height: 32px;
   }
+}
+
+
+.show-follow-footer, .show-following-footer, .show-followers-footer {
+  .loadmore-btn-wrapper { margin: 0; }
 }
 
 /* post new */
@@ -774,7 +846,7 @@ footer {
 .post-container {
   margin: 0 -15px;
 }
-@media (min-width: 576px) {
+@include sm {
   .post-container {
     margin: 0;
   }
@@ -782,6 +854,7 @@ footer {
 
 .img-col {
   position: relative;
+  
   &::after {
     content: "";
     position: absolute;
@@ -791,23 +864,23 @@ footer {
     border-top: 1px solid rgba(0, 0, 0, 0.05);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
-  // @media (min-width: 576px) {
-  //   img { border-radius: 0.5rem }
-  // }
 }
-@media (min-width: 576px) {
-  .img-col::after {
-    // border-radius: 0.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+@include sm {
+  .img-col {
+    img { border-radius: 0.25rem; }
+    &::after {
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 0.25rem;
+    }
   }
 }
 
 
 .post-header {
-  padding: 0.75rem 15px;
+  padding: 15px;
 
     img { height: 40px; width: 40px }
-    @media (min-width: 576px) { img { height: 50px; width: 50px } }
+    @include sm { img { height: 50px; width: 50px } }
     a {
     line-height: 20px;
     &:hover {
@@ -829,12 +902,14 @@ footer {
     &:hover { color: #212529 }
   }
 }
-@media (min-width: 576px) { 
-  .post-header { height: 80px; padding: 0.75rem 0 }
+@include sm { 
+  .post-header { height: 80px; padding: 15px 0 }
 }
 
-.post-body { padding: 1.25rem 15px; }
-@media (min-width: 576px) { .post-body { padding: 1.25rem 0; } }
+.post-body {
+  padding: 1rem 15px;
+  @include sm { & { padding: 1rem 0; } }
+}
 
 .post-text:last-child { margin-bottom: 0; }
 
@@ -843,4 +918,5 @@ footer {
 }
 
 .post-footer { padding: 0 15px; }
-@media (min-width: 576px) { .post-footer { padding: 0; } }
+@include sm { .post-footer { padding: 0; } }
+

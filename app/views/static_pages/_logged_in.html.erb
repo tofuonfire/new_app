@@ -3,7 +3,7 @@
 <div class="feed-contents">
   <ul class="nav nav-pills no-gutters mx-auto" id="pills-tab" role="tablist">
     <li class="nav-item col-4">
-      <a class="nav-link active" id="pills-following-tab" data-toggle="pill" href="#pills-following" role="tab" aria-controls="pills-following" aria-selected="true">フィード</a>
+      <a class="nav-link" id="pills-following-tab" data-toggle="pill" href="#pills-following" role="tab" aria-controls="pills-following" aria-selected="true">フィード</a>
     </li>
     <li class="nav-item col-4">
       <a class="nav-link" id="pills-latest-tab" data-toggle="pill" href="#pills-latest" role="tab" aria-controls="pills-latest" aria-selected="false">新着</a>
@@ -14,7 +14,7 @@
   </ul>
 
   <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-following" role="tabpanel" aria-labelledby="pills-following-tab">
+    <div class="tab-pane fade" id="pills-following" role="tabpanel" aria-labelledby="pills-following-tab">
       <div class="following-posts-container no-gutters mx-sm-auto" style="max-width: 700px">
         <% @following_posts.each do |post| %>
           <div class="post-frame no-gutters">
@@ -58,3 +58,30 @@
     <div class="tab-pane fade" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">...</div>
   </div>
 </div>
+
+<script>
+  $(function () {
+    var index = 0;
+
+    if (window.performance) {
+      if (performance.navigation.type === 1 || performance.navigation.type === 2) {
+        if ($.cookie('index')) {
+          index = $.cookie('index');
+          $('#pills-tab li a').eq(index).addClass('active');
+          $('#pills-tabContent .tab-pane').eq(index).addClass('show active');
+        }
+      } else {
+        $.cookie('index', index);
+        $('#pills-tab li:first-child a').addClass('active');
+        $('#pills-tabContent .tab-pane:first-child').addClass('show active');
+      }
+    }
+
+    $('#pills-tab li').click(function() {
+      if (index != $('#pills-tab li').index(this)) {
+        index = $('#pills-tab li').index(this);
+        $.cookie('index', index);
+      }
+    });
+  });
+</script>

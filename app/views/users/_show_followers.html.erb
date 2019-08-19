@@ -1,0 +1,9 @@
+<div class="user-cards show-followers row">
+  <%= render 'users/user_cards', group: group %>
+</div>
+<div class="show-followers-footer">
+  <%= paginate group %>
+  <div class="loadmore-btn-wrapper p-0 d-flex">
+    <button class="loadmore-btn btn active mx-auto">さらに表示</button>
+  </div>
+</div>

@@ -16,6 +16,7 @@
       <div style="width: 100%">
         <div class="user-header d-flex flex-column no-gutters">
           <div class="row">
+          
             <div class="col-4 d-md-none">
               <% if @user.avatar?%>
                 <%= image_tag(@user.avatar.url, size: "250x250", class: "rounded-circle z-depth-0 img-fluid", alt: "avatar image") %>
@@ -23,27 +24,22 @@
                 <%= image_tag("no_user.png", size: "250x250", class: "rounded-circle z-depth-0 img-fluid", alt: "avatar image") %>
               <% end %>
             </div>
-            <div class="col-8 col-md-12 d-flex align-items-center">
-              <div class="" style="width: 100%;">
-                <div class="user-name font-weight-bold"><%= @user.name %></div>
-                <div class="user-username">@<%= @user.username %></div>
-              </div>
 
-              <div class="dropdown mr-1">
-                <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10",
-                                  aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
-                <div class="dropdown-menu dropdown-menu-right">
-                  <%= link_to edit_user_registration_path, class: "dropdown-item d-flex align-items-center" do %>
-                    <div class="mr-auto">プロフィールを編集</div><i class="far fa-edit ml-3" style="position: relative; left: 4px;"></i>
-                  <% end %>
-                  <div class="dropdown-divider"></div>
-                  <%= link_to destroy_user_session_path, class: "dropdown-item d-flex align-items-center", method: :delete do %>
-                    <div class="mr-auto">ログアウト</div><i class="fas fa-door-open ml-1" style="position: relative; left: 3px;"></i>
+            <div class="col-8 col-md-12 d-flex align-items-center">
+              <div class="d-flex flex-column align-items-center" style="width: 100%;">
+                <div class="d-flex align-items-center" style="width: 100%;">
+                  <div class="mr-auto">
+                    <div class="user-name font-weight-bold"><%= @user.name %></div>
+                    <div class="user-username">@<%= @user.username %></div>
+                  </div>
+                  <% if @user == current_user %>
+                    <%= render 'users/dropdown' %>
                   <% end %>
                 </div>
+                <%= render 'follow_form', object: @user if user_signed_in? %>
               </div>
-              
             </div>
+
           </div>
         </div>
 
@@ -53,26 +49,6 @@
           </div>
         <% end %>
 
-        <div class="user-status-cell d-none d-md-block">
-          <div class="d-flex justify-content-center justify-content-md-start" style="width: 100%">
-            <div class="user-status" style="margin-right: 1.5rem;">
-              <div class="status-name">投稿</div>
-              <div class="status-value"><%= @user.posts.count.to_s(:delimited) %></div>
-            </div>
-            <div class="user-status" style="margin-right: 1.5rem;">
-              <div class="status-name">フォロー中</div>
-              <div class="status-value">0</div>
-            </div>
-            <div class="user-status" style="margin-right: 1.5rem;">
-              <div class="status-name">フォロワー</div>
-              <div class="status-value">0</div>
-            </div>
-            <div class="user-status">
-              <div class="status-name">いいね</div>
-              <div class="status-value">0</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -81,50 +57,46 @@
 <div class="user-status-cell">
   <ul class="nav nav-pills justify-content-around justify-content-md-center" id="pills-tab" role="tablist">
     <li class="nav-item">
-      <%= link_to "#", { class: "nav-link active d-flex align-items-center justify-content-center px-0", id: "pills-post-tab", href: "#pills-post",
+      <%= link_to "#", { class: "nav-link d-flex align-items-center justify-content-center px-0", id: "pills-post-tab", href: "#pills-post",
           role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-post", "aria-selected" => "true"} do %>
-        <div class="user-status d-md-none">
+        <div class="user-status">
           <div class="status-name p-0">投稿</div>
-          <div class="status-value"><%= @user.posts.count %></div>
+          <div class="status-value"><%= @user.posts.count.to_s(:delimited) %></div>
         </div>
-        <div class="user-status-md d-none d-md-block">投稿</div>
       <% end %>
     </li>
     <li class="nav-item">
       <%= link_to "#", { class: "nav-link d-flex align-items-center justify-content-center px-0", id: "pills-following-tab", href: "#pills-following",
           role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-following", "aria-selected" => "true"} do %>
-        <div class="user-status d-md-none">
+        <div class="user-status">
           <div class="status-name p-0">フォロー中</div>
-          <div class="status-value">0</div>
+          <div class="status-value" id="following_<%= @user.id %>"><%= @user.following.count.to_s(:delimited) %></div>
         </div>
-        <div class="user-status-md d-none d-md-block">フォロー中</div>
       <% end %>
     </li>
     <li class="nav-item">
       <%= link_to "#", { class: "nav-link d-flex align-items-center justify-content-center px-0", id: "pills-follower-tab", href: "#pills-follower",
           role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-follower", "aria-selected" => "true"} do %>
-        <div class="user-status d-md-none">
+        <div class="user-status">
           <div class="status-name p-0">フォロワー</div>
-          <div class="status-value">0</div>
+          <div class="status-value" id="followers_<%= @user.id %>"><%= @user.followers.count.to_s(:delimited) %></div>
         </div>
-        <div class="user-status-md d-none d-md-block">フォロワー</div>
       <% end %>
     </li>
     <li class="nav-item">
       <%= link_to "#", { class: "nav-link d-flex align-items-center justify-content-center px-0", id: "pills-lover-tab", href: "#pills-lover",
           role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-lover", "aria-selected" => "true"} do %>
-        <div class="user-status d-md-none">
+        <div class="user-status">
           <div class="status-name p-0">いいね</div>
           <div class="status-value">0</div>
         </div>
-        <div class="user-status-md d-none d-md-block">いいね</div>
       <% end %>
     </li>
   </ul>
 </div>
 
 <div class="tab-content user-profile-contents" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-post" role="tabpanel" aria-labelledby="pills-post-tab">
+  <div class="tab-pane fade" id="pills-post" role="tabpanel" aria-labelledby="pills-post-tab">
     <% if @user.posts.any? %>
       <div class="post-cards">
         <% @posts.each do |post| %>
@@ -143,16 +115,29 @@
       </div>
     <% end %>
   </div>
+
   <div class="tab-pane fade" id="pills-following" role="tabpanel" aria-labelledby="pills-following-tab">
-    <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
-      誰もフォローしていません :-(
-    </div>
+    <% if @following.any? %>
+      <%= render 'show_following', group: @following  %>
+    <% else %>
+      <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
+        誰もフォローしていません :-(
+      </div>
+    <% end %>
   </div>
+
+
   <div class="tab-pane fade" id="pills-follower" role="tabpanel" aria-labelledby="pills-follower-tab">
-    <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
-      フォローされていません :-(
-    </div>
+    <% if @followers.any? %>
+      <%= render 'show_followers', group: @followers  %>
+    <% else %>
+      <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
+        フォローされていません :-(
+      </div>
+    <% end %>
   </div>
+
+
   <div class="tab-pane fade" id="pills-lover" role="tabpanel" aria-labelledby="pills-lover-tab">
     <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
       いいねした投稿がありません :-(
@@ -160,11 +145,69 @@
   </div>
 </div>
 
+<%= form_with(model: @user, method: :get) do |f| %>
+  <%= f.submit "", class: "d-none", id: "reload-btn" %>
+<% end %>
+
 <script>
   $(function () {
     if($("nav.pagination")[0]) {
     } else {
         $(".loadmore-btn").hide();
     }
+  });
+
+  // window.onbeforeunload = function() {
+  //   // IE用。ここは空でOKです
+  // };
+  // window.onunload = function() {
+  //     // IE以外用。ここは空でOKです
+  // };
+
+  window.onpageshow = function(event) {
+    if (event.persisted) {
+      window.location.reload();
+    }
+  };
+
+  if (window.performance) {
+    if (performance.navigation.type === 2) {
+      window.location.reload();
+    }
+  }
+
+  // window.addEventListener("pageshow", function(event){
+  //   if (event.persisted) {
+  //     // ここにキャッシュ有効時の処理を書く
+  //     alert('こんにちわ');
+  //     $('#pills-follower').load(location.href + ' #pills-follower .user-cards')
+  //   }
+  // });
+
+  $(function () {
+    var index = 0;
+    var userindexInit = function() {
+      $.cookie('userindex<%= @user.id %>', index);
+      $('#pills-tab li:first-child a').addClass('active');
+      $('#pills-tabContent .tab-pane:first-child').addClass('show active');
+    }
+
+    if (window.performance) {
+      if (performance.navigation.type === 1 || performance.navigation.type === 2) {
+        if ($.cookie('userindex<%= @user.id %>')) {
+          index = $.cookie('userindex<%= @user.id %>');
+          $('#pills-tab li a').eq(index).addClass('active');
+          $('#pills-tabContent .tab-pane').eq(index).addClass('show active');
+        } else { userindexInit(); }
+      } else { userindexInit(); }
+      
+    }
+
+    $('#pills-tab li').click(function() {
+      if (index != $('#pills-tab li').index(this)) {
+        index = $('#pills-tab li').index(this);
+        $.cookie('userindex<%= @user.id %>', index);
+      }
+    });
   });
 </script>

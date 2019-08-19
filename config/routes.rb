@@ -13,11 +13,12 @@ Rails.application.routes.draw do
     get 'confirm_email', to: 'users/registrations#confirm_email'
   end
 
-  resources :users, :only => [:index]
-  resources :posts, :except => [:index], param: :url_token
+  resources :users,               only: [:index]
+  resources :posts,               except: [:index], param: :url_token
+  resources :relationships,       only: [:create, :destroy]
 
   constraints(UrlConstrainer.new) do
-    resources :users, param: :username, path: '/', :only => [:show]
+    resources :users, param: :username, path: '/', only: [:show]
   end
 
   if Rails.env.development?
