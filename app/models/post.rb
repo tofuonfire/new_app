@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
 
-  before_validation :generate_url_token
+  before_validation :generate_url_token, on: :create
 
   validates :image, presence: true
   validates :caption, length: { maximum: 240 }

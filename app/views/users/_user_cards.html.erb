@@ -1,0 +1,29 @@
+<% group.each do |user| %>
+  <div class="user-card d-flex align-items-center">
+    <div style="width: 100%">
+
+      <!-- ユーザーカード：アバター -->
+      <div class="d-flex align-items-end justify-content-center mb-3">
+        <% if user.avatar? %>
+          <%= link_to image_tag(user.avatar.url,
+                                class: "rounded-circle z-depth-0",alt: "avatar image"), user_path(user) %>
+        <% else %>
+          <%= link_to image_tag("no_user.png",
+                                class: "rounded-circle z-depth-0", alt: "avatar image"), user_path(user) %>
+        <% end %>
+      </div>
+      <!-- ユーザーカード：名前とユーザーネーム -->
+      <div class="user-card-names-container d-flex justify-content-center mb-2">
+        <div class="user-card-names text-center">
+          <div class="user-name font-weight-bold d-inline"><%= user.name %></div><br>
+          <div class="user-username">@<%= user.username %></div>
+        </div>
+      </div>
+      <!-- ユーザーカード：ボタン -->
+      <% if user_signed_in? %>
+        <%= render 'card_follow_form', object: user %>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
