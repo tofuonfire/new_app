@@ -1,6 +1,7 @@
 <% provide(:title, "#{@user.name} (@#{@user.username})") %>
 
 <%= render 'layouts/toast' %>
+<%= render 'logout_modal' %>
 
 <div class="container mb-md-5" style="max-width: 700px;">
   <div class="row">
@@ -32,11 +33,14 @@
                     <div class="user-name font-weight-bold"><%= @user.name %></div>
                     <div class="user-username">@<%= @user.username %></div>
                   </div>
-                  <% if @user == current_user %>
-                    <%= render 'users/dropdown' %>
-                  <% end %>
                 </div>
-                <%= render 'follow_form', object: @user if user_signed_in? %>
+                <% if user_signed_in? %>
+                  <% if @user == current_user %>
+                    <%= render 'user_menu' %>
+                  <% else %>
+                    <%= render 'follow_form', object: @user %>
+                  <% end %>
+                <% end %>
               </div>
             </div>
 

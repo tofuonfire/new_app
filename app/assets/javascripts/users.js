@@ -10,6 +10,17 @@ $(function() {
 })
 
 $(function() {
+  $('.all-users').infiniteScroll({
+    append : '.all-users .user-card',
+    button: '.all-users-footer .loadmore-btn',
+    path : '.all-users-footer nav.pagination a[rel=next]',
+    hideNav: '.all-users-footer .pagination',
+    scrollThreshold: false,
+    history: false
+  })
+})
+
+$(function() {
   $('.latest-post-cards').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
     append : '.latest-post-cards .post-card',  // 読まれたら追加していくタグのクラス
     history: false,  // ページが読まれてもURLを変えない
@@ -42,13 +53,3 @@ $(function() {
   })
 })
 
-$(function() {
-  $('.show-follow').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
-    append : '.show-follow .user-card',  // 読まれたら追加していくタグのクラス
-    history: false,  // ページが読まれてもURLを変えない
-    button: '.show-follow-footer .loadmore-btn',
-    scrollThreshold: false,
-    path : '.show-follow-footer nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
-    hideNav: '.show-follow-footer .pagination'
-  })
-})
