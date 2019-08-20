@@ -6,7 +6,7 @@
     <%= link_to image_tag("no_user.png", size: "50x50", class: "rounded-circle z-depth-0",
                           alt: "avatar image"), user_path(object.user), class: "mr-3" %>
   <% end %>
-  <div class="mr-auto" style="line-height: 20px;">
+  <div class="post-header-names mr-auto" style="line-height: 20px;">
     <%= link_to object.user.name, user_path(object.user), class: "post-header-name" %><br>
     <%= link_to "@#{object.user.username}", user_path(object.user), class: "post-header-username" %></a>
   </div>
@@ -22,10 +22,14 @@
           <% end %>
           <div class="dropdown-divider"></div>
 
-          <a class="dropdown-item d-flex align-items-center" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#modal1">
+          <a class="dropdown-item d-flex align-items-center" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#post_modal">
             <div style="width: 100%">投稿を削除</div><i class="fas fa-trash-alt"></i>
           </a>
         </div>
+      </div>
+    <% else %>
+      <div class="like-form">
+        <button class="btn like rounded-pill d-flex align-items-center justify-content-center px-3">いいね！<i class="far fa-thumbs-up"></i></button>
       </div>
     <% end %>
   <% end %>
