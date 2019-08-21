@@ -46,6 +46,14 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
+  # ユーザーのステータスフィードを返す
+  def feed
+    following_ids = "SELECT followed_id FROM relationships
+                     WHERE follower_id = :user_id"
+    Post.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: id)
+  end
+
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
