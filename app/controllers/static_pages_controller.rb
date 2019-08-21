@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-    @following_posts = Post.page(params[:page]).per(12)
     @latest_posts = Post.page(params[:page]).per(24)
+    if user_signed_in?
+      @feed_posts = current_user.feed.page(params[:page]).per(12)
+    end
   end
 
   def help
