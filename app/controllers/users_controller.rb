@@ -9,5 +9,6 @@ class UsersController < ApplicationController
     @posts = @user.posts.page(params[:page]).per(24)
     @following = @user.following.page(params[:page]).per(24)
     @followers = @user.followers.page(params[:page]).per(24)
+    @likes = @user.like_posts.page(params[:page]).per(24)
   end
 end

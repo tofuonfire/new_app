@@ -15,39 +15,43 @@
 
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade" id="pills-following" role="tabpanel" aria-labelledby="pills-following-tab">
-      <div class="following-posts-container no-gutters mx-sm-auto" style="max-width: 700px">
-        <% @feed_posts.each do |post| %>
-          <div class="post-frame no-gutters">
-            <%= render 'posts/post_header', object: post %>
-            <div class="col img-col">
-              <%= image_tag post.image.url, size: "1100x1100", class: "img-fluid" %>
-            </div>
-            <div class="col">
-              <%= render 'posts/post_body', object: post %>
-              <%= render 'posts/post_footer', object: post %>
-            </div>
+      <% if @feed_posts.any? %>
+        <div class="following-posts-container no-gutters mx-sm-auto" style="max-width: 700px">
+          <% @feed_posts.each do |post| %>
+            <div class="post-frame no-gutters">
+              <%= render 'posts/post_header', object: post %>
+              <div class="col img-col">
+                <%= image_tag post.image.url, size: "1100x1100", class: "img-fluid" %>
+              </div>
+              <div class="col">
+                <%= render 'posts/post_body', object: post %>
+                <%= render 'posts/post_footer', object: post %>
+              </div>
 
-            <%= render 'posts/post_modal', object: post %>
-          </div>
-        <% end %>
-      </div>
-      <div class="following-posts-footer">
-        <%= paginate @feed_posts %>
-        <div class="loadmore-btn-wrapper p-0 d-flex">
-          <button class="loadmore-btn btn active mx-auto">さらに表示</button>
+              <%= render 'posts/post_modal', object: post %>
+            </div>
+          <% end %>
         </div>
-      </div>
+        <div class="following-posts-footer">
+          <%= paginate @feed_posts %>
+          <div class="loadmore-btn-wrapper p-0 d-flex">
+            <button class="loadmore-btn btn active mx-auto">さらに表示</button>
+          </div>
+        </div>
+      <% else %>
+        <%= render 'no_feed' %>
+      <% end %>
     </div>
     
     <div class="tab-pane fade" id="pills-latest" role="tabpanel" aria-labelledby="pills-latest-tab">
-      <div class="latest-post-cards">
+      <div class="home-post-cards latest">
         <% @latest_posts.each do |post| %>
           <div class="post-card">
             <%= link_to image_tag(post.image.url, class: "img-fluid", alt: "post image"), post_path(post) %>
           </div>
         <% end %>
       </div>
-      <div class="latest-posts-footer">
+      <div class="home-posts-footer latest">
         <%= paginate @latest_posts %>
         <div class="loadmore-btn-wrapper p-0 d-flex">
           <button class="loadmore-btn btn active mx-auto">さらに表示</button>
@@ -55,7 +59,21 @@
       </div>
     </div>
 
-    <div class="tab-pane fade" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">...</div>
+    <div class="tab-pane fade" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab">
+      <div class="home-post-cards popular">
+        <% @popular_posts.each do |post| %>
+          <div class="post-card">
+            <%= link_to image_tag(post.image.url, class: "img-fluid", alt: "post image"), post_path(post) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="home-posts-footer popular">
+        <%= paginate @popular_posts %>
+        <div class="loadmore-btn-wrapper p-0 d-flex">
+          <button class="loadmore-btn btn active mx-auto">さらに表示</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

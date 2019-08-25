@@ -1,0 +1,6 @@
+<%= form_with(model: object.likes.build) do |f| %>
+  <div><%= hidden_field_tag :post_id, object.id %></div>
+  <%= button_tag(class: "btn like rounded-pill d-flex align-items-center justify-content-center px-3") do %>
+    いいね！<i class="far fa-thumbs-up"></i>
+  <% end %>
+<% end %>

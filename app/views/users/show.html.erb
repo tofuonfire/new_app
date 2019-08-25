@@ -92,7 +92,7 @@
           role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-lover", "aria-selected" => "true"} do %>
         <div class="user-status">
           <div class="status-name p-0">いいね</div>
-          <div class="status-value">0</div>
+          <div class="status-value"><%= @user.likes.count.to_s(:delimited) %></div>
         </div>
       <% end %>
     </li>
@@ -102,20 +102,10 @@
 <div class="tab-content user-profile-contents" id="pills-tabContent">
   <div class="tab-pane fade" id="pills-post" role="tabpanel" aria-labelledby="pills-post-tab">
     <% if @user.posts.any? %>
-      <div class="post-cards">
-        <% @posts.each do |post| %>
-          <div class="post-card">
-            <%= link_to image_tag(post.image.url, class: "img-fluid", alt: "post image"), post_path(post) %>
-          </div>
-        <% end %>
-      </div>
-      <%= paginate @posts %>
-      <div class="loadmore-btn-wrapper p-0 d-flex">
-        <button class="loadmore-btn btn active mx-auto">さらに表示</button>
-      </div>
+      <%= render 'show_latest', group: @posts %>
     <% else %>
-      <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
-        投稿がありません :-(
+      <div class="no-contents d-flex align-items-center justify-content-center mx-auto">
+        投稿がありません
       </div>
     <% end %>
   </div>
@@ -124,8 +114,8 @@
     <% if @following.any? %>
       <%= render 'show_following', group: @following  %>
     <% else %>
-      <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
-        誰もフォローしていません :-(
+      <div class="no-contents d-flex align-items-center justify-content-center mx-auto">
+        誰もフォローしていません
       </div>
     <% end %>
   </div>
@@ -135,31 +125,31 @@
     <% if @followers.any? %>
       <%= render 'show_followers', group: @followers  %>
     <% else %>
-      <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
-        フォローされていません :-(
+      <div class="no-contents d-flex align-items-center justify-content-center mx-auto">
+        フォローされていません
       </div>
     <% end %>
   </div>
 
 
   <div class="tab-pane fade" id="pills-lover" role="tabpanel" aria-labelledby="pills-lover-tab">
-    <div class="no-contents d-flex align-items-center justify-content-center mx-auto" style="height: 250px">
-      いいねした投稿がありません :-(
-    </div>
+    <% if @user.likes.any? %>
+      <%= render 'show_likes', group: @likes %>
+    <% else %>
+      <div class="no-contents d-flex align-items-center justify-content-center mx-auto">
+        いいねした投稿がありません
+      </div>
+    <% end %>
   </div>
 </div>
 
-<%= form_with(model: @user, method: :get) do |f| %>
-  <%= f.submit "", class: "d-none", id: "reload-btn" %>
-<% end %>
-
 <script>
-  $(function () {
-    if($("nav.pagination")[0]) {
-    } else {
-        $(".loadmore-btn").hide();
-    }
-  });
+  // $(function () {
+  //   if($("nav.pagination")[0]) {
+  //   } else {
+  //       $(".loadmore-btn").hide();
+  //   }
+  // });
 
   $(function () {
     var index = 0;
@@ -187,4 +177,5 @@
       }
     });
   });
+  
 </script>

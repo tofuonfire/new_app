@@ -9,12 +9,12 @@ ja:
       send_paranoid_instructions: "ご登録のメールアドレスが保存されている場合、アカウントの確認方法をメールでご連絡します。"
     failure:
       already_authenticated: "既にログインしています。"
-      inactive: 'アカウントがまだ有効になっていません'
-      invalid: '入力されたユーザーネームやパスワードが正しくありません'
+      inactive: 'アカウントがまだ有効になっていません。'
+      invalid: '入力されたユーザーネームやパスワードが正しくありません。'
       locked: "アカウントがロックされています。"
       last_attempt: "あなたのアカウントがロックされる前に、もう1つの試みを持っています。"
       not_found_in_database: "メールアドレスまたはパスワードが無効です。"
-      timeout: "一定時間が経過したため、再度ログインが必要です"
+      timeout: "一定時間が経過したため、再度ログインが必要です。"
       unauthenticated: "ログインまたは登録が必要です。"
       unconfirmed: "アカウントが有効化されていません。ユーザー登録の際に送信されたメールをご確認ください。"
     mailer:
@@ -40,7 +40,7 @@ ja:
       signed_up_but_locked: "アカウントは登録されていますが、ロックされているため利用できません。"
       signed_up_but_unconfirmed: "確認メールを登録したメールアドレス宛に送信しました。リンクを開いてアカウントを有効にして下さい。"
       update_needs_confirmation: "アカウント情報が更新されました。更新の確認メールを新しいメールアドレス宛に送信しましたので、リンクを開いて更新を有効にして下さい。"
-      updated: "変更が保存されました :-)"
+      updated: "変更が保存されました"
     sessions:
       signed_in: "ログインしました。"
       signed_out: "ログアウトしました。"
@@ -76,6 +76,7 @@ ja:
         password: パスワード
         password_confirmation: パスワードの再入力
         current_password: 現在のパスワード
+        confirmation_token: 確認用トークン
       post:
         image: 画像
         caption: キャプション
@@ -85,33 +86,33 @@ ja:
           attributes:
             name:
               blank: "が未入力です"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
+              too_short: "は%{count}文字以上に設定して下さい"
+              too_long: "は%{count}文字以下に設定して下さい"
               invalid: "は有効でありません。"
             username:
               blank: "が未入力です"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
+              too_short: "は%{count}文字以上に設定して下さい"
+              too_long: "は%{count}文字以下に設定して下さい"
               invalid: "には小文字の半角英数字と'_'(アンダーバー)しか使用できません"
             email:
               blank: "が未入力です"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
+              too_short: "は%{count}文字以上に設定して下さい"
+              too_long: "は%{count}文字以下に設定して下さい"
               invalid: "は有効でありません。"
             password:
               blank: "が未入力です"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
+              too_short: "は%{count}文字以上に設定して下さい"
+              too_long: "は%{count}文字以下に設定して下さい"
               invalid: "は有効でありません。"
             password_confirmation:
               blank: "が未入力です"
-              too_short: "は%{count}文字以上に設定して下さい。"
-              too_long: "は%{count}文字以下に設定して下さい。"
+              too_short: "は%{count}文字以上に設定して下さい"
+              too_long: "は%{count}文字以下に設定して下さい"
               invalid: "は有効でありません。"
               confirmation: "が一致しません。"
         post:
           attributes:
             image:
-              blank: "が選択されていません。"
+              blank: "が選択されていません"
             caption:
-              too_long: "は%{count}文字以下に設定して下さい。"
+              too_long: "は%{count}文字以下に設定して下さい"

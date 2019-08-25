@@ -6,10 +6,10 @@
       <div class="d-flex align-items-end justify-content-center mb-3">
         <% if user.avatar? %>
           <%= link_to image_tag(user.avatar.url,
-                                class: "rounded-circle z-depth-0",alt: "avatar image"), user_path(user) %>
+                                class: "#{ "logged_in" if user_signed_in? } rounded-circle z-depth-0",alt: "avatar image"), user_path(user) %>
         <% else %>
           <%= link_to image_tag("no_user.png",
-                                class: "rounded-circle z-depth-0", alt: "avatar image"), user_path(user) %>
+                                class: "#{ "logged_in" if user_signed_in? } rounded-circle z-depth-0", alt: "avatar image"), user_path(user) %>
         <% end %>
       </div>
       <!-- ユーザーカード：名前とユーザーネーム -->

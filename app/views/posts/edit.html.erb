@@ -1,42 +1,32 @@
 <% provide :title, "投稿を編集" %>
 
-<div class="d-flex justify-content-center mb-4" style="width: 100%;">
-  <div class="page-header d-flex justify-content-center align-items-center">投稿を編集</div>
-</div>
-      
-<div class="custom-form">
-  <div class="container pt-0">
-    <%= form_for @post do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-    
-    <div class="row create-post-col no-gutters mb-3">
-      <!-- 画像アップロードカラム -->
-      <div class="col-md-5 upload-img-col d-flex d-md-flex justify-content-center justify-content-md-start mb-4 mb-md-0">
-        <div class="d-flex align-items-center justify-content-center" id="img_field" onClick="$('#file').click()">
-          <% if @post.image.url.present? %>
-            <%= image_tag(@post.image.url, class: "preview", width: "100%") %>
-          <% end %>
-        </div>
-        <i class="fas fa-camera" onClick="$('#file').click()"></i>
+<div class="page-header d-flex align-items-center mx-auto mb-4">投稿を編集</div>
 
-        <%= f.file_field :image, class: "image", style: "display: none;", id: "file", accept: 'image/jpeg,image/gif,image/png' %>
-        <%= f.hidden_field :image_cache %>
+<%= form_for @post do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="post-form">
+    <div class="preview-wrap" onClick="$('#file').click()">
+      <div id="img_field">
+        <% if @post.image.url.present? %>
+          <%= image_tag(@post.image.url, class: "preview") %>
+        <% end %>
       </div>
-
-      <div class="col-md-7 pl-md-4" style="padding: 0;">
-        <div class="field form-group m-0">
-          <%= f.text_area :caption, class: "form-control custom-text-area", placeholder: "キャプションを入力" %>
-        </div>
-      </div>
+      <i class="fas fa-camera" onClick="$('#file').click()"></i>
     </div>
 
-    <div class="actions text-right mr-3 mb-4">
-      <%= link_to "キャンセル", root_path, class: "btn submit-btn mr-2", style: "border: none;" %>
-      <%= f.submit "変更を保存", { class: "btn submit-btn" } %>
-    </div>
+    <%= f.file_field :image, class: "image", style: "display: none;", id: "file", accept: 'image/jpeg,image/gif,image/png' %>
+    <%= f.hidden_field :image_cache %>
 
-    <% end %>
+
+    <%= f.text_area :caption, class: "caption", placeholder: "キャプションを入力" %>
+
+
   </div>
-</div>
+
+  <div class="post-form-btns text-right mb-4">
+    <%= link_to "キャンセル", root_path, class: "btn post-form-btn mr-2", style: "border: none;" %>
+    <%= f.submit "投稿を送信", { class: "btn post-form-btn mr-3" } %>
+  </div>
+<% end %>
 
 <%= render 'posts/post_form_script' %>
