@@ -1,14 +1,4 @@
-$(function() {
-  $('.post-cards').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
-    path : 'nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
-    append : '.post-card',  // 読まれたら追加していくタグのクラス
-    history: false,  // ページが読まれてもURLを変えない
-    button: '.loadmore-btn',
-    scrollThreshold: false,
-    hideNav: '.pagination'
-  })
-})
-
+// 全ユーザーの一覧
 $(function() {
   $('.all-users').infiniteScroll({
     append : '.all-users .user-card',
@@ -19,37 +9,82 @@ $(function() {
     history: false
   })
 })
+$(function () {
+  if($(".all-users-footer nav.pagination")[0]) {
+  } else {
+      $(".all-users-footer .loadmore-btn").hide();
+  }
+});
 
-$(function() {
-  $('.latest-post-cards').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
-    append : '.latest-post-cards .post-card',  // 読まれたら追加していくタグのクラス
-    history: false,  // ページが読まれてもURLを変えない
-    button: '.latest-posts-footer .loadmore-btn',
-    scrollThreshold: false,
-    path : '.latest-posts-footer nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
-    hideNav: '.latest-posts-footer .pagination'
+// ユーザー詳細ページ
+  // 投稿
+  $(function() {
+    $('.show-latest').infiniteScroll({
+      path : '.show-latest-footer nav.pagination a[rel=next]',
+      append : '.show-latest .post-card',
+      history: false,
+      button: '.show-latest-footer .loadmore-btn',
+      scrollThreshold: false,
+      hideNav: '.show-latest-footer .pagination'
+    })
   })
-})
+  $(function () {
+    if($(".show-latest-footer nav.pagination")[0]) {
+    } else {
+        $(".show-latest-footer .loadmore-btn").hide();
+    }
+  });
 
-$(function() {
-  $('.show-following').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
-    append : '.show-following .user-card',  // 読まれたら追加していくタグのクラス
-    history: false,  // ページが読まれてもURLを変えない
-    button: '.show-following-footer .loadmore-btn',
-    scrollThreshold: false,
-    path : '.show-following-footer nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
-    hideNav: '.show-following-footer .pagination'
+  // フォロー中
+  $(function() {
+    $('.show-following').infiniteScroll({
+      append : '.show-following .user-card',
+      history: false,
+      button: '.show-following-footer .loadmore-btn',
+      scrollThreshold: false,
+      path : '.show-following-footer nav.pagination a[rel=next]',
+      hideNav: '.show-following-footer .pagination'
+    })
   })
-})
+  $(function () {
+    if($(".show-following-footer nav.pagination")[0]) {
+    } else {
+        $(".show-following-footer .loadmore-btn").hide();
+    }
+  });
 
-$(function() {
-  $('.show-followers').infiniteScroll({　　　// 監視してほしい範囲のタグのクラス
-    append : '.show-followers .user-card',  // 読まれたら追加していくタグのクラス
-    history: false,  // ページが読まれてもURLを変えない
-    button: '.show-followers-footer .loadmore-btn',
-    scrollThreshold: false,
-    path : '.show-followers-footer nav.pagination a[rel=next]',  // 次ページのリンク(kaminari使ってる)
-    hideNav: '.show-followers-footer .pagination'
+  // フォロワー
+  $(function() {
+    $('.show-followers').infiniteScroll({
+      append : '.show-followers .user-card',
+      history: false,
+      button: '.show-followers-footer .loadmore-btn',
+      scrollThreshold: false,
+      path : '.show-followers-footer nav.pagination a[rel=next]',
+      hideNav: '.show-followers-footer .pagination'
+    })
   })
-})
+  $(function () {
+    if($(".show-followers-footer nav.pagination")[0]) {
+    } else {
+        $(".show-followers-footer .loadmore-btn").hide();
+    }
+  });
 
+  // いいね
+  $(function() {
+    $('.show-likes').infiniteScroll({
+      path : '.show-likes-footer nav.pagination a[rel=next]',
+      append : '.show-likes .post-card',
+      history: false,
+      button: '.show-likes-footer .loadmore-btn',
+      scrollThreshold: false,
+      hideNav: '.show-likes-footer .pagination'
+    })
+  })
+  $(function () {
+    if($(".show-likes-footer nav.pagination")[0]) {
+    } else {
+        $(".show-likes-footer .loadmore-btn").hide();
+    }
+  });

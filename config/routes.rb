@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :users,               only: [:index]
   resources :posts,               except: [:index], param: :url_token
   resources :relationships,       only: [:create, :destroy]
+  resources :likes, only: [:create, :destroy]
 
   constraints(UrlConstrainer.new) do
     resources :users, param: :username, path: '/', only: [:show]

@@ -1,5 +1,5 @@
 <% unless object == current_user %>
-  <div class="follow-form user-<%= object.id %> mx-auto" style="">
+  <div class="follow-form user-<%= object.id %> mx-auto">
     <% if current_user.following?(object) %>
       <%= form_with(model: current_user.active_relationships.find_by(followed_id: object.id),
                     html: { method: :delete }) do |f| %>

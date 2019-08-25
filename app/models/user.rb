@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :posts, dependent: :destroy
+
   has_many :active_relationships,  class_name:  "Relationship",
                                    foreign_key: "follower_id",
                                    dependent:   :destroy
@@ -9,6 +10,10 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
+  
   validates :name, presence: true, length: { maximum: 30 }
   validates :bio, length: { maximum: 140 }
   validates :username, namespace: true, presence: true, uniqueness: { case_sensitive: :false }, length: { minimum: 4, maximum: 20 },
@@ -26,9 +31,6 @@ class User < ApplicationRecord
 
   def login
     @login || self.username || self.email
-  end
-
-  def feed
   end
 
   # ユーザーをフォローする

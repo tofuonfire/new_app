@@ -28,9 +28,7 @@
         </div>
       </div>
     <% else %>
-      <div class="like-form">
-        <button class="btn like rounded-pill d-flex align-items-center justify-content-center px-3">いいね！<i class="far fa-thumbs-up"></i></button>
-      </div>
+      <%= render 'posts/like_form', object: object %>
     <% end %>
   <% end %>
 </div>

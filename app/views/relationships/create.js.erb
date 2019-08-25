@@ -1,3 +1,3 @@
 $(".follow-form.user-<%= @user.id %>").html("<%= escape_javascript(render('users/unfollow', object: @user)) %>");
-$("#followers_<%= @user.id %>").html('<%= @user.followers.count %>');
-$("#following_<%= current_user.id %>").html('<%= current_user.following.count %>');
+$("#followers_<%= @user.id %>").html('<%= @user.followers.count.to_s(:delimited) %>');
+$("#following_<%= current_user.id %>").html('<%= current_user.following.count.to_s(:delimited) %>');

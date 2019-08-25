@@ -10,9 +10,6 @@
     <div class="container mb-5">
       <%= yield %>
     </div>
-    <div class="container">
-      <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
-    </div>
+    <%= render 'layouts/footer' %>  
   </body>
 </html>

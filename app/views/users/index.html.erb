@@ -1,8 +1,6 @@
 <% provide(:title, 'すべてのユーザー') %>
 
-<div class="d-flex justify-content-center mb-4 mb-sm-5" style="width: 100%;">
-  <div class="page-header d-flex justify-content-center align-items-center">すべてのユーザー</div>
-</div>
+<div class="page-header d-flex align-items-center mx-auto mb-4">すべてのユーザー</div>
 
 <div class="all-users user-cards row">
   <%= render 'users/user_cards', group: @users %>
