@@ -1073,16 +1073,127 @@ footer {
 }
 
 .post-body {
-  padding: 1rem 15px;
-  @include sm { & { padding: 1rem 0; } }
+  padding: 15px 15px;
+  @include sm { & { padding: 15px 0; } }
+
+  // small { color: rgba(0, 0, 0, 0.6) }
 }
 
-.post-text:last-child { margin-bottom: 0; }
+.post-footer-links {
+  padding: 0 15px 15px 15px;
+  @include sm { & { padding: 0 0 15px 0; } }
+  margin-bottom: 15px;
+
+  line-height: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  
+  a {
+    color: rgba(0, 0, 0, 0.4);
+  }
+}
 
 .last-updated {
   white-space: nowrap;
 }
 
-.post-footer { padding: 0 15px; }
-@include sm { .post-footer { padding: 0; } }
+.post-status-cell {
+  margin: 0 15px;
 
+  .nav {
+    width: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      z-index: 1
+    }
+  }
+
+  .nav-item {
+    margin: 0;
+    z-index: 2;
+  }
+  @include sm {
+    .nav-item {
+      margin: 0 2.5rem 0 0;
+      
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .nav-pills .nav-link {
+    color: rgba(0, 0, 0, 0.4);
+    min-width: 50px;
+    height: 67px;
+    border-radius: 0;
+  }
+
+  .nav-pills .nav-link.active {
+    position: relative;
+    color: #212529;
+    background-color: transparent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+      border-top: 1px solid #212529;
+    }
+  }
+
+  .post-status {
+    text-align: center;
+    line-height: 18px;
+    white-space: nowrap;
+    margin-right: auto;
+    margin-left: auto;
+  
+    .status-name {
+      white-space: nowrap;
+      font-size: 0.7rem;
+      font-weight: 400;
+      display: block;
+      @include sm {
+        display: inline;
+        font-size: 0.95rem
+      }
+    }
+  
+    .status-value {
+      display: inline;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .status-unit {
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+  }
+  @include sm {
+    .post-status {
+      margin: 0;
+    }
+  }
+}
+@include sm {
+  .post-status-cell {
+    margin: 0rem;
+  }
+}
+
+.user-cards.post-likes {
+  margin: 0;
+  @include sm { & { margin: 0 -15px; } }
+  @include md { & { margin: 0 -20px; } }
+}

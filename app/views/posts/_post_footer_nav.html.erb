@@ -1,0 +1,132 @@
+<div class="post-status-cell" id="comments_and_likes">
+  <ul class="nav nav-pills justify-content-around" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <%= link_to "#", { class: "nav-link d-flex align-items-center justify-content-center px-0", id: "pills-comment-tab", href: "#pills-comment",
+          role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-comment", "aria-selected" => "true"} do %>
+        <div class="post-status">
+          <div class="status-name p-0">コメントの件数</div>
+          <div class="status-value">0</div>
+        </div>
+      <% end %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "#", { class: "nav-link d-flex align-items-center justify-content-center px-0", id: "pills-like-tab", href: "#pills-like",
+          role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-like", "aria-selected" => "true"} do %>
+        <div class="post-status">
+          <div class="status-name p-0">いいね！された数</div>
+          <div class="status-value"id="likes_<%= object.id %>"><%= object.likes.count.to_s(:delimited) %></div>
+        </div>
+      <% end %>
+    </li>
+  </ul>
+</div>
+
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
+    <div class="no-contents d-flex align-items-center justify-content-center mx-auto">
+      まだコメントがありません
+    </div>
+  </div>
+
+  <div class="tab-pane fade" id="pills-like" role="tabpanel" aria-labelledby="pills-like-tab">
+  <% if @post_likes.any? %>
+    <div class="user-cards post-likes row">
+      <%= render 'users/user_cards', group: @post_likes %>
+    </div>
+    <div class="post-likes-footer">
+      <%= paginate @post_likes %>
+      <div class="loadmore-btn-wrapper p-0 d-flex">
+        <button class="loadmore-btn btn active mx-auto">さらに表示</button>
+      </div>
+    </div>
+  <% else %>
+    <div class="no-contents d-flex align-items-center justify-content-center mx-auto">
+      まだ "いいね！" がありません
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    var index = 0;
+    var postIndexInit = function() {
+      $.cookie('postIndex<%= object.id %>', index);
+      $('#pills-tab li:first-child a').addClass('active');
+      $('#pills-tabContent .tab-pane:first-child').addClass('show active');
+    }
+
+    if (window.performance) {
+      if (performance.navigation.type === 1 || performance.navigation.type === 2) {
+        if ($.cookie('postIndex<%= object.id %>')) {
+          index = $.cookie('postIndex<%= object.id %>');
+          $('#pills-tab li a').eq(index).addClass('active');
+          $('#pills-tabContent .tab-pane').eq(index).addClass('show active');
+        } else { postIndexInit(); }
+      } else { postIndexInit(); }
+    }
+
+    var urlHash = location.hash;
+    if(urlHash === '#comments') {
+      $('body,html').stop().scrollTop(0);
+      setTimeout(function () {
+        //ロード時の処理を待ち、時間差でスクロール実行
+        scrollToAnker() ;
+      }, 100);
+      var hashString = location.hash.substr(1); // remove '#'
+      history.replaceState('', document.title, window.location.pathname);
+    } else if (urlHash === '#likes') {
+      index = 1;
+      $('#pills-tab li:first-child a').removeClass('active');
+      $('#pills-tabContent .tab-pane:first-child').removeClass('show active');
+      $('#pills-tab li a').eq(index).addClass('active');
+      $('#pills-tabContent .tab-pane').eq(index).addClass('show active');
+      $.cookie('postIndex<%= object.id %>', index)
+      $('body,html').stop().scrollTop(0);
+      setTimeout(function () {
+        //ロード時の処理を待ち、時間差でスクロール実行
+        scrollToAnker() ;
+      }, 100);
+      var hashString = location.hash.substr(1); // remove '#'
+      history.replaceState('', document.title, window.location.pathname);
+    }
+
+    $('#pills-tab li').click(function() {
+      if (index != $('#pills-tab li').index(this)) {
+        index = $('#pills-tab li').index(this);
+        $.cookie('postIndex<%= object.id %>', index);
+      }
+      setTimeout(function () {
+        //ロード時の処理を待ち、時間差でスクロール実行
+        scrollToAnker() ;
+      }, 100);
+
+    });
+
+    // 関数：スムーススクロール
+    // 指定したアンカー(#ID)へアニメーションでスクロール
+    function scrollToAnker() {
+      var target = $('#comments_and_likes');
+      var position = target.offset().top;
+      $('body,html').stop().animate({scrollTop:position}, 500);
+    }
+  });
+
+
+  $(document).ready(function(){
+
+    function selectTabAndScroll() {
+      index = $.cookie('selectTab');
+      $('#pills-tab li a').eq(index).addClass('active');
+      $('#pills-tabContent .tab-pane').eq(index).addClass('show active');
+
+      //スクロールを0に戻す
+      $('body,html').stop().scrollTop(0);
+      setTimeout(function () {
+        //ロード時の処理を待ち、時間差でスクロール実行
+        scrollToAnker('#comments_and_likes') ;
+      }, 100);
+    }
+
+  })
+</script>

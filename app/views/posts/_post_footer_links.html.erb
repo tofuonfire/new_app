@@ -1,0 +1,6 @@
+<div class="post-footer-links">
+  <a href="<%= post_path(object) %>#comments" style="margin-right: 12px;">コメント0件</a>
+  <a href="<%= post_path(object) %>#likes">
+    いいね！<span id="likes_<%= object.id %>"><%= object.likes.count.to_s(:delimited) %></span>件
+  </a>
+</div>
