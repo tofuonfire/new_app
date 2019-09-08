@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
+
+  has_many :comments, dependent: :destroy
   
   validates :name, presence: true, length: { maximum: 30 }
   validates :bio, length: { maximum: 140 }

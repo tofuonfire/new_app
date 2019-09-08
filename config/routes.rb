@@ -1,6 +1,8 @@
 require 'url_constrainer'
 
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
 
@@ -14,9 +16,11 @@ Rails.application.routes.draw do
   end
 
   resources :users,               only: [:index]
-  resources :posts,               except: [:index], param: :url_token
+  resources :posts,               except: [:index], param: :url_token do
+    resources :comments,          only: [:create, :destroy]
+  end
   resources :relationships,       only: [:create, :destroy]
-  resources :likes, only: [:create, :destroy]
+  resources :likes,               only: [:create, :destroy]
 
   constraints(UrlConstrainer.new) do
     resources :users, param: :username, path: '/', only: [:show]

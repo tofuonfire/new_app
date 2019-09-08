@@ -5,6 +5,9 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by!(url_token: params[:url_token])
     @post_likes = @post.like_users.page(params[:page]).per(24)
+    @comments = @post.comments.page(params[:page]).per(24)
+
+    @comment = @post.comments.build
   end
 
   def new
