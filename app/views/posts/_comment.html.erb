@@ -1,0 +1,36 @@
+<% if comments.any? %>
+  <% comments.each do |comment| %>
+    <div class="comment d-flex">
+      <div class="comment-avatar">
+        <% if comment.user.avatar? %>
+          <%= link_to image_tag(comment.user.avatar.mini.url, class: "rounded-circle z-depth-0",
+                                alt: "avatar image"), user_path(comment.user) %>
+        <% else %>
+          <%= link_to image_tag("no_user.png", class: "rounded-circle z-depth-0",
+                                alt: "avatar image"), user_path(comment.user) %>
+        <% end %>
+      </div>
+
+      <div class="comment-body">
+        <div class="comment-author">
+          <%= link_to comment.user.name, user_path(comment.user), class: "author-name" %>
+          <%= link_to "@#{comment.user.username}", user_path(comment.user), class: "author-username" %>
+        </div>
+        <div class="comment-text"><%= comment.content %></div>
+        <div class="comment-nav">
+          <%= date_format(comment.created_at) %>
+          <% if comment.user == current_user %>
+            <a class="comment-delete" data-toggle="modal" data-target="#comment_modal">削除</a>
+          <% end %>
+        </div>
+      </div>
+
+      <%= render 'posts/comment_modal', comment: comment %>
+
+    </div>
+  <% end %>
+<% else %>
+  <div class="no-contents d-flex align-items-center justify-content-center mx-auto">
+    まだコメントがありません
+  </div>
+<% end %>

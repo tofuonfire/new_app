@@ -5,7 +5,7 @@
           role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-comment", "aria-selected" => "true"} do %>
         <div class="post-status">
           <div class="status-name p-0">コメントの件数</div>
-          <div class="status-value">0</div>
+          <div class="status-value" id="comments_<%= object.id %>"><%= object.comments.count.to_s(:delimited) %></div>
         </div>
       <% end %>
     </li>
@@ -14,7 +14,7 @@
           role: "tab", "data-toggle" => "pill", "aria-controls" => "pills-like", "aria-selected" => "true"} do %>
         <div class="post-status">
           <div class="status-name p-0">いいね！された数</div>
-          <div class="status-value"id="likes_<%= object.id %>"><%= object.likes.count.to_s(:delimited) %></div>
+          <div class="status-value" id="likes_<%= object.id %>"><%= object.likes.count.to_s(:delimited) %></div>
         </div>
       <% end %>
     </li>
@@ -23,9 +23,7 @@
 
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
-    <div class="no-contents d-flex align-items-center justify-content-center mx-auto">
-      まだコメントがありません
-    </div>
+    <%= render 'posts/comment_content', post: object, group: @comments %>
   </div>
 
   <div class="tab-pane fade" id="pills-like" role="tabpanel" aria-labelledby="pills-like-tab">

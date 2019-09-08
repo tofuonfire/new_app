@@ -1,0 +1,76 @@
+<div class="comment-content">
+  <% if user_signed_in? %>
+    <%= form_with(model: @comment, url: post_comments_path(post)) do |f| %>
+      <%= hidden_field_tag :post_id, post.id %>
+      <div class="comment-editor">
+        <%= f.text_area :content, class: "comment", placeholder: "コメントを入力...", id: "paste" %>
+        <div class="error-and-btn">
+          <div class="comment-error align-items-center mr-2"><span class="mr-1">文字数制限を超えています</span><span id="over"></span></div>
+          <div class="btn comment-btn-disable rounded-circle z-depth-0 align-items-center justify-content-center">
+            <i class="fas fa-exclamation"></i>
+          </div>
+          <%= button_tag type: "submit", id: "comment_btn", class: "btn rounded-circle z-depth-0" do %>
+            <i class="fas fa-arrow-down"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="comments">
+    <%= render 'posts/comment', comments: @comments %>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    $('textarea').autosize();
+
+    $('textarea').on("keydown keyup keypress change", function() {
+      if ($(this).val().replace(/ +|\n+/g, " ").length < 1) {
+        $('.error-and-btn').fadeOut(200);
+      } else {
+        $('.error-and-btn').fadeIn(100).css('display', 'flex')
+      }
+
+      count = $('textarea').val().replace(/ +|\n+/g, " ").length;
+      limit = 240 - count
+      if (count <= 240) {
+        $('#comment_btn').show().css('display', 'flex');
+        $('.comment-error').hide();
+        $('.comment-btn-disable').hide();
+      } else if (count > 240) {
+        $('#comment_btn').hide();
+        $('.comment-error').show().css('display', 'flex');
+        $('#over').text(limit);
+        $('.comment-btn-disable').show().css('display', 'flex');
+      }
+    });
+  });
+
+  window.onload = function() {
+    var element = document.getElementById("paste");
+    element.addEventListener("paste", function(event){
+      setTimeout(function(e){
+        if ($('textarea').val().replace(/ +|\n+/g, " ").length < 1) {
+          $('.error-and-btn').fadeOut(200);
+        } else {
+          $('.error-and-btn').fadeIn(100).css('display', 'flex');
+        }
+
+        count = $('textarea').val().replace(/ +|\n+/g, " ").length;
+        limit = 240 - count;
+        if (count <= 240) {
+          $('#comment_btn').show().css('display', 'flex');
+          $('.comment-error').hide();
+          $('.comment-btn-disable').hide();
+        } else if (count > 240) {
+          $('#comment_btn').hide();
+          $('.comment-error').show().css('display', 'flex');
+          $('#over').text(limit);
+          $('.comment-btn-disable').show().css('display', 'flex');
+        }
+      }, 100, event);
+    });
+  }
+</script>

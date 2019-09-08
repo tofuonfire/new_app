@@ -1,11 +1,11 @@
 Faker::Config.locale = :en
 
-User.create!(name:  "Hoge",
+User.create!(name:  "Test User",
              bio: "",
-             username: "hoge",
-             email: "hoge@example.com",
-             password:              "hogehoge",
-             password_confirmation: "hogehoge",
+             username: "test",
+             email: "test@example.com",
+             password:              "123456",
+             password_confirmation: "123456",
              confirmed_at: Time.zone.now,
              confirmation_sent_at: Time.zone.now)
 
@@ -14,7 +14,7 @@ User.create!(name:  "Hoge",
   bio = Faker::TvShows::BreakingBad.episode
   username = "sample#{n}"
   email = "sample-#{n}@example.com"
-  password = "hogehoge"
+  password = "123456"
   User.create!(name:  name,
                bio: bio,
                username: username, 
