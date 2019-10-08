@@ -51,20 +51,20 @@ ja:
 
   errors:
     messages:
-      already_confirmed: "は既に確認済みです。"
+      already_confirmed: "は既に確認済みです"
       confirmation_period_expired: "%{period}以内に確認する必要がありますので、新しくリクエストしてください。"
       expired: "有効期限切れです。新規登録してください。"
-      not_found: "が見つかりませんでした。"
+      not_found: "が見つかりませんでした"
       not_locked: "ロックされていません。"
       not_saved:
         one: "入力が正しくありません。確認してやりなおしてください。"
         other: "入力が正しくありません。確認してやりなおしてください。"
-      taken: "は既に使用されています。"
-      blank: "が入力されていません。"
-      too_short: "は%{count}文字以上に設定して下さい。"
-      too_long: "は%{count}文字以下に設定して下さい。"
-      invalid: "は有効でありません。"
-      confirmation: "が内容とあっていません。"
+      taken: "は既に使用されています"
+      blank: "が入力されていません"
+      too_short: "は%{count}文字以上に設定して下さい"
+      too_long: "は%{count}文字以下に設定して下さい"
+      invalid: "は有効でありません"
+      confirmation: "が内容とあっていません"
 
   activerecord:
     attributes:
@@ -88,7 +88,7 @@ ja:
               blank: "が未入力です"
               too_short: "は%{count}文字以上に設定して下さい"
               too_long: "は%{count}文字以下に設定して下さい"
-              invalid: "は有効でありません。"
+              invalid: "は有効でありません"
             username:
               blank: "が未入力です"
               too_short: "は%{count}文字以上に設定して下さい"
@@ -98,18 +98,18 @@ ja:
               blank: "が未入力です"
               too_short: "は%{count}文字以上に設定して下さい"
               too_long: "は%{count}文字以下に設定して下さい"
-              invalid: "は有効でありません。"
+              invalid: "は有効でありません"
             password:
               blank: "が未入力です"
               too_short: "は%{count}文字以上に設定して下さい"
               too_long: "は%{count}文字以下に設定して下さい"
-              invalid: "は有効でありません。"
+              invalid: "は有効でありません"
             password_confirmation:
               blank: "が未入力です"
               too_short: "は%{count}文字以上に設定して下さい"
               too_long: "は%{count}文字以下に設定して下さい"
-              invalid: "は有効でありません。"
-              confirmation: "が一致しません。"
+              invalid: "は有効でありません"
+              confirmation: "が一致しません"
         post:
           attributes:
             image:

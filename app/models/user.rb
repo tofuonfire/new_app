@@ -20,11 +20,14 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 140 }
   validates :username, namespace: true, presence: true, uniqueness: { case_sensitive: :false }, length: { minimum: 4, maximum: 20 },
                        format: { with: /\A[a-z0-9_]+\z/ }
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable,
-            :rememberable, :validatable, :confirmable, authentication_keys: [:login]
+         :rememberable, :validatable, :confirmable, authentication_keys: [:login]
   attr_writer :login
 
   def to_param
@@ -45,7 +48,7 @@ class User < ApplicationRecord
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  # 現在のユーザーがフォローしてたらtrueを返す
+  # 現在のユーザーがフォローしているならtrueを返す
   def following?(other_user)
     following.include?(other_user)
   end

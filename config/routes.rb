@@ -1,8 +1,6 @@
 require 'url_constrainer'
 
 Rails.application.routes.draw do
-  get 'comments/create'
-  get 'comments/destroy'
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
 
