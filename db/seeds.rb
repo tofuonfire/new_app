@@ -1,9 +1,9 @@
 Faker::Config.locale = :en
 
-User.create!(name:  "Test User",
+User.create!(name:  "Guest",
              bio: "",
-             username: "test",
-             email: "test@example.com",
+             username: "guest",
+             email: "guest@example.com",
              password:              "123456",
              password_confirmation: "123456",
              confirmed_at: Time.zone.now,

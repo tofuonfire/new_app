@@ -23,7 +23,7 @@
   <div class="container">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field form-group">
-        <p><%= f.label "ユーザーネーム/メールアドレス" %><br />
+        <p><%= f.label :login, "ユーザーネーム/メールアドレス" %><br />
         <%= f.text_field :login, class: "form-control" %></p>
       </div>
 

@@ -17,7 +17,10 @@ module NewApp
     # the framework and any gems in your application.
     config.generators do |g|
       g.test_framework :rspec,
-        view_specs: false
+        fixtures: false,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false
     end
 
     # libディレクトリ以下のファイルが、下記のディレクトリ・ファイル構成と命名の規約に従うと、

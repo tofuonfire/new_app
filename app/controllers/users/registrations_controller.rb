@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  prepend_before_action :require_no_authentication, only: [:new, :create, :cancel, :confirm_email]
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -60,12 +61,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   protected
-
+    # ユーザー情報を編集する場合、パスワード変更時のみパスワードを要求する（それ以外は要求しない）
     def update_resource(resource, params)
       return super if params["password"]&.present?
       resource.update_without_password(params.except("current_password"))
     end
 
+    # ユーザー情報の更新が成功した場合、リダイレクト先は編集ページのままにする。
     def after_update_path_for(resource)
       edit_user_registration_path
     end

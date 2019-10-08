@@ -11,10 +11,29 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ApplicationHelper, type: :helper do
- 
-  describe "full_title helper" do
-    it { expect(full_title).to eq website_name }
-    it { expect(full_title("About")).to eq "About | #{website_name}" }
+  describe "website_name" do
+    it "サイト名を返すこと" do
+      expect(website_name).to eq "Mewblr"
+    end
   end
 
+  describe "full_title" do
+    it "ページタイトルが無いならサイト名だけを返すこと" do
+      expect(full_title).to eq website_name
+    end
+
+    it "ページタイトルがあるならサイト名を合わせた完全なタイトルを返すこと " do
+      expect(full_title("Contact")).to eq "Contact | #{website_name}"
+    end
+  end
+
+  describe "date_format" do
+    it "投稿やコメントがされてから現在までのおおよその時間/日数を返すこと" do
+      post = FactoryBot.create(:post, created_at: 2.hours.ago)
+      expect(date_format(post.created_at)).to eq "2時間前"
+
+      comment = FactoryBot.create(:comment, post: post, created_at: 10.minutes.ago)
+      expect(date_format(comment.created_at)).to eq "10分前"
+    end
+  end
 end

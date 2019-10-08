@@ -30,7 +30,6 @@ class Post < ApplicationRecord
   end
 
   private
-
     def generate_url_token
       self.url_token = SecureRandom.urlsafe_base64
     end
