@@ -5,16 +5,18 @@ RSpec.describe "SignUp", type: :system do
     ActionMailer::Base.deliveries.clear
   end
 
-  def extract_confirmation_url(mail)
+  def extract_url(mail)
     body = mail.body.encoded
     body[/http[^"]+/]
   end
 
   it "ユーザーを作成したあと、メールアドレスを認証してログインする" do
     visit root_path
-    expect(page).to have_http_status :ok
+    expect(page).to have_content "さらに詳しく"
 
     click_link "新規登録"
+    expect(current_path).to eq new_user_registration_path
+    expect(page).to have_content "小文字の半角英数字と'_'(アンダーバー)のみ"
 
     # 登録に失敗する場合
     fill_in "名前", with: ""
@@ -45,18 +47,21 @@ RSpec.describe "SignUp", type: :system do
     expect(page).to have_content "メールを送信しました"
 
     mail = ActionMailer::Base.deliveries.last
-    confirmation_url = extract_confirmation_url(mail)
+    confirmation_url = extract_url(mail)
 
     aggregate_failures do
       expect(mail.to).to eq ["sample@example.com"]
       expect(mail.from).to eq ["info@example.com"]
       expect(mail.subject).to eq "アカウントの登録確認"
       expect(mail.body).to match "Sample User"
-      expect(mail.body).to match "@sample"
+      expect(mail.body).to match "(@sample)"
       expect(mail.body).to have_link "メールアドレスを認証", href: confirmation_url
     end
 
-    visit confirmation_url
+    user = User.last
+    token = user.confirmation_token
+
+    visit user_confirmation_path(confirmation_token: token)
     expect(current_path).to eq new_user_session_path
     expect(page).to have_content "おめでとうございます。メールアドレスは正常に承認されました。"
     

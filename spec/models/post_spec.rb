@@ -53,6 +53,7 @@ RSpec.describe Post, type: :model do
       post.caption = "a" * 240
       expect(post).to be_valid
     end
+    
     it "キャプションが240文字を越えるなら無効であること" do
       post.caption = "a" * 241
       post.valid?

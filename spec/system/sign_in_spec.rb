@@ -8,7 +8,7 @@ RSpec.describe "SignIn", type: :system do
       password: "123456")
 
     visit root_path
-    expect(page).to have_content "新規登録"
+    expect(page).to have_content "さらに詳しく"
 
     click_link "ログイン"
     expect(current_path).to eq new_user_session_path
@@ -38,7 +38,8 @@ RSpec.describe "SignIn", type: :system do
     expect(page).to have_content "ログアウトしますか？"
 
     click_on "ログアウト"
-    expect(page).to have_content "新規登録"
+    expect(current_path).to eq root_path
+    expect(page).to have_content "さらに詳しく"
 
     click_link "ログイン"
     expect(current_path).to eq new_user_session_path
