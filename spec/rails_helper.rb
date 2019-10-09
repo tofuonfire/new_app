@@ -64,4 +64,10 @@ RSpec.configure do |config|
   # リクエストスペックとシステムスペックでDeviseのテストヘルパーを使用する
   config.include RequestSpecHelper, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :system
+
+  config.after(:all) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"])
+    end
+  end
 end
