@@ -10,14 +10,10 @@ RSpec.describe "ResetPassword", type: :system do
     body[/http[^"]+/]
   end
 
-  it "非ログイン状態から、ユーザーのパスワードを再設定する", js: true do
-    skip "なぜかパスしないので保留"
-
+  it "非ログイン状態から、ユーザーのパスワードを再設定する" do
     user = FactoryBot.create(:user,
-      name: "Alice",
-      username: "alice",
       email: "alice@example.com",
-      password: "oldpassword")
+      password: "OldPassword")
 
     visit root_path
     expect(page).to have_content "さらに詳しく"
@@ -51,11 +47,11 @@ RSpec.describe "ResetPassword", type: :system do
     visit reset_password_url
     expect(page).to have_content "新しいパスワードを再入力"
 
-    fill_in "新しいパスワード", with: "newpassword"
-    fill_in "新しいパスワードを再入力", with: "newpassword"
-    click_button "変更を確定する" # ここでなぜか「トークンが有効でない」と怒られる
-
+    fill_in "新しいパスワード", with: "NewPassword"
+    fill_in "新しいパスワードを再入力", with: "NewPassword"
+    click_button "変更を確定する"
     expect(page).to have_content "フィード"
-    expect(user.valid_password?("newpassword")).to eq true
+    
+    expect(user.reload.valid_password?("NewPassword")).to eq true
   end
 end
