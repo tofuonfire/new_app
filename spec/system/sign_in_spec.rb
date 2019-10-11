@@ -31,6 +31,9 @@ RSpec.describe "SignIn", type: :system do
     click_button "ログインする"
     expect(page).to have_content "フィード"
 
+    # ログイン後のフラッシュメッセージが生成されないことを確認
+    expect(page).to_not have_content "ログインしました。"
+
     click_on "nav avatar image"
     expect(page).to have_content "ログアウト"
 
@@ -44,6 +47,9 @@ RSpec.describe "SignIn", type: :system do
     click_link "ログイン"
     expect(current_path).to eq new_user_session_path
     expect(page).to have_content "ログイン状態を保持"
+
+    # ログアウト後のフラッシュメッセージが生成されないことを確認
+    expect(page).to_not have_content "ログアウトしました。"
 
     # メールアドレスを使ってログインする
     fill_in "ユーザーネーム/メールアドレス", with: "sample@example.com"
