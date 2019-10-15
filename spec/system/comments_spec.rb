@@ -46,6 +46,7 @@ RSpec.describe "Comments", type: :system do
     expect {
       find("#comment_btn").click
       expect(page).to have_content "very very beautiful"
+      expect(find("#pills-comment-tab")).to have_content "コメントの件数 1"
     }.to change(post.comments, :count).by(1)
     
     # コメントを削除する
@@ -58,6 +59,7 @@ RSpec.describe "Comments", type: :system do
     expect {
       find("a[href='#{post_comment_path(post, comment)}']").click
       expect(page).to have_content "まだコメントがありません"
+      expect(find("#pills-comment-tab")).to have_content "コメントの件数 0"
     }.to change(Comment, :count).by(-1)
 
   end
