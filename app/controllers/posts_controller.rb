@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: [:show, :search]
   before_action :correct_user,       only: [:edit, :update, :destroy]
 
   def show
@@ -43,6 +43,10 @@ class PostsController < ApplicationController
     Post.find_by!(url_token: params[:url_token]).destroy
     flash[:success] = "投稿は正常に削除されました"
     redirect_to current_user
+  end
+
+  def search
+    
   end
 
   private

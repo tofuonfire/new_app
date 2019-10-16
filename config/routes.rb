@@ -13,10 +13,19 @@ Rails.application.routes.draw do
     get 'confirm_email', to: 'users/registrations#confirm_email'
   end
 
-  resources :users,               only: [:index]
+  resources :users,               only: [:index] do
+    collection do
+      get :search
+    end
+  end
+
   resources :posts,               except: [:index], param: :url_token do
     resources :comments,          only: [:create, :destroy]
+    collection do
+      get :search
+    end
   end
+
   resources :relationships,       only: [:create, :destroy]
   resources :likes,               only: [:create, :destroy]
 

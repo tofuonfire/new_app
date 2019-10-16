@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.page(params[:page]).per(24)
   end
@@ -10,5 +11,9 @@ class UsersController < ApplicationController
     @following = @user.following.page(params[:page]).per(24)
     @followers = @user.followers.page(params[:page]).per(24)
     @likes = @user.like_posts.page(params[:page]).per(24)
+  end
+
+  def search
+    
   end
 end
