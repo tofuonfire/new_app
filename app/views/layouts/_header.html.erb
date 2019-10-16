@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand navbar-light mb-3">
   <div class="container">
     <%= link_to website_name, root_path, class: "navbar-brand font-weight-bold" %>
+    <%= link_to search_posts_path, class: "navbar-search-btn" do %><i class="fas fa-search"></i><% end %>
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav align-items-center">
         <% if user_signed_in? %>

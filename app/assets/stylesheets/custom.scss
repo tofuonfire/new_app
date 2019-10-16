@@ -10,6 +10,8 @@
 @mixin md { @media (min-width: 768px) { @content; } }
 @mixin lg { @media (min-width: 992px) { @content; } }
 
+$color-black: #212529;
+
 /* universal */
 
 .container {
@@ -96,9 +98,13 @@
 }
 
 .btn-white {
-  color: #212529;
+  color: $color-black;
   background-color: transparent;
-  border-color: #212529;
+  border-color: $color-black;
+}
+
+a.navbar-search-btn {
+  color: $color-black;
 }
 
 
@@ -182,13 +188,13 @@ footer {
   }
 
   .form-control {
-    color: #212529;
+    color: $color-black;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #212529;
+    border-bottom: 1px solid $color-black;
     border-radius: 0;
     &:focus {
-      color: #212529;
+      color: $color-black;
       outline: 0;
       box-shadow: none;
     }
@@ -199,7 +205,7 @@ footer {
     color: rgba(33,37,41,0.5);
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid #212529;
+    border-bottom: 1px solid $color-black;
     border-radius: 0;
   }
 
@@ -230,7 +236,7 @@ footer {
   .submit-btn {
     font-weight: 700;
     border-radius: 5px;
-    border: 2px solid #212529;
+    border: 2px solid $color-black;
   }
 
   .upload-avatar-btn {
@@ -337,7 +343,7 @@ footer {
         text-overflow: ellipsis;
         
         .post-footer-name {
-          color: #212529;
+          color: $color-black;
           
         }
         .post-footer-username {
@@ -361,7 +367,7 @@ footer {
       top: 0; left: 0;
       width: 100%; height: 100%;
       display: block;
-      border: 1px solid #212529;
+      border: 1px solid $color-black;
       border-radius: 0.25rem;
       z-index: 0;
     }
@@ -372,8 +378,8 @@ footer {
     z-index: 1;
 
     &:nth-child(2) {
-      border-right: 1px solid #212529;
-      border-left: 1px solid #212529;
+      border-right: 1px solid $color-black;
+      border-left: 1px solid $color-black;
     }
 
     &:first-child .nav-link.active {
@@ -395,9 +401,9 @@ footer {
     font-size: 0.8rem;
     border-radius: 0;
     padding: 0;
-    color: #212529;
+    color: $color-black;
 
-    &.active { background-color: #212529 }
+    &.active { background-color: $color-black }
   }
   @include sm {
     .nav-link {
@@ -522,6 +528,96 @@ footer {
   display: none;
 }
 
+/* search */
+.search-form {
+  max-width: 640px;
+
+  .form-group {
+    padding: 0 0.5rem;
+    margin-bottom: 18px;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 60px;
+    border-radius: 0.5rem;
+  }
+
+  .form-control {
+    font-size: 1.5rem;
+    color: $color-black;
+    font-weight: 800;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    &:focus {
+      color: $color-black;
+      outline: 0;
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  .input-group-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    padding: 0.375rem 0.15rem 0.375rem 0.75rem;
+    color: rgba(0, 0, 0, 0.25);
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+  }
+
+  .input-group-prepend + .form-control {
+    padding: 0.375rem 0.125rem;
+  }
+
+  .nav {
+    width: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      z-index: 1
+    }
+  }
+
+  .nav-item {
+    margin: 0;
+    width: 50%;
+    z-index: 2;
+  }
+
+  .nav-pills .nav-link {
+    color: rgba(0, 0, 0, 0.4);
+    border-radius: 0;
+    width: 100%;
+    padding: 0;
+    height: 30px;
+    text-align: center;
+  }
+
+  .nav-pills .nav-link.active {
+    position: relative;
+    color: $color-black;
+    background-color: transparent;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+      border-bottom: 1px solid $color-black;
+    }
+  }
+}
+
 /* user-profile */
 
 .user-header {
@@ -542,8 +638,8 @@ footer {
   }
 
   .setting-btn {
-    color: #212529;
-    &:hover { color: #212529 }
+    color: $color-black;
+    &:hover { color: $color-black }
   }
   @include sm {
     .setting-btn {
@@ -706,7 +802,7 @@ footer {
 
   .nav-pills .nav-link.active {
     position: relative;
-    color: #212529;
+    color: $color-black;
     background-color: transparent;
 
     &::after {
@@ -715,7 +811,7 @@ footer {
       top: 0; left: 0;
       width: 100%; height: 100%;
       display: block;
-      border-top: 1px solid #212529;
+      border-top: 1px solid $color-black;
     }
   }
 
@@ -818,7 +914,7 @@ footer {
   height: 40px;
   font-size: 1.5rem;
   font-weight: 700;
-  border-bottom: 1px solid #212529;
+  border-bottom: 1px solid $color-black;
 }
 @include sm {
   .page-header {
@@ -873,7 +969,7 @@ footer {
       text-overflow: ellipsis;
 
       .user-name {
-        color: #212529;
+        color: $color-black;
         font-size: 1.2rem
       }
 
@@ -956,11 +1052,11 @@ footer {
   }
 
   .caption {
-    color: #212529;
+    color: $color-black;
     background-color: transparent;
     border: none;
     &:focus {
-      color: #212529;
+      color: $color-black;
       outline: 0;
       box-shadow: none;
     }
@@ -987,7 +1083,7 @@ footer {
   .post-form-btn {
     font-weight: 700;
     border-radius: 5px;
-    border: 2px solid #212529;
+    border: 2px solid $color-black;
   }
 }
 
@@ -1044,7 +1140,7 @@ footer {
     text-overflow: ellipsis;
 
     .post-header-name {
-      color: #212529;
+      color: $color-black;
     }
 
     .post-header-username {
@@ -1054,8 +1150,8 @@ footer {
   }
 
   .setting-btn {
-    color: #212529;
-    &:hover { color: #212529 }
+    color: $color-black;
+    &:hover { color: $color-black }
   }
 }
 @include sm { 
@@ -1128,7 +1224,7 @@ footer {
 
   .nav-pills .nav-link.active {
     position: relative;
-    color: #212529;
+    color: $color-black;
     background-color: transparent;
 
     &::after {
@@ -1137,7 +1233,7 @@ footer {
       top: 0; left: 0;
       width: 100%; height: 100%;
       display: block;
-      border-top: 1px solid #212529;
+      border-top: 1px solid $color-black;
     }
   }
 
@@ -1203,11 +1299,11 @@ footer {
     border-radius: 1rem;
 
     textarea.comment {
-      color: #212529;
+      color: $color-black;
       background-color: transparent;
       border: none;
       &:focus {
-        color: #212529;
+        color: $color-black;
         outline: 0;
         box-shadow: none;
       }
@@ -1227,7 +1323,7 @@ footer {
 
   .comment-author {
     a { text-decoration: none; }
-    .author-name { color: #212529;}
+    .author-name { color: $color-black;}
     .author-username { color: #aaaaaa; }
     margin-bottom: 0.15rem;
   }
@@ -1249,7 +1345,7 @@ footer {
   #comment_btn {
     justify-content: center;
     align-items: center;
-    background-color: #212529;
+    background-color: $color-black;
     color: rgb(230, 230, 230);
     &:hover { color: rgb(230, 230, 230) }
     padding: 0;
