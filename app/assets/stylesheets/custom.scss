@@ -54,9 +54,11 @@ $color-black: #212529;
   height: 65px;
 }
 
+.navbar-brand { margin-right: 11px; }
 @include sm {
   .navbar-brand {
     font-size: 1.5rem;
+    margin-right: 15px;
   }
 }
 
@@ -531,17 +533,18 @@ footer {
 /* search */
 .search-form {
   max-width: 640px;
+  margin-bottom: 30px;
 
   .form-group {
     padding: 0 0.5rem;
     margin-bottom: 18px;
     background-color: rgba(0, 0, 0, 0.1);
-    height: 60px;
     border-radius: 0.5rem;
   }
 
   .form-control {
     font-size: 1.5rem;
+    height: 60px;
     color: $color-black;
     font-weight: 800;
     background-color: transparent;
@@ -617,6 +620,45 @@ footer {
     }
   }
 }
+
+.search-posts-container {
+  .post-cards {
+    margin: 0 -5px;
+
+    .post-card {
+      padding: 0 10px;
+      margin-bottom: 20px;
+
+      .post-card-img {
+        border-radius: 0.25rem;
+      }
+    }
+
+    .post-card-footer {
+      padding: 10px 0;
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      .post-footer-names {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        
+        .post-footer-name {
+          color: $color-black;
+          
+        }
+        .post-footer-username {
+          color: #aaaaaa;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
 
 /* user-profile */
 
@@ -992,7 +1034,7 @@ footer {
 }
 
 
-.show-follow-footer, .show-following-footer, .show-followers-footer {
+.search-users-footer, .show-follow-footer, .show-following-footer, .show-followers-footer {
   .loadmore-btn-wrapper { margin: 0; }
 }
 

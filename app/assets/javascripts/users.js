@@ -16,6 +16,24 @@ $(function () {
   }
 });
 
+// ユーザー検索
+$(function() {
+  $('.search-users').infiniteScroll({
+    append : '.search-users .user-card',
+    history: false,
+    button: '.search-users-footer .loadmore-btn',
+    scrollThreshold: false,
+    path : '.search-users-footer nav.pagination a[rel=next]',
+    hideNav: '.search-users-footer .pagination'
+  })
+})
+$(function () {
+  if($(".search-users-footer nav.pagination")[0]) {
+  } else {
+      $(".search-users-footer .loadmore-btn").hide();
+  }
+});
+
 // ユーザー詳細ページ
   // 投稿
   $(function() {

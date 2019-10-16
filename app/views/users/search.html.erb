@@ -1,12 +1,19 @@
 <div class="search-form mx-auto">
-  <div class="field form-group d-flex align-items-center">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text">@</div>
+  <%= search_form_for(@q, url: search_users_path) do |f| %>
+    <div class="field form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text">@</div>
+        </div>
+        <% f.label :username_cont %>
+        <%= f.search_field :username_cont, class: "form-control", placeholder: "ユーザーを検索" %>
       </div>
-      <input type="text" class="form-control" placeholder="ユーザーを検索">
     </div>
-  </div>
+
+    <!-- ダミーのフィールドとボタン：これらがあるとSafari等でオートコンプリートされずにすむ -->
+    <%= f.search_field :username_cont, style: "width:2px; height:2px; position:absolute; opacity:0", disabled: "disabled" %>
+    <%= f.submit style: "width:2px; height:2px; position:absolute; opacity:0" %>
+  <% end %>
 
   <ul class="nav nav-pills">
     <li class="nav-item">
@@ -17,3 +24,15 @@
     </li>
   </ul>
 </div>
+
+<% if @users.any? %>
+  <div class="user-cards search-users row">
+    <%= render 'users/user_cards', group: @users %>
+  </div>
+  <div class="search-users-footer">
+    <%= paginate @users %>
+    <div class="loadmore-btn-wrapper p-0 d-flex">
+      <button class="loadmore-btn btn active mx-auto">さらに表示</button>
+    </div>
+  </div>
+<% end %>
