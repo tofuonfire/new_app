@@ -1204,7 +1204,10 @@ footer {
   padding: 15px 15px;
   @include sm { & { padding: 15px 0; } }
 
-  // small { color: rgba(0, 0, 0, 0.6) }
+  p.post-text {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
 }
 
 .post-footer-links {
@@ -1352,10 +1355,23 @@ footer {
     }
   }
 
-  .comment-body {
-    font-size: 0.9rem;
-    width: 100%;
+  .comment {
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+
+    .comment-body {
+      font-size: 0.9rem;
+      width: 100%;
+
+      .comment-text {
+        margin-bottom: 0.15rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+      }
+    }
   }
+
+
 
   .comment-avatar img {
     width: 40px; height: 40px;
@@ -1410,14 +1426,6 @@ footer {
 
 .comments {
   min-height: 250px;
-}
-
-.comment {
-  margin-bottom: 1.5rem;
-}
-
-.comment-text {
-  margin-bottom: 0.15rem;
 }
 
 .comment-nav {
