@@ -14,6 +14,12 @@ class UsersController < ApplicationController
   end
 
   def search
-    
+    @q = User.ransack(params[:q])
+    @users =
+      if params[:q].nil? or params[:q][:username_cont].blank?
+        User.none
+      else
+        @q.result(distinct: true).page(params[:page]).per(24)
+      end
   end
 end
