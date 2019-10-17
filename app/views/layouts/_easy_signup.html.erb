@@ -1,0 +1,27 @@
+<%= link_to "#", "data-toggle" => "modal", "data-target" => "#easy_signup_modal" do %>
+  <nav class="navbar easy-signup fixed-top d-flex justify-content-center align-items-center">
+    <div>全機能をご利用になりたい方は、こちらから登録作業をスキップして新規ユーザーとしてログインできます。</div>
+  </nav>
+<% end %>
+<div class="pt-65"></div>
+
+<div class="modal" id="easy_signup_modal" tabindex="-1"
+    　role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        ユーザーを作成してログインしますか？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">キャンセル</button>
+
+
+        <%= form_for(User.new, url: session_path(User.new)) do |f| %>
+          <%= f.hidden_field :username, value: "" %>
+          <%= f.hidden_field :password, value: "123456" %>
+          <%= f.submit "了解", class: "btn", style: "color: #f90e43;" %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
