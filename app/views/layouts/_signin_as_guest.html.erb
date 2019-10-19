@@ -1,0 +1,27 @@
+<%= link_to "#", "data-toggle" => "modal", "data-target" => "#signin_as_guest_modal" do %>
+  <nav class="navbar signin-as-guest fixed-top d-flex justify-content-center align-items-center">
+    <div>すぐに全機能をお試しになりたい場合は、<div class="d-inline" style="font-weight: 800">こちらからゲストユーザーとしてログインできます。</div></div>
+  </nav>
+<% end %>
+<div class="pt-65"></div>
+
+<div class="modal" id="signin_as_guest_modal" tabindex="-1"
+    　role="dialog" aria-labelledby="label1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        ゲストユーザーとしてログインしますか？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn" data-dismiss="modal">キャンセル</button>
+
+
+        <%= form_for(User.new, as: :user, url: session_path(:user)) do |f| %>
+          <%= f.hidden_field :login, value: "guest" %>
+          <%= f.hidden_field :password, value: "123456" %>
+          <%= f.submit "ログイン", class: "btn", style: "color: #f90e43;" %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

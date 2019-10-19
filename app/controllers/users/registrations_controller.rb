@@ -2,6 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :require_no_authentication, only: [:new, :create, :cancel, :confirm_email]
+  before_action         :guest_user,                only: :edit
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -70,6 +71,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     # ユーザー情報の更新が成功した場合、リダイレクト先は編集ページのままにする。
     def after_update_path_for(resource)
       edit_user_registration_path
+    end
+
+    # ゲストユーザーかどうか確認
+    def guest_user
+      redirect_to(root_url) if current_user.guest?
     end
 
     # If you have extra params to permit, append them to the sanitizer.

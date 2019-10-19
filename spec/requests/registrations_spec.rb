@@ -16,7 +16,7 @@ RSpec.describe "Registrations", type: :request do
       end
     end
 
-    context "ゲストユーザーの場合" do
+    context "未ログイン状態のとき" do
       it "正常にレスポンスを返すこと" do
         get confirm_email_path
         expect(response).to have_http_status "200"

@@ -27,6 +27,16 @@
           </a>
         </div>
       </div>
+    <% elsif current_user.admin?  %>
+      <div class="dropdown mr-1">
+        <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10",
+                          aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item d-flex align-items-center" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#post_modal">
+            <div style="width: 100%">投稿を削除</div><i class="fas fa-trash-alt"></i>
+          </a>
+        </div>
+      </div>
     <% else %>
       <%= render 'posts/like_form', object: object %>
     <% end %>

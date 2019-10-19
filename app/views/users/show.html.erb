@@ -2,6 +2,9 @@
 
 <%= render 'layouts/toast' %>
 <%= render 'logout_modal' %>
+<% if user_signed_in? && current_user.admin? %>
+  <%= render 'delete_user_modal', user: @user %>
+<% end %>
 
 <div class="container mb-md-5" style="max-width: 700px;">
   <div class="row">
@@ -35,7 +38,9 @@
                   </div>
                 </div>
                 <% if user_signed_in? %>
-                  <% if @user == current_user %>
+                  <% if current_user.admin? %>
+                    <%= render 'admin_menu' %>
+                  <% elsif @user == current_user %>
                     <%= render 'user_menu' %>
                   <% else %>
                     <%= render 'follow_form', object: @user %>
