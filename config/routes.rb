@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   resources :likes,               only: [:create, :destroy]
 
   constraints(UrlConstrainer.new) do
-    resources :users, param: :username, path: '/', only: [:show]
+    resources :users, param: :username, path: '/', only: [:show, :destroy]
   end
 
   if Rails.env.development?

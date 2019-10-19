@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Posts", type: :request do
   describe "#new" do
-    context "ゲストユーザーとして" do
+    context "未ログイン状態のとき" do
       it "ログインページにリダイレクトされること" do
         get new_post_path
         expect(response).to have_http_status 302
@@ -12,7 +12,7 @@ RSpec.describe "Posts", type: :request do
   end
 
   describe "#create" do
-    context "ゲストユーザーとして" do
+    context "未ログイン状態のとき" do
       it "ログインページにリダイレクトされること" do
         post_params = FactoryBot.attributes_for(:post)
         post posts_path, params: { post: post_params }
@@ -23,7 +23,7 @@ RSpec.describe "Posts", type: :request do
   end
 
   describe "#edit" do
-    context "ゲストユーザーとして" do
+    context "未ログイン状態のとき" do
       it "ログインページにリダイレクトされること" do
         post = FactoryBot.create(:post)
         get edit_post_path(post)
@@ -48,7 +48,7 @@ RSpec.describe "Posts", type: :request do
       end
     end
 
-    context "ゲストユーザーとして" do
+    context "未ログイン状態のとき" do
       it "ログインページにリダイレクトされること" do
         post = FactoryBot.create(:post)
         
@@ -75,7 +75,7 @@ RSpec.describe "Posts", type: :request do
       end
     end
 
-    context "ゲストユーザーとして" do
+    context "未ログイン状態のとき" do
       it "ログインページにリダイレクトされること" do
         delete post_path(@post)
         expect(response).to have_http_status 302

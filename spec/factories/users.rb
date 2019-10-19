@@ -13,6 +13,22 @@ FactoryBot.define do
       password { "bar" }
     end
 
+    trait :guest do
+      name     { "Guest User" }
+      username { "guest" }
+      email    { "guest@example.com" }
+      password { "123456" }
+      guest    { true }
+    end
+
+    trait :admin do
+      name     { "Administrator" }
+      username { "admin" }
+      email    { "admin@example.com" }
+      password { "123456" }
+      admin    { true }
+    end
+
     trait :unconfirmed do
       confirmed_at { nil }
     end
