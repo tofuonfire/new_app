@@ -48,7 +48,9 @@ class PostsController < ApplicationController
   def search
     @q = Post.ransack(params[:q])
     @posts =
-      if params[:q].nil? or params[:q][:caption_cont].blank?
+      if params[:q].nil?
+        @q.result(distinct: true).page(params[:page]).per(24)
+      elsif params[:q][:caption_cont].blank?
         Post.none
       else
         @q.result(distinct: true).page(params[:page]).per(24)
