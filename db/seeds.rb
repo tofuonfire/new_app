@@ -136,22 +136,22 @@ followers.each { |follower| follower.follow(user) }
 users = User.order(:created_at)
 
 0.upto(14) do |n|
-  users[1].posts[0].like(users[n])
+  users[1].posts[-1].like(users[n])
 end
-users[1].posts[0].unlike(users[1])
+users[1].posts[-1].unlike(users[1])
 
 1.upto(7) do |i|
   0.upto(10) do |n|
-    users[i+1].posts[0].like(users[n])
+    users[i+1].posts[-1].like(users[n])
   end
-  users[i+1].posts[0].unlike(users[i+1])
+  users[i+1].posts[-1].unlike(users[i+1])
 end
 
 1.upto(7) do |i|
   0.upto(10) do |n|
-    users[i].posts[1].like(users[n])
+    users[i].posts[-2].like(users[n])
   end
-  users[i].posts[1].unlike(users[i])
+  users[i].posts[-2].unlike(users[i])
 end
 
 # 検索用の投稿
