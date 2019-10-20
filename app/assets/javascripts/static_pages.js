@@ -18,7 +18,7 @@
     }
   });
 
-  // 人気のの投稿
+  // 人気の投稿
   $(function() {
     $('.post-cards.popular').infiniteScroll({
       path : '.post-cards-footer.popular nav.pagination a[rel=next]',

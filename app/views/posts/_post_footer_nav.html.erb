@@ -104,8 +104,11 @@
     // 関数：スムーススクロール
     // 指定したアンカー(#ID)へアニメーションでスクロール
     function scrollToAnker() {
+      <% if !user_signed_in? %>
+        var headerHight = 65;
+      <% end %>
       var target = $('#comments_and_likes');
-      var position = target.offset().top;
+      var position = target.offset().top <% if !user_signed_in? %> -headerHight <% end %>;
       $('body,html').stop().animate({scrollTop:position}, 500);
     }
   });
