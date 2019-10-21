@@ -514,26 +514,38 @@ footer {
   }
 
   .home-post-cards {
-    margin: 20px -15px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 3px;
+    margin: 30px -5px 0 -5px;
 
     .post-card {
-      padding: 0;
-      @include md { & img { border-radius: 0.25rem; } }
+      padding: 0 10px;
+      margin-bottom: 20px;
+
+      .post-card-img {
+        border-radius: 0.25rem;
+      }
     }
-  }
-  @include sm {
-    .home-post-cards {
-      margin-top: 30px;
-      margin-bottom: 30px;
-    }
-  }
-  @include md {
-    .home-post-cards {
-      margin: 35px 5px 35px 5px;
-      gap: 20px;
+
+    .post-card-footer {
+      padding: 10px 0;
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      .post-footer-names {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        
+        .post-footer-name {
+          color: $color-black;
+          
+        }
+        .post-footer-username {
+          color: #aaaaaa;
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 }
@@ -967,6 +979,43 @@ footer {
       margin: 0 5px 35px 5px;
       gap: 20px;
       img {border-radius: 0.25rem;}
+    }
+  }
+
+
+  .show-likes {
+    margin: 0 -5px;
+
+    .post-card {
+      padding: 0 10px;
+      margin-bottom: 20px;
+
+      .post-card-img {
+        border-radius: 0.25rem;
+      }
+    }
+
+    .post-card-footer {
+      padding: 10px 0;
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      .post-footer-names {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        
+        .post-footer-name {
+          color: $color-black;
+          
+        }
+        .post-footer-username {
+          color: #aaaaaa;
+          font-size: 0.9rem;
+        }
+      }
     }
   }
 }
