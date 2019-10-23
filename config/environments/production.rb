@@ -99,7 +99,7 @@ Rails.application.configure do
   # mailer setting
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'blogapp-nt.herokuapp.com'
+  host = 'mewblr.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.sendgrid.net',
