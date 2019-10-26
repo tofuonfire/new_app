@@ -23,6 +23,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'ransack'
 
 group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'pry-byebug'
@@ -42,6 +47,10 @@ group :test do
   gem 'capybara'
   gem 'webdrivers'
   gem 'launchy'
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
