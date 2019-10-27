@@ -29,3 +29,6 @@
 # アップロードされたテスト画像を無視する
 /public/uploads
 /public/uploads_test
+
+# dotenv
+/.env
