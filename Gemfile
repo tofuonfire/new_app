@@ -21,6 +21,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'ransack'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'rspec-rails'
