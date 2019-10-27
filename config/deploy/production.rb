@@ -1,6 +1,6 @@
 set :branch, 'master'
 
-server '52.196.150.243',
+server '3.114.186.155',
   user: 'nt',
   roles: %w[web app db],
   port: 22,
