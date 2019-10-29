@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find_by!(url_token: params[:url_token])
-    if @post.update_attributes(post_params)
+    if @post.update(post_params)
       flash[:success] = "投稿が更新されました"
       redirect_to @post
     else
