@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :image, presence: true
   validates :caption, length: { maximum: 240 }
   validates :user_id, presence: true
-  validates :url_token, presence: true, uniqueness: true
+  validates :url_token, presence: true, uniqueness: { case_sensitive: true }
 
   def to_param
     url_token

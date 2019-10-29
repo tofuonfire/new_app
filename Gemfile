@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.5'
 
-gem 'rails', '~> 5.2.3'
-gem 'bootstrap', '~> 4.3.1'
+gem 'rails', '6.0.0'
+gem 'bootstrap'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
@@ -12,14 +12,14 @@ gem 'fog-aws'
 gem 'faker'
 gem 'rails-i18n'
 gem 'kaminari'
-gem 'mysql2', '>= 0.4.4', '< 0.6.0'
-gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.2'
+gem 'mysql2'
+gem 'puma'
+gem 'sass-rails'
+gem 'uglifier'
+gem 'coffee-rails'
 gem 'jquery-rails'
-gem 'jbuilder', '~> 2.5'
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'jbuilder'
+gem 'bootsnap', require: false
 gem 'ransack'
 gem 'dotenv-rails'
 
@@ -38,15 +38,17 @@ group :development do
   gem 'sshkit-sudo', require: false
   gem 'capistrano3-puma', require: false
 
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console'
+  gem 'listen'
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
   gem 'spring-commands-rspec'
   gem 'letter_opener_web'
 end
 
 group :test do
+  gem 'simplecov', require: false
+
   gem 'capybara'
   gem 'webdrivers'
   gem 'launchy'
