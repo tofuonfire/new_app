@@ -37,6 +37,8 @@ group :development do
   gem 'capistrano-rbenv', require: false
   gem 'sshkit-sudo', require: false
   gem 'capistrano3-puma', require: false
+  gem 'ed25519'
+  gem 'bcrypt_pbkdf'
 
   gem 'web-console'
   gem 'listen'
