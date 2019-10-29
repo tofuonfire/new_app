@@ -87,7 +87,7 @@ namespace :deploy do
     on roles(:db) do
       with rails_env: fetch(:rails_env) do
         within release_path do
-          execute :bundle, :exec, :rake, 'db:seed:replant'
+          execute :bundle, :exec, :rake, 'db:seed:replant DISABLE_DATABASE_ENVIRONMENT_CHECK=1'
         end
       end
     end
