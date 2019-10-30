@@ -48,10 +48,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
+  <<: *default
   adapter: mysql2
   encoding: utf8
-  pool: 5
   database: mewblr_production
   username: root
-  password:
-  socket: /var/lib/mysql/mysql.sock
+  password: <%= ENV['RAILS_DATABASE_PASSWORD'] %>
+  host: mewblr-mysql.cm7qty7gruhb.ap-northeast-1.rds.amazonaws.com
+  port: 3306
