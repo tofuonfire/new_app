@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Posts", type: :system do
-  it "新規投稿したあと、その投稿を編集して最後に削除する", js: true do
+RSpec.describe "Posts", type: :system, js: true do
+  it "新規投稿したあと、その投稿を編集して最後に削除する" do
     user = FactoryBot.create(:user, username: "alice")
 
     visit root_path
@@ -64,5 +64,46 @@ RSpec.describe "Posts", type: :system do
     expect(page).to have_content "投稿は正常に削除されました"
     expect(page).to_not have_link "a", href: "/posts/#{post.url_token}"
     
+  end
+
+  it "フィードページから正しく投稿を削除できること" do
+    user = FactoryBot.create(:user, username: "alice")
+    post_foo = FactoryBot.create(:post, caption: "foo", user: user)
+    post_bar = FactoryBot.create(:post, caption: "bar", user: user)
+    post_baz = FactoryBot.create(:post, caption: "baz", user: user)
+
+    visit root_path
+    expect(page).to have_content "さらに詳しく"
+
+    click_link "ログイン"
+    expect(current_path).to eq new_user_session_path
+    expect(page).to have_content "ログイン状態を保持"
+
+    fill_in "ユーザーネーム/メールアドレス", with: "alice"
+    fill_in "パスワード", with: "123456"
+    click_button "ログインする"
+    expect(page).to have_content "フィード"
+
+    expect(page).to have_content "foo"
+    expect(page).to have_content "bar"
+    expect(page).to have_content "baz"
+
+    find("#post-dropdown-#{post_foo.id}").click
+    expect(page).to have_content "投稿を削除"
+
+    find("#post-dropdown-delete-#{post_foo.id}").click
+    expect(page).to have_content "投稿を削除しますか？"
+
+    expect {
+      find("a[href='#{post_path(post_foo)}']").click
+    }.to change(Post, :count).by(-1)
+    expect(current_path).to eq user_path(user)
+    expect(page).to have_content "投稿は正常に削除されました"
+    
+    visit root_path
+
+    expect(page).to_not have_content "foo"
+    expect(page).to have_content "bar"
+    expect(page).to have_content "baz"
   end
 end

@@ -14,7 +14,7 @@
   <% if user_signed_in? %>
     <% if object.user == current_user %>
       <div class="dropdown mr-1">
-        <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10",
+        <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10", id="post-dropdown-<%= object.id %>",
                           aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
         <div class="dropdown-menu dropdown-menu-right">
           <%= link_to edit_post_path(object), class: "dropdown-item d-flex align-items-center" do %>
@@ -22,7 +22,7 @@
           <% end %>
           <div class="dropdown-divider"></div>
 
-          <a class="dropdown-item d-flex align-items-center" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#post_modal">
+          <a class="dropdown-item d-flex align-items-center" id="post-dropdown-delete-<%= object.id %>" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#post_modal_<%= object.id %>">
             <div style="width: 100%">投稿を削除</div><i class="fas fa-trash-alt"></i>
           </a>
         </div>
@@ -32,7 +32,7 @@
         <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="0,10",
                           aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
         <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item d-flex align-items-center" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#post_modal">
+          <a class="dropdown-item d-flex align-items-center" style="color: #f90e43; cursor: pointer;" data-toggle="modal" data-target="#post_modal_<%= object.id %>">
             <div style="width: 100%">投稿を削除</div><i class="fas fa-trash-alt"></i>
           </a>
         </div>

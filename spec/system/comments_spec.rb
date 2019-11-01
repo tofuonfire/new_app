@@ -48,18 +48,34 @@ RSpec.describe "Comments", type: :system do
       expect(page).to have_content "very very beautiful"
       expect(find("#pills-comment-tab")).to have_content "コメントの件数 1"
     }.to change(post.comments, :count).by(1)
+
+    fill_in "コメントを入力...", with: "This is the second comment."
+    expect {
+      find("#comment_btn").click
+      expect(page).to have_content "This is the second comment."
+      expect(find("#pills-comment-tab")).to have_content "コメントの件数 2"
+    }.to change(post.comments, :count).by(1)
+
+    fill_in "コメントを入力...", with: "This is the third comment."
+    expect {
+      find("#comment_btn").click
+      expect(page).to have_content "This is the third comment."
+      expect(find("#pills-comment-tab")).to have_content "コメントの件数 3"
+    }.to change(post.comments, :count).by(1)
+
+    comment = post.comments.find_by!(content: "This is the second comment.")
     
     # コメントを削除する
-    comment = post.comments.first
-    
-    find("a.comment-delete").click
+    find("a#comment-delete-#{comment.id}").click
     expect(page).to have_content "コメントを削除しますか？"
     expect(page).to have_selector "a[href='#{post_comment_path(post, comment)}']"
 
     expect {
       find("a[href='#{post_comment_path(post, comment)}']").click
-      expect(page).to have_content "まだコメントがありません"
-      expect(find("#pills-comment-tab")).to have_content "コメントの件数 0"
+      expect(find("#pills-comment-tab")).to have_content "コメントの件数 2"
+      expect(page).to have_content "very very beautiful"
+      expect(page).to have_content "This is the third comment."
+      expect(page).to_not have_content "This is the second comment."
     }.to change(Comment, :count).by(-1)
 
   end
