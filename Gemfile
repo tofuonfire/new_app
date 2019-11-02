@@ -24,7 +24,7 @@ gem 'ransack'
 gem 'dotenv-rails'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'guard-rspec', require: false
