@@ -6,7 +6,7 @@ class LikesController < ApplicationController
 
     @post.like(current_user) unless @post.like?(current_user)
     respond_to do |format|
-      format.html { redirect_to request.referrer || root_url }
+      format.html { redirect_to request.referer || root_url }
       format.js
     end
   end
@@ -20,7 +20,7 @@ class LikesController < ApplicationController
       @post.unlike(current_user)
     end
     respond_to do |format|
-      format.html { redirect_to request.referrer || root_url }
+      format.html { redirect_to request.referer || root_url }
       format.js
     end
   end

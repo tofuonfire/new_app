@@ -28,12 +28,13 @@ class UsersController < ApplicationController
 
   def destroy
     User.find_by!(username: params[:username]).destroy
-    flash[:success] = "ユーザーは正常に削除されました"
+    flash[:success] = 'ユーザーは正常に削除されました'
     redirect_to users_url
   end
 
   private
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end

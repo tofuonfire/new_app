@@ -6,25 +6,25 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to request.referrer || root_url }
+        format.html { redirect_to request.referer || root_url }
         format.js
       else
         format.html { redirect_to @post }
       end
     end
-    
   end
 
   def destroy
     @comment = Comment.find(params[:id]).destroy
     respond_to do |format|
-      format.html { redirect_to request.referrer || root_url }
+      format.html { redirect_to request.referer || root_url }
       format.js
     end
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:content, :post_id, :user_id)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:content, :post_id, :user_id)
+  end
 end

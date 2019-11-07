@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :search]
-  before_action :correct_user,       only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: %i[show search]
+  before_action :correct_user,       only: %i[edit update destroy]
 
   def show
     @post = Post.find_by!(url_token: params[:url_token])
@@ -13,12 +13,12 @@ class PostsController < ApplicationController
   def new
     @post = current_user.posts.build if user_signed_in?
   end
-  
+
   def create
     @post = current_user.posts.build(post_params)
-    
+
     if @post.save
-      flash[:success] = "投稿が送信されました"
+      flash[:success] = '投稿が送信されました'
       redirect_to user_path(current_user)
     else
       render 'posts/new'
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by!(url_token: params[:url_token])
     if @post.update(post_params)
-      flash[:success] = "投稿が更新されました"
+      flash[:success] = '投稿が更新されました'
       redirect_to @post
     else
       render 'edit'
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 
   def destroy
     Post.find_by!(url_token: params[:url_token]).destroy
-    flash[:success] = "投稿は正常に削除されました"
+    flash[:success] = '投稿は正常に削除されました'
     redirect_to current_user
   end
 
@@ -65,6 +65,6 @@ class PostsController < ApplicationController
 
   def correct_user
     @post = Post.find_by!(url_token: params[:url_token])
-    redirect_to(root_url) unless @post.user == current_user or current_user.admin?
+    redirect_to(root_url) unless (@post.user == current_user) || current_user.admin?
   end
 end

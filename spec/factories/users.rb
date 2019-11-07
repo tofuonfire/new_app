@@ -1,31 +1,31 @@
 FactoryBot.define do
   factory :user do
-    name                { "Sample User" }
+    name                { 'Sample User' }
     sequence(:username) { |n| "sample#{n}" }
     sequence(:email)    { |n| "sample#{n}@example.com" }
-    password            { "123456" }
+    password            { '123456' }
     confirmed_at { Date.today }
 
     trait :invalid do
-      name     { "" }
-      username { "users" } # 既存のルーティング("/users")と重複するユーザーネーム
-      email    { "user@invalid" }
-      password { "bar" }
+      name     { '' }
+      username { 'users' } # 既存のルーティング("/users")と重複するユーザーネーム
+      email    { 'user@invalid' }
+      password { 'bar' }
     end
 
     trait :guest do
-      name     { "Guest User" }
-      username { "guest" }
-      email    { "guest@example.com" }
-      password { "123456" }
+      name     { 'Guest User' }
+      username { 'guest' }
+      email    { 'guest@example.com' }
+      password { '123456' }
       guest    { true }
     end
 
     trait :admin do
-      name     { "Administrator" }
-      username { "admin" }
-      email    { "admin@example.com" }
-      password { "123456" }
+      name     { 'Administrator' }
+      username { 'admin' }
+      email    { 'admin@example.com' }
+      password { '123456' }
       admin    { true }
     end
 
@@ -42,6 +42,5 @@ FactoryBot.define do
         create_list(:post, evaluator.posts_count, user: user)
       end
     end
-    
   end
 end
