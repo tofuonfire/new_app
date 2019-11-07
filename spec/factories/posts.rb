@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
     image { Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/test.jpg')) }
-    caption { "I love it, amazing places, very very beautiful." }
+    caption { 'I love it, amazing places, very very beautiful.' }
     association :user
 
     trait :with_comments do
@@ -23,6 +23,5 @@ FactoryBot.define do
         create_list(:like, evaluator.likes_count, post: post)
       end
     end
-
   end
 end

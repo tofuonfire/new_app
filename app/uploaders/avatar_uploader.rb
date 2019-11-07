@@ -3,10 +3,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
 
-  process resize_to_fill: [500, 500, "Center"]
+  process resize_to_fill: [500, 500, 'Center']
 
   version :mini do
-    process resize_to_fill: [80, 80, "Center"]
+    process resize_to_fill: [80, 80, 'Center']
   end
 
   # Choose what kind of storage to use for this uploader:
@@ -49,7 +49,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 
   # Override the filename of the uploaded files:
@@ -60,8 +60,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   protected
 
-    def secure_token
-      var = :"@#{mounted_as}_secure_token"
-      model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
-    end
+  def secure_token
+    var = :"@#{mounted_as}_secure_token"
+    model.instance_variable_get(var) || model.instance_variable_set(var, SecureRandom.uuid)
+  end
 end

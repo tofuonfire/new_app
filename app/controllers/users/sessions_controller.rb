@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  after_action :delete_flash_message, only: [:create, :destory]
+  after_action :delete_flash_message, only: %i[create destory]
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -27,9 +27,7 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def delete_flash_message
-    if flash[:notice].present?
-      flash.delete(:notice)
-    end
+    flash.delete(:notice) if flash[:notice].present?
   end
 
   # If you have extra params to permit, append them to the sanitizer.

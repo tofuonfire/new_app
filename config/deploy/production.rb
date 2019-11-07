@@ -8,4 +8,4 @@ server '3.114.186.155',
     user: 'nt',
     keys: [File.expand_path('~/.ssh/mewblr_key_rsa')],
     forward_agent: true,
-}
+  }

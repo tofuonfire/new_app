@@ -1,7 +1,6 @@
 module ApplicationHelper
-  
   def website_name
-    "Mewblr"
+    'Mewblr'
   end
 
   # ページごとの完全なタイトルを返します
@@ -10,7 +9,7 @@ module ApplicationHelper
     if page_title.empty?
       base_title
     else
-      page_title + " | " + base_title
+      page_title + ' | ' + base_title
     end
   end
 

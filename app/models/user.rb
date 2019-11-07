@@ -2,12 +2,12 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
   has_many :posts, dependent: :destroy
 
-  has_many :active_relationships,  class_name:  "Relationship",
-                                   foreign_key: "follower_id",
-                                   dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                   foreign_key: "followed_id",
-                                   dependent:   :destroy
+  has_many :active_relationships,  class_name: 'Relationship',
+                                   foreign_key: 'follower_id',
+                                   dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
@@ -15,14 +15,13 @@ class User < ApplicationRecord
   has_many :like_posts, through: :likes, source: :post
 
   has_many :comments, dependent: :destroy
-  
+
   validates :name, presence: true, length: { maximum: 30 }
   validates :bio, length: { maximum: 140 }
-  validates :username, namespace: true, presence: true, uniqueness: { case_sensitive: :false }, length: { minimum: 4, maximum: 20 },
+  validates :username, namespace: true, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 4, maximum: 20 },
                        format: { with: /\A[a-z0-9_]+\z/ }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
-
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -35,7 +34,7 @@ class User < ApplicationRecord
   end
 
   def login
-    @login || self.username || self.email
+    @login || username || email
   end
 
   # ユーザーをフォローする
@@ -61,12 +60,14 @@ class User < ApplicationRecord
                      OR user_id = :user_id", user_id: id)
   end
 
+  # rubocop:disable Rails/FindBy, Lint/AssignmentInCondition
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+      where(conditions.to_h).where(['lower(username) = :value OR lower(email) = :value', { value: login.downcase }]).first
+    elsif conditions.key?(:username) || conditions.key?(:email)
       where(conditions.to_h).first
     end
   end
+  # rubocop:enable Rails/FindBy, Lint/AssignmentInCondition
 end
