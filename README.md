@@ -36,5 +36,6 @@ https://mewblr.com/
 * コメント機能（Ajax）
 * 検索機能（Ransackを使用）
 * 管理ユーザー機能（一般ユーザーのアカウントや投稿を削除可能）
+* Twitterへのシェア機能
 * Capistranoを用いたデプロイ機能
 * Rspecによる自動テスト機能
