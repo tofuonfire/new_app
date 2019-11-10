@@ -5,7 +5,6 @@ RSpec.describe 'Posts', type: :system, js: true do
     user = FactoryBot.create(:user, username: 'alice')
 
     visit root_path
-    expect(page).to have_content 'さらに詳しく'
 
     click_link 'ログイン'
     expect(current_path).to eq new_user_session_path
@@ -72,7 +71,6 @@ RSpec.describe 'Posts', type: :system, js: true do
     post_baz = FactoryBot.create(:post, caption: 'baz', user: user)
 
     visit root_path
-    expect(page).to have_content 'さらに詳しく'
 
     click_link 'ログイン'
     expect(current_path).to eq new_user_session_path

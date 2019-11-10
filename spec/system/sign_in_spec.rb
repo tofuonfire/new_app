@@ -8,7 +8,6 @@ RSpec.describe 'SignIn', type: :system do
                       password: '123456')
 
     visit root_path
-    expect(page).to have_content 'さらに詳しく'
 
     click_link 'ログイン'
     expect(current_path).to eq new_user_session_path
@@ -42,7 +41,6 @@ RSpec.describe 'SignIn', type: :system do
 
     click_on 'ログアウト'
     expect(current_path).to eq root_path
-    expect(page).to have_content 'さらに詳しく'
 
     click_link 'ログイン'
     expect(current_path).to eq new_user_session_path
@@ -74,7 +72,6 @@ RSpec.describe 'SignIn', type: :system do
     guest = FactoryBot.create(:user, :guest)
 
     visit root_path
-    expect(page).to have_content 'さらに詳しく'
     expect(page).to have_content 'こちらからゲストユーザーとしてログインできます'
 
     find('nav.signin-as-guest').click
@@ -100,7 +97,6 @@ RSpec.describe 'SignIn', type: :system do
     guest = FactoryBot.create(:user, :guest)
 
     visit root_path
-    expect(page).to have_content 'さらに詳しく'
 
     click_link 'ログイン'
     expect(current_path).to eq new_user_session_path

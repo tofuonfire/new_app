@@ -55,7 +55,6 @@ RSpec.describe User, type: :model do
 
     it '既存のルーティングと重複したユーザーネームなら無効であること' do
       aggregate_failures do
-        expect(FactoryBot.build(:user, username: 'about')).to_not be_valid
         expect(FactoryBot.build(:user, username: 'confirm_email')).to_not be_valid
         expect(FactoryBot.build(:user, username: 'users')).to_not be_valid
         expect(FactoryBot.build(:user, username: 'relationships')).to_not be_valid

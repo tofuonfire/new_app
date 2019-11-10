@@ -7,11 +7,4 @@ RSpec.describe 'StaticPages', type: :request do
       expect(response).to have_http_status 200
     end
   end
-
-  describe 'GET /about' do
-    it '正常にレスポンスを返すこと' do
-      get about_path
-      expect(response).to have_http_status 200
-    end
-  end
 end

@@ -10,7 +10,6 @@ RSpec.describe 'Search', type: :system do
     bob = FactoryBot.create(:user, username: 'bobx')
 
     visit root_path
-    expect(page).to have_content 'さらに詳しく'
 
     # 未ログイン状態でもアクセスできること
     find('a.navbar-search-btn').click
