@@ -12,7 +12,6 @@ RSpec.describe 'SignUp', type: :system do
 
   it 'ユーザーを作成したあと、確認メールからアカウントを有効化してログインする' do
     visit root_path
-    expect(page).to have_content 'さらに詳しく'
 
     click_link '新規登録'
     expect(current_path).to eq new_user_registration_path

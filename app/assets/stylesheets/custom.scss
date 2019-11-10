@@ -322,9 +322,13 @@ footer {
     }
     
     .home-catch-link{
+      cursor: pointer;
       color: #fff;
       font-size: 1.1rem;
       z-index: 2;
+      &:hover {
+        text-decoration-line: underline;
+      }
     }
   }
   @include md {
@@ -820,9 +824,9 @@ footer {
     }
 
     &.like {
-      background-color: #f90e43;
-      color: #fff;
-      min-width: 100px;
+      border: 2px solid #f90e43;
+      color: #f90e43;
+      min-width: 105px;
       height: 40px;
 
       .fa-thumbs-up {
@@ -838,9 +842,10 @@ footer {
     }
 
     &.unlike {
-      background-color: rgba(0, 0, 0, 0.1);
-      color: rgba(0, 0, 0, 0.5);
-      min-width: 100px;
+      border: 2px solid rgba(0, 0, 0, 0.3);
+      color: rgba(0, 0, 0, 0.3);
+      font-weight: 800;
+      min-width: 105px;
       height: 40px;
 
       .fa-thumbs-up {
@@ -1148,7 +1153,7 @@ footer {
 }
 
 
-.search-users-footer, .show-follow-footer, .show-following-footer, .show-followers-footer {
+.search-users-footer, .show-follow-footer, .show-following-footer, .show-followers-footer, .all-users-footer {
   .loadmore-btn-wrapper { margin: 0; }
 }
 
