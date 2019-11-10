@@ -97,7 +97,6 @@ namespace :deploy do
   before :check,        'setup:config'
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
-  after  :migrate,      :seed
 end
 
 namespace :setup do
