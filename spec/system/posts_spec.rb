@@ -53,7 +53,7 @@ RSpec.describe 'Posts', type: :system, js: true do
 
     # 投稿を削除する
     find('button.btn.dropdown-toggle.setting-btn').click
-    page.all('.dropdown-item')[1].click
+    page.all('.dropdown-item')[2].click
     expect(page).to have_content '投稿を削除しますか？'
 
     expect do
