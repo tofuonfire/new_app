@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7.28
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: mewblr_development
+      MYSQL_ROOT_PASSWORD: password
+    tty: true
+    ports:
+      - 3306:3306
+    command: mysqld --character-set-server=utf8mb4 --explicit_defaults_for_timestamp=true
+  rails:
+    build:
+      context: .
+    volumes:
+      - .:/mewblr
+      - public-data:/mewblr/public
+      - tmp-data:/mewblr/tmp
+      - log-data:/mewblr/log
+    environment:
+      RAILS_ENV: development
+    depends_on:
+      - db
+    command: sh scripts/launch.sh
+  nginx:
+    build: 
+      context: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+      - rails
+    volumes:
+      - public-data:/mewblr/public
+      - tmp-data:/mewblr/tmp
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  mysql_data:
