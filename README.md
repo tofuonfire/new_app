@@ -1,5 +1,5 @@
 # Mewblr
-シンプルな画像投稿SNSです（ミューブラーと読みます）<br>
+インスタグラム風の画像投稿SNSです（ミューブラーと読みます）<br>
 就活用のポートフォリオとして作成しました。
 
 ## URL
@@ -22,11 +22,14 @@ https://mewblr.com/
   * Route53
   * SES
   * ACM
+* Docker
 * Capistrano
-* SASS, Bootstrap, JQuery
 * RSpec
+* SASS, Bootstrap, JQuery
   
 ## 機能一覧
+* Capistranoを用いたデプロイ機能
+* Rspecによる自動テスト機能
 * ユーザー登録・ログイン機能（deviseを使用）
 * 投稿機能（画像のアップロードにCarrierWaveを使用）
 * 投稿一覧・投稿詳細表示機能
@@ -38,5 +41,3 @@ https://mewblr.com/
 * 検索機能（Ransackを使用）
 * 管理ユーザー機能（一般ユーザーのアカウントや投稿を削除可能）
 * Twitterへのシェア機能
-* Capistranoを用いたデプロイ機能
-* Rspecによる自動テスト機能
