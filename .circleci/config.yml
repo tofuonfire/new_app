@@ -80,13 +80,13 @@ jobs:
 
       - run: ls ~/.ssh
 
-      # - deploy:
-      #     name: Capistrano Deploy
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" != "master" ]; then
-      #         exit 0
-      #       fi
-      #       bundle exec cap production deploy
+      - deploy:
+          name: Capistrano Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
 
       - run:
           name: revoke-security-group-ingress
