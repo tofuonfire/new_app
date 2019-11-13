@@ -41,6 +41,7 @@ group :development do
   gem 'capistrano3-puma', require: false
   gem 'ed25519'
   gem 'sshkit-sudo', require: false
+
   gem 'letter_opener_web'
   gem 'listen'
   gem 'spring'
@@ -51,10 +52,10 @@ end
 
 group :test do
   gem 'simplecov', require: false
+
   gem 'capybara'
   gem 'launchy'
   gem 'webdrivers'
-  gem "rspec_junit_formatter"
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
