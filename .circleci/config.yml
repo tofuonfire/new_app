@@ -74,6 +74,8 @@ jobs:
           fingerprints:
             - "26:52:21:80:04:7b:c6:cd:7b:ff:48:a3:d7:b3:7b:b1"
 
+      - run: mv config/deploy/production.rb.ci config/deploy/production.rb
+
       - deploy:
           name: Capistrano Deploy
           command: |
