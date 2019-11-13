@@ -41,7 +41,6 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
 )
 set :linked_files, fetch(:linked_files, []).push(
   'config/database.yml',
-  'config/master.key',
   '.env'
 )
 
@@ -103,7 +102,7 @@ namespace :setup do
   desc 'setup config'
   task :config do
     on roles(:app) do |host|
-      %w[master.key database.yml].each do |f|
+      %w[database.yml].each do |f|
         upload! "config/#{f}", "#{shared_path}/config/#{f}"
       end
 
