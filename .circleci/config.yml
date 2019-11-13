@@ -74,15 +74,15 @@ jobs:
           fingerprints:
             - "26:52:21:80:04:7b:c6:cd:7b:ff:48:a3:d7:b3:7b:b1"
 
-      - run: mv config/deploy/production.rb.ci config/deploy/production.rb
+      # - run: mv config/deploy/production.rb.ci config/deploy/production.rb
 
-      - run: ssh-keyscan 3.114.186.155 >> ~/.ssh/known_hosts
+      # - run: ssh-keyscan 3.114.186.155 >> ~/.ssh/known_hosts
 
-      - run: chmod 600 ~/.ssh/id_rsa_26522180047bc6cd7bff48a3d7b37bb1
+      # - run: chmod 600 ~/.ssh/id_rsa_26522180047bc6cd7bff48a3d7b37bb1
 
-      - run: ssh -i ~/.ssh/id_rsa_26522180047bc6cd7bff48a3d7b37bb1 nt@3.114.186.155
+      # - run: ssh -i ~/.ssh/id_rsa_26522180047bc6cd7bff48a3d7b37bb1 nt@3.114.186.155
 
-      - run: exit
+      # - run: exit
 
       # - run: cat config/deploy/production.rb
 
@@ -90,13 +90,13 @@ jobs:
 
       # - run: cat ~/.ssh/id_rsa
 
-      # - deploy:
-      #     name: Capistrano Deploy
-      #     command: |
-      #       if [ "${CIRCLE_BRANCH}" != "master" ]; then
-      #         exit 0
-      #       fi
-      #       bundle exec cap production deploy
+      - deploy:
+          name: Capistrano Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" != "master" ]; then
+              exit 0
+            fi
+            bundle exec cap production deploy
 
       - run:
           name: revoke-security-group-ingress
