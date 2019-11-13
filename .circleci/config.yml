@@ -76,6 +76,8 @@ jobs:
 
       - run: mv config/deploy/production.rb.ci config/deploy/production.rb
 
+      - run: ssh-keyscan 3.114.186.155 >> ~/.ssh/known_hosts
+
       - run: ssh -i ~/.ssh/id_rsa_26522180047bc6cd7bff48a3d7b37bb1 nt@3.114.186.155
 
       - run: exit
