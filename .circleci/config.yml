@@ -58,10 +58,12 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
+      - run: sudo pip install awscli
+
       - add_ssh_keys:
           fingerprints:
             - "26:52:21:80:04:7b:c6:cd:7b:ff:48:a3:d7:b3:7b:b1"
 
-      - deploy:
-          name: Capistrano Deploy
-          command: bundle exec cap production deploy
+      # - deploy:
+      #     name: Capistrano Deploy
+      #     command: bundle exec cap production deploy
