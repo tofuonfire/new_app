@@ -78,6 +78,8 @@ jobs:
 
       - run: ssh-keyscan 3.114.186.155 >> ~/.ssh/known_hosts
 
+      - run: chmod 600 ~/.ssh/id_rsa_26522180047bc6cd7bff48a3d7b37bb1
+
       - run: ssh -i ~/.ssh/id_rsa_26522180047bc6cd7bff48a3d7b37bb1 nt@3.114.186.155
 
       - run: exit
