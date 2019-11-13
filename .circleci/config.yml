@@ -36,7 +36,7 @@ jobs:
       - run: bundle exec rake db:schema:load
 
       - run:
-          name: Run Rubocop
+          name: Run RuboCop
           command: bundle exec rubocop
 
       - run:
@@ -57,3 +57,12 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+      - add_ssh_keys:
+          fingerprints:
+            - "26:52:21:80:04:7b:c6:cd:7b:ff:48:a3:d7:b3:7b:b1"
+
+      - deploy:
+          name: Capistrano Deploy
+          command:
+　　　　　　  bundle exec cap production deploy
