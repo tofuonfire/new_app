@@ -43,7 +43,7 @@ jobs:
 
       - run:
           name: Run RuboCop in Parallel
-          command: bundle exec rubocop --parallel
+          command: bundle exec rubocop --parallel --config .rubocop.yml
 
       - run:
           name: Run RSpec in Parallel
