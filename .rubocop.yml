@@ -38,6 +38,6 @@ Metrics/AbcSize:
 Rails/InverseOf:
   Enabled: false
 
-MethodLength:
+Metrics/MethodLength:
   CountComments: true
   Max: 11
