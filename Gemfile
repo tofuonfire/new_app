@@ -40,21 +40,20 @@ group :development do
   gem 'capistrano-rbenv', require: false
   gem 'capistrano3-puma', require: false
   gem 'ed25519'
-  gem 'sshkit-sudo', require: false
-
   gem 'letter_opener_web'
   gem 'listen'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-watcher-listen'
+  gem 'sshkit-sudo', require: false
   gem 'web-console'
 end
 
 group :test do
-  gem 'simplecov', require: false
-
   gem 'capybara'
   gem 'launchy'
+  gem 'rspec_junit_formatter'
+  gem 'simplecov', require: false
   gem 'webdrivers'
 end
 
