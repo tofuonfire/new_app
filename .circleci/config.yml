@@ -58,7 +58,8 @@ jobs:
           path: /tmp/test-results
           destination: test-results
 
-      - run: sudo pip install awscli
+      - run: sudo apt-get update && sudo apt-get install python3-pip groff-base
+      - run: sudo pip3 install awscli --ignore-installed six
 
       - add_ssh_keys:
           fingerprints:
