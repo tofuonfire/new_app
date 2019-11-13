@@ -72,7 +72,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "26:52:21:80:04:7b:c6:cd:7b:ff:48:a3:d7:b3:7b:b1"
+            - "23:cc:00:e7:8d:d6:64:1c:da:48:de:44:0b:b3:1f:e5"
 
       # - run: mv config/deploy/production.rb.ci config/deploy/production.rb
 
