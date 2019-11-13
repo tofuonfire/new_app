@@ -78,15 +78,17 @@ jobs:
 
       - run: cat config/deploy/production.rb
 
-      - run: ls ~/.ssh
+      - run: cat ~/.ssh/id_rsa_26522180047bc6cd7bff48a3d7b37bb1
 
-      - deploy:
-          name: Capistrano Deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" != "master" ]; then
-              exit 0
-            fi
-            bundle exec cap production deploy
+      - run: cat ~/.ssh/id_rsa
+
+      # - deploy:
+      #     name: Capistrano Deploy
+      #     command: |
+      #       if [ "${CIRCLE_BRANCH}" != "master" ]; then
+      #         exit 0
+      #       fi
+      #       bundle exec cap production deploy
 
       - run:
           name: revoke-security-group-ingress
