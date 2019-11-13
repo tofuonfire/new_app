@@ -76,13 +76,17 @@ jobs:
 
       - run: mv config/deploy/production.rb.ci config/deploy/production.rb
 
-      - deploy:
-          name: Capistrano Deploy
-          command: |
-            if [ "${CIRCLE_BRANCH}" != "master" ]; then
-              exit 0
-            fi
-            bundle exec cap production deploy
+      - run: cat config/deploy/production.rb
+
+      - run: ls ~/.ssh
+
+      # - deploy:
+      #     name: Capistrano Deploy
+      #     command: |
+      #       if [ "${CIRCLE_BRANCH}" != "master" ]; then
+      #         exit 0
+      #       fi
+      #       bundle exec cap production deploy
 
       - run:
           name: revoke-security-group-ingress
