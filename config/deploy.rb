@@ -41,6 +41,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push(
 )
 set :linked_files, fetch(:linked_files, []).push(
   'config/database.yml',
+  'config/master.key',
   '.env'
 )
 
