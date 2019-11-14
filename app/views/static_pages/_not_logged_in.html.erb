@@ -33,7 +33,9 @@
       <div class="post-cards latest row">
         <% @latest_posts.each do |post| %>
           <div class="post-card col-6 col-sm-4">
-            <%= link_to image_tag(post.image.url, class: "post-card-img img-fluid", alt: "post image"), post_path(post) %>
+            <div class="post-card-img">
+              <%= link_to image_tag(post.image.url, class: "img-fluid", alt: "post image"), post_path(post) %>
+            </div>
             <div class="post-card-footer d-flex align-items-center">
               <% if post.user.avatar?%>
                 <%= link_to image_tag(post.user.avatar.mini.url, size: "35x35", class: "rounded-circle z-depth-0",
@@ -64,7 +66,9 @@
       <div class="post-cards popular row">
         <% @popular_posts.each do |post| %>
           <div class="post-card col-6 col-sm-4">
-            <%= link_to image_tag(post.image.url, class: "post-card-img img-fluid", alt: "post image"), post_path(post) %>
+            <div class="post-card-img">
+              <%= link_to image_tag(post.image.url, class: "img-fluid", alt: "post image"), post_path(post) %>
+            </div>
             <div class="post-card-footer d-flex align-items-center">
               <% if post.user.avatar?%>
                 <%= link_to image_tag(post.user.avatar.mini.url, size: "35x35", class: "rounded-circle z-depth-0",
