@@ -43,10 +43,19 @@
         </div>
       </div>
     <% else %>
-      <div class="dropdown" style="margin-right: 15px;">
+      <div class="dropdown d-block d-sm-none" style="margin-right: 15px;">
         <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="51,10",
                           aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
         <div class="dropdown-menu dropdown-menu-right">
+          <a href="https://twitter.com/share?url=<%= post_url(object) %>" target="_blank" rel="nofollow" class="dropdown-item opensub d-flex align-items-center">
+            <div style="width: 100%">投稿を共有</div><i class="fab fa-twitter" style="position: relative; left: 2px;"></i>
+          </a>
+        </div>
+      </div>
+      <div class="dropdown d-none d-sm-block" style="margin-right: 15px;">
+        <button type="button" class="btn dropdown-toggle setting-btn py-0 px-1", data-toggle="dropdown", data-offset="-18,10",
+                          aria-haspopup="true", aria-expanded="false", style="box-shadow: none" ><i class="fas fa-ellipsis-h"></i></button>
+        <div class="dropdown-menu dropdown-menu-left">
           <a href="https://twitter.com/share?url=<%= post_url(object) %>" target="_blank" rel="nofollow" class="dropdown-item opensub d-flex align-items-center">
             <div style="width: 100%">投稿を共有</div><i class="fab fa-twitter" style="position: relative; left: 2px;"></i>
           </a>
