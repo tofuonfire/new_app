@@ -29,6 +29,8 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+      
+      - run: mv config/database.yml config/database.yml.org
 
       - run: mv config/database.yml.ci config/database.yml 
 
@@ -57,6 +59,8 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+      - run: mv config/database.yml.org config/database.yml
 
       - run: sudo apt-get update && sudo apt-get install python3-pip groff-base
       - run: sudo pip3 install awscli --ignore-installed six
