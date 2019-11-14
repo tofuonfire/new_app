@@ -102,7 +102,7 @@ namespace :setup do
   desc 'setup config'
   task :config do
     on roles(:app) do |host|
-      %w[database.yml].each do |f|
+      %w[master.key database.yml].each do |f|
         upload! "config/#{f}", "#{shared_path}/config/#{f}"
       end
 
