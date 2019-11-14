@@ -94,7 +94,7 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
-  before :check,        'setup:config'
+  # before :check,        'setup:config'
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
 end
