@@ -23,12 +23,13 @@ https://mewblr.com/
   * SES
   * ACM
 * Docker
+* CircleCI
 * Capistrano
 * RSpec
 * SASS, Bootstrap, JQuery
   
 ## 機能一覧
-* Capistranoを用いたデプロイ機能
+* CircleCIを用いたCI/CD機能
 * Rspecによる自動テスト機能
 * ユーザー登録・ログイン機能（deviseを使用）
 * 投稿機能（画像のアップロードにCarrierWaveを使用）
