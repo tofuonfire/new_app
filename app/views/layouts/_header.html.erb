@@ -2,13 +2,16 @@
   <div class="container">
     <%= link_to website_name, root_path, class: "navbar-brand font-weight-bold" %>
     <%= link_to search_posts_path, class: "navbar-search-btn" do %><i class="fas fa-search"></i><% end %>
+    <%= link_to users_path, class: "navbar-users nav-item nav-link active px-0 mr-1" do %>
+      <i class="fas fa-user-friends" style="font-size: 1.1rem; position: relative; top: 1px; left: 2px;"></i>
+    <% end %>
     <div class="collapse navbar-collapse justify-content-end">
       <ul class="navbar-nav align-items-center">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "すべてのユーザー", users_path, class: "nav-link active d-none d-sm-block px-0 mr-1" %>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item d-flex align-items-center">
+            <%= link_to user_path(current_user), class: "avatar-user-name nav-link mr-3 p-0" do %>
+              <div class="nav-username d-none d-sm-flex"><div style="font-size: 1.05rem;">@</div><div class="nav-username-text"><%= current_user.username %></div></div>
+            <% end %>
             <% if current_user.avatar?%>
               <%= link_to image_tag(current_user.avatar.mini.url, class: "avatar-img rounded-circle z-depth-0",
                                     alt: "nav avatar image"), user_path(current_user), class: "nav-link p-0" %>
@@ -16,16 +19,12 @@
               <%= link_to image_tag("no_user.png", class: "avatar-img rounded-circle z-depth-0",
                                     alt: "nav avatar image"), user_path(current_user), class: "nav-link p-0" %>
             <% end %>
-            
           </li>
           <li class="nav-item">
             <%= link_to new_post_path, class: "btn btn-dark nav-btn", style: "background-color: #23272b; position: relative; left: 1px;" do %><i class="far fa-edit mr-1"></i>投稿<% end %>
           </li>
 
         <% else %>
-          <li class="nav-item">
-            <%= link_to "すべてのユーザー", users_path, class: "nav-link active d-none d-sm-block px-0 mr-sm-2" %>
-          </li>
           <li class="nav-item">
             <%= link_to "ログイン", new_user_session_path, class: "nav-link active px-0 mr-sm-2" %>
           </li>
