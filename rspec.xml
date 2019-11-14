@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="rspec" tests="76" skipped="0" failures="0" errors="0" time="79.405397" timestamp="2019-11-14T21:08:55+09:00" hostname="MacBook.local">
+<testsuite name="rspec" tests="76" skipped="0" failures="0" errors="0" time="79.950578" timestamp="2019-11-14T22:34:03+09:00" hostname="MacBook.local">
 <properties>
 <property name="seed" value="40581"/>
 </properties>
-<testcase classname="spec.helpers.application_helper_spec" name="ApplicationHelper website_name サイト名を返すこと" file="./spec/helpers/application_helper_spec.rb" time="0.008000"></testcase>
-<testcase classname="spec.helpers.application_helper_spec" name="ApplicationHelper full_title ページタイトルが無いならサイト名だけを返すこと" file="./spec/helpers/application_helper_spec.rb" time="0.002906"></testcase>
-<testcase classname="spec.helpers.application_helper_spec" name="ApplicationHelper full_title ページタイトルがあるならサイト名を合わせた完全なタイトルを返すこと " file="./spec/helpers/application_helper_spec.rb" time="0.001786"></testcase>
-<testcase classname="spec.helpers.application_helper_spec" name="ApplicationHelper date_format 投稿やコメントがされてから現在までのおおよその時間/日数を返すこと" file="./spec/helpers/application_helper_spec.rb" time="1.824560"></testcase>
-<testcase classname="spec.models.comment_spec" name="Comment 内容がなければ無効であること" file="./spec/models/comment_spec.rb" time="0.952743"></testcase>
-<testcase classname="spec.models.comment_spec" name="Comment 内容が240文字以内なら有効であること" file="./spec/models/comment_spec.rb" time="1.006867"></testcase>
-<testcase classname="spec.models.comment_spec" name="Comment 内容が240文字を越えるなら無効であること" file="./spec/models/comment_spec.rb" time="1.085801"></testcase>
-<testcase classname="spec.models.comment_spec" name="Comment 新しい順に並んでいること" file="./spec/models/comment_spec.rb" time="1.074194"></testcase>
-<testcase classname="spec.models.post_spec" name="Post 有効なファクトリを持つこと" file="./spec/models/post_spec.rb" time="1.072019"></testcase>
-<testcase classname="spec.models.post_spec" name="Post ユーザー、画像、URLトークンがあれば有効な状態であること" file="./spec/models/post_spec.rb" time="0.996553"></testcase>
-<testcase classname="spec.models.post_spec" name="Post 存在性の検証 画像がなければ無効な状態であること" file="./spec/models/post_spec.rb" time="1.023213"></testcase>
-<testcase classname="spec.models.post_spec" name="Post 存在性の検証 ユーザーがなければ無効な状態であること" file="./spec/models/post_spec.rb" time="0.993822"></testcase>
-<testcase classname="spec.models.post_spec" name="Post 存在性の検証 URLトークンがなければ無効な状態であること" file="./spec/models/post_spec.rb" time="1.069299"></testcase>
-<testcase classname="spec.models.post_spec" name="Post 一意性の検証 重複したURLトークンなら無効な状態であること" file="./spec/models/post_spec.rb" time="2.191964"></testcase>
-<testcase classname="spec.models.post_spec" name="Post 文字数の検証 キャプションが240文字以内なら有効であること" file="./spec/models/post_spec.rb" time="0.982155"></testcase>
-<testcase classname="spec.models.post_spec" name="Post 文字数の検証 キャプションが240文字を越えるなら無効であること" file="./spec/models/post_spec.rb" time="0.907126"></testcase>
-<testcase classname="spec.models.post_spec" name="Post メソッド 投稿をいいね/いいね解除できること" file="./spec/models/post_spec.rb" time="0.905564"></testcase>
-<testcase classname="spec.models.post_spec" name="Post その他 編集しても、URLトークンが変わらないこと" file="./spec/models/post_spec.rb" time="0.854427"></testcase>
-<testcase classname="spec.models.post_spec" name="Post その他 新しい順に並んでいること" file="./spec/models/post_spec.rb" time="3.372753"></testcase>
-<testcase classname="spec.models.post_spec" name="Post その他 削除すると、関連するコメントも削除されること" file="./spec/models/post_spec.rb" time="0.872768"></testcase>
-<testcase classname="spec.models.post_spec" name="Post その他 削除すると、関連するいいねも削除されること" file="./spec/models/post_spec.rb" time="0.837835"></testcase>
-<testcase classname="spec.models.user_spec" name="User 有効なファクトリを持つこと" file="./spec/models/user_spec.rb" time="0.013737"></testcase>
-<testcase classname="spec.models.user_spec" name="User 名前、ユーザーネーム、メールアドレス、パスワードがあれば有効な状態であること" file="./spec/models/user_spec.rb" time="0.011225"></testcase>
-<testcase classname="spec.models.user_spec" name="User 存在性の検証 名前がなければ無効な状態であること" file="./spec/models/user_spec.rb" time="0.010226"></testcase>
-<testcase classname="spec.models.user_spec" name="User 存在性の検証 ユーザーネームがなければ無効な状態であること" file="./spec/models/user_spec.rb" time="0.010368"></testcase>
-<testcase classname="spec.models.user_spec" name="User 存在性の検証 メールアドレスがなければ無効な状態であること" file="./spec/models/user_spec.rb" time="0.011625"></testcase>
-<testcase classname="spec.models.user_spec" name="User 存在性の検証 パスワードがなければ無効な状態であること" file="./spec/models/user_spec.rb" time="0.010642"></testcase>
-<testcase classname="spec.models.user_spec" name="User 一意性の検証 重複したユーザーネームなら無効な状態であること" file="./spec/models/user_spec.rb" time="0.025347"></testcase>
-<testcase classname="spec.models.user_spec" name="User 一意性の検証 既存のルーティングと重複したユーザーネームなら無効であること" file="./spec/models/user_spec.rb" time="0.048901"></testcase>
-<testcase classname="spec.models.user_spec" name="User 一意性の検証 重複したメールアドレスなら無効な状態であること" file="./spec/models/user_spec.rb" time="0.019898"></testcase>
-<testcase classname="spec.models.user_spec" name="User 一意性の検証 メールアドレスは大文字小文字を区別せず扱うこと" file="./spec/models/user_spec.rb" time="0.021711"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 名前が30文字以内なら有効であること" file="./spec/models/user_spec.rb" time="0.007524"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 名前が30文字を越えるなら無効であること" file="./spec/models/user_spec.rb" time="0.007636"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 自己紹介が140文字以内なら有効であること" file="./spec/models/user_spec.rb" time="0.006906"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 自己紹介が140文字を越えるなら無効であること" file="./spec/models/user_spec.rb" time="0.007945"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 ユーザーネームが4文字未満なら無効であること" file="./spec/models/user_spec.rb" time="0.008115"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 ユーザーネームが4~20文字の範囲なら有効であること" file="./spec/models/user_spec.rb" time="0.007397"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 ユーザーネームが20文字を越えるなら無効であること" file="./spec/models/user_spec.rb" time="0.008211"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 メールアドレスが255文字以内なら有効であること" file="./spec/models/user_spec.rb" time="0.007724"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 メールアドレスが255文字を越えるなら無効であること" file="./spec/models/user_spec.rb" time="0.008320"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 パスワードが6文字未満なら無効であること" file="./spec/models/user_spec.rb" time="0.009378"></testcase>
-<testcase classname="spec.models.user_spec" name="User 文字数の検証 パスワードが6文字以上なら有効であること" file="./spec/models/user_spec.rb" time="0.009024"></testcase>
-<testcase classname="spec.models.user_spec" name="User フォーマットの検証 ユーザーネームが正当なフォーマットなら有効であること" file="./spec/models/user_spec.rb" time="0.015694"></testcase>
-<testcase classname="spec.models.user_spec" name="User フォーマットの検証 ユーザーネームが不正なフォーマットなら無効であること" file="./spec/models/user_spec.rb" time="0.087807"></testcase>
-<testcase classname="spec.models.user_spec" name="User フォーマットの検証 メールアドレスが正当なフォーマットなら有効であること" file="./spec/models/user_spec.rb" time="0.091529"></testcase>
-<testcase classname="spec.models.user_spec" name="User フォーマットの検証 メールアドレスが不正なフォーマットなら無効であること" file="./spec/models/user_spec.rb" time="0.033232"></testcase>
-<testcase classname="spec.models.user_spec" name="User メソッド ユーザーをフォロー/フォロー解除できること" file="./spec/models/user_spec.rb" time="0.064254"></testcase>
-<testcase classname="spec.models.user_spec" name="User メソッド フィードが正しい投稿のコレクションを保持していること" file="./spec/models/user_spec.rb" time="5.408321"></testcase>
-<testcase classname="spec.models.user_spec" name="User その他 メールアドレスは全て小文字で保存されること" file="./spec/models/user_spec.rb" time="0.023039"></testcase>
-<testcase classname="spec.models.user_spec" name="User その他 削除すると、関連する投稿も削除されること" file="./spec/models/user_spec.rb" time="0.997241"></testcase>
-<testcase classname="spec.models.user_spec" name="User その他 削除すると、フォロー中のユーザーとの関係も削除されること" file="./spec/models/user_spec.rb" time="0.053391"></testcase>
-<testcase classname="spec.models.user_spec" name="User その他 削除すると、フォロワーのユーザーとの関係も削除されること" file="./spec/models/user_spec.rb" time="0.041494"></testcase>
-<testcase classname="spec.requests.posts_spec" name="Posts #new 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="0.088990"></testcase>
-<testcase classname="spec.requests.posts_spec" name="Posts #create 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="0.040286"></testcase>
-<testcase classname="spec.requests.posts_spec" name="Posts #edit 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="1.064237"></testcase>
-<testcase classname="spec.requests.posts_spec" name="Posts #update 認可されていないユーザーとして 投稿を更新できないこと" file="./spec/requests/posts_spec.rb" time="0.986193"></testcase>
-<testcase classname="spec.requests.posts_spec" name="Posts #update 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="1.125034"></testcase>
-<testcase classname="spec.requests.posts_spec" name="Posts #destroy 認可されていないユーザーとして 投稿を削除できないこと" file="./spec/requests/posts_spec.rb" time="0.916598"></testcase>
-<testcase classname="spec.requests.posts_spec" name="Posts #destroy 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="0.911643"></testcase>
-<testcase classname="spec.requests.registrations_spec" name="Registrations GET /confirm_email 認証済みのユーザーの場合 トップページにリダイレクトされること" file="./spec/requests/registrations_spec.rb" time="0.062199"></testcase>
-<testcase classname="spec.requests.registrations_spec" name="Registrations GET /confirm_email 未ログイン状態のとき 正常にレスポンスを返すこと" file="./spec/requests/registrations_spec.rb" time="4.388020"></testcase>
-<testcase classname="spec.requests.static_pages_spec" name="StaticPages GET / 正常にレスポンスを返すこと" file="./spec/requests/static_pages_spec.rb" time="0.058952"></testcase>
-<testcase classname="spec.system.comments_spec" name="Comments 既存の投稿にコメントをして、削除する" file="./spec/system/comments_spec.rb" time="10.460537"></testcase>
-<testcase classname="spec.system.edit_user_registration_spec" name="EditUserRegistration ユーザー情報を編集する" file="./spec/system/edit_user_registration_spec.rb" time="3.009450"></testcase>
-<testcase classname="spec.system.likes_spec" name="Likes 投稿をいいね/いいね解除する" file="./spec/system/likes_spec.rb" time="3.671525"></testcase>
-<testcase classname="spec.system.posts_spec" name="Posts 新規投稿したあと、その投稿を編集して最後に削除する" file="./spec/system/posts_spec.rb" time="3.414247"></testcase>
-<testcase classname="spec.system.posts_spec" name="Posts フィードページから正しく投稿を削除できること" file="./spec/system/posts_spec.rb" time="4.096545"></testcase>
-<testcase classname="spec.system.relationships_spec" name="Relationships ユーザーをフォロー/フォロー解除する" file="./spec/system/relationships_spec.rb" time="3.191931"></testcase>
-<testcase classname="spec.system.reset_password_spec" name="ResetPassword 非ログイン状態から、ユーザーのパスワードを再設定する" file="./spec/system/reset_password_spec.rb" time="0.673257"></testcase>
-<testcase classname="spec.system.search_spec" name="Search 投稿/ユーザーを検索する" file="./spec/system/search_spec.rb" time="5.621661"></testcase>
-<testcase classname="spec.system.sign_in_spec" name="SignIn ユーザーネームとメールアドレスのどちらでもログインできること" file="./spec/system/sign_in_spec.rb" time="2.282070"></testcase>
-<testcase classname="spec.system.sign_in_spec" name="SignIn メールアドレスが未承認のユーザーではログインできないこと" file="./spec/system/sign_in_spec.rb" time="0.142660"></testcase>
-<testcase classname="spec.system.sign_in_spec" name="SignIn ゲストユーザーとしてログインする" file="./spec/system/sign_in_spec.rb" time="1.122392"></testcase>
-<testcase classname="spec.system.sign_in_spec" name="SignIn 管理ユーザーとしてログインする" file="./spec/system/sign_in_spec.rb" time="1.983769"></testcase>
-<testcase classname="spec.system.sign_up_spec" name="SignUp ユーザーを作成したあと、確認メールからアカウントを有効化してログインする" file="./spec/system/sign_up_spec.rb" time="0.469578"></testcase>
-<testcase classname="spec.system.sign_up_spec" name="SignUp 再送信された確認メールからアカウントを有効化してログインする" file="./spec/system/sign_up_spec.rb" time="0.424382"></testcase>
+<testcase classname="spec.helpers.application_helper_spec" name="ApplicationHelper website_name サイト名を返すこと" file="./spec/helpers/application_helper_spec.rb" time="0.007806"></testcase>
+<testcase classname="spec.helpers.application_helper_spec" name="ApplicationHelper full_title ページタイトルが無いならサイト名だけを返すこと" file="./spec/helpers/application_helper_spec.rb" time="0.001897"></testcase>
+<testcase classname="spec.helpers.application_helper_spec" name="ApplicationHelper full_title ページタイトルがあるならサイト名を合わせた完全なタイトルを返すこと " file="./spec/helpers/application_helper_spec.rb" time="0.001734"></testcase>
+<testcase classname="spec.helpers.application_helper_spec" name="ApplicationHelper date_format 投稿やコメントがされてから現在までのおおよその時間/日数を返すこと" file="./spec/helpers/application_helper_spec.rb" time="1.836216"></testcase>
+<testcase classname="spec.models.comment_spec" name="Comment 内容がなければ無効であること" file="./spec/models/comment_spec.rb" time="1.123190"></testcase>
+<testcase classname="spec.models.comment_spec" name="Comment 内容が240文字以内なら有効であること" file="./spec/models/comment_spec.rb" time="1.011181"></testcase>
+<testcase classname="spec.models.comment_spec" name="Comment 内容が240文字を越えるなら無効であること" file="./spec/models/comment_spec.rb" time="1.100029"></testcase>
+<testcase classname="spec.models.comment_spec" name="Comment 新しい順に並んでいること" file="./spec/models/comment_spec.rb" time="0.949480"></testcase>
+<testcase classname="spec.models.post_spec" name="Post 有効なファクトリを持つこと" file="./spec/models/post_spec.rb" time="0.879039"></testcase>
+<testcase classname="spec.models.post_spec" name="Post ユーザー、画像、URLトークンがあれば有効な状態であること" file="./spec/models/post_spec.rb" time="0.822382"></testcase>
+<testcase classname="spec.models.post_spec" name="Post 存在性の検証 画像がなければ無効な状態であること" file="./spec/models/post_spec.rb" time="0.831523"></testcase>
+<testcase classname="spec.models.post_spec" name="Post 存在性の検証 ユーザーがなければ無効な状態であること" file="./spec/models/post_spec.rb" time="0.986175"></testcase>
+<testcase classname="spec.models.post_spec" name="Post 存在性の検証 URLトークンがなければ無効な状態であること" file="./spec/models/post_spec.rb" time="0.914156"></testcase>
+<testcase classname="spec.models.post_spec" name="Post 一意性の検証 重複したURLトークンなら無効な状態であること" file="./spec/models/post_spec.rb" time="2.086027"></testcase>
+<testcase classname="spec.models.post_spec" name="Post 文字数の検証 キャプションが240文字以内なら有効であること" file="./spec/models/post_spec.rb" time="0.958526"></testcase>
+<testcase classname="spec.models.post_spec" name="Post 文字数の検証 キャプションが240文字を越えるなら無効であること" file="./spec/models/post_spec.rb" time="1.069739"></testcase>
+<testcase classname="spec.models.post_spec" name="Post メソッド 投稿をいいね/いいね解除できること" file="./spec/models/post_spec.rb" time="1.015354"></testcase>
+<testcase classname="spec.models.post_spec" name="Post その他 編集しても、URLトークンが変わらないこと" file="./spec/models/post_spec.rb" time="0.939903"></testcase>
+<testcase classname="spec.models.post_spec" name="Post その他 新しい順に並んでいること" file="./spec/models/post_spec.rb" time="3.683953"></testcase>
+<testcase classname="spec.models.post_spec" name="Post その他 削除すると、関連するコメントも削除されること" file="./spec/models/post_spec.rb" time="0.868227"></testcase>
+<testcase classname="spec.models.post_spec" name="Post その他 削除すると、関連するいいねも削除されること" file="./spec/models/post_spec.rb" time="0.852065"></testcase>
+<testcase classname="spec.models.user_spec" name="User 有効なファクトリを持つこと" file="./spec/models/user_spec.rb" time="0.013877"></testcase>
+<testcase classname="spec.models.user_spec" name="User 名前、ユーザーネーム、メールアドレス、パスワードがあれば有効な状態であること" file="./spec/models/user_spec.rb" time="0.010636"></testcase>
+<testcase classname="spec.models.user_spec" name="User 存在性の検証 名前がなければ無効な状態であること" file="./spec/models/user_spec.rb" time="0.009616"></testcase>
+<testcase classname="spec.models.user_spec" name="User 存在性の検証 ユーザーネームがなければ無効な状態であること" file="./spec/models/user_spec.rb" time="0.011929"></testcase>
+<testcase classname="spec.models.user_spec" name="User 存在性の検証 メールアドレスがなければ無効な状態であること" file="./spec/models/user_spec.rb" time="0.008374"></testcase>
+<testcase classname="spec.models.user_spec" name="User 存在性の検証 パスワードがなければ無効な状態であること" file="./spec/models/user_spec.rb" time="0.008158"></testcase>
+<testcase classname="spec.models.user_spec" name="User 一意性の検証 重複したユーザーネームなら無効な状態であること" file="./spec/models/user_spec.rb" time="0.021591"></testcase>
+<testcase classname="spec.models.user_spec" name="User 一意性の検証 既存のルーティングと重複したユーザーネームなら無効であること" file="./spec/models/user_spec.rb" time="0.045865"></testcase>
+<testcase classname="spec.models.user_spec" name="User 一意性の検証 重複したメールアドレスなら無効な状態であること" file="./spec/models/user_spec.rb" time="0.021031"></testcase>
+<testcase classname="spec.models.user_spec" name="User 一意性の検証 メールアドレスは大文字小文字を区別せず扱うこと" file="./spec/models/user_spec.rb" time="0.023137"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 名前が30文字以内なら有効であること" file="./spec/models/user_spec.rb" time="0.010029"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 名前が30文字を越えるなら無効であること" file="./spec/models/user_spec.rb" time="0.010700"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 自己紹介が140文字以内なら有効であること" file="./spec/models/user_spec.rb" time="0.009729"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 自己紹介が140文字を越えるなら無効であること" file="./spec/models/user_spec.rb" time="0.010985"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 ユーザーネームが4文字未満なら無効であること" file="./spec/models/user_spec.rb" time="0.009908"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 ユーザーネームが4~20文字の範囲なら有効であること" file="./spec/models/user_spec.rb" time="0.009801"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 ユーザーネームが20文字を越えるなら無効であること" file="./spec/models/user_spec.rb" time="0.010629"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 メールアドレスが255文字以内なら有効であること" file="./spec/models/user_spec.rb" time="0.008700"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 メールアドレスが255文字を越えるなら無効であること" file="./spec/models/user_spec.rb" time="0.007029"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 パスワードが6文字未満なら無効であること" file="./spec/models/user_spec.rb" time="0.008323"></testcase>
+<testcase classname="spec.models.user_spec" name="User 文字数の検証 パスワードが6文字以上なら有効であること" file="./spec/models/user_spec.rb" time="0.007878"></testcase>
+<testcase classname="spec.models.user_spec" name="User フォーマットの検証 ユーザーネームが正当なフォーマットなら有効であること" file="./spec/models/user_spec.rb" time="0.014859"></testcase>
+<testcase classname="spec.models.user_spec" name="User フォーマットの検証 ユーザーネームが不正なフォーマットなら無効であること" file="./spec/models/user_spec.rb" time="0.090390"></testcase>
+<testcase classname="spec.models.user_spec" name="User フォーマットの検証 メールアドレスが正当なフォーマットなら有効であること" file="./spec/models/user_spec.rb" time="0.095188"></testcase>
+<testcase classname="spec.models.user_spec" name="User フォーマットの検証 メールアドレスが不正なフォーマットなら無効であること" file="./spec/models/user_spec.rb" time="0.032331"></testcase>
+<testcase classname="spec.models.user_spec" name="User メソッド ユーザーをフォロー/フォロー解除できること" file="./spec/models/user_spec.rb" time="0.062777"></testcase>
+<testcase classname="spec.models.user_spec" name="User メソッド フィードが正しい投稿のコレクションを保持していること" file="./spec/models/user_spec.rb" time="4.965924"></testcase>
+<testcase classname="spec.models.user_spec" name="User その他 メールアドレスは全て小文字で保存されること" file="./spec/models/user_spec.rb" time="0.017230"></testcase>
+<testcase classname="spec.models.user_spec" name="User その他 削除すると、関連する投稿も削除されること" file="./spec/models/user_spec.rb" time="0.841709"></testcase>
+<testcase classname="spec.models.user_spec" name="User その他 削除すると、フォロー中のユーザーとの関係も削除されること" file="./spec/models/user_spec.rb" time="0.052425"></testcase>
+<testcase classname="spec.models.user_spec" name="User その他 削除すると、フォロワーのユーザーとの関係も削除されること" file="./spec/models/user_spec.rb" time="0.038166"></testcase>
+<testcase classname="spec.requests.posts_spec" name="Posts #new 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="0.092068"></testcase>
+<testcase classname="spec.requests.posts_spec" name="Posts #create 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="0.037243"></testcase>
+<testcase classname="spec.requests.posts_spec" name="Posts #edit 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="0.849522"></testcase>
+<testcase classname="spec.requests.posts_spec" name="Posts #update 認可されていないユーザーとして 投稿を更新できないこと" file="./spec/requests/posts_spec.rb" time="0.866520"></testcase>
+<testcase classname="spec.requests.posts_spec" name="Posts #update 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="0.887412"></testcase>
+<testcase classname="spec.requests.posts_spec" name="Posts #destroy 認可されていないユーザーとして 投稿を削除できないこと" file="./spec/requests/posts_spec.rb" time="0.897280"></testcase>
+<testcase classname="spec.requests.posts_spec" name="Posts #destroy 未ログイン状態のとき ログインページにリダイレクトされること" file="./spec/requests/posts_spec.rb" time="0.834510"></testcase>
+<testcase classname="spec.requests.registrations_spec" name="Registrations GET /confirm_email 認証済みのユーザーの場合 トップページにリダイレクトされること" file="./spec/requests/registrations_spec.rb" time="0.044885"></testcase>
+<testcase classname="spec.requests.registrations_spec" name="Registrations GET /confirm_email 未ログイン状態のとき 正常にレスポンスを返すこと" file="./spec/requests/registrations_spec.rb" time="4.347378"></testcase>
+<testcase classname="spec.requests.static_pages_spec" name="StaticPages GET / 正常にレスポンスを返すこと" file="./spec/requests/static_pages_spec.rb" time="0.060292"></testcase>
+<testcase classname="spec.system.comments_spec" name="Comments 既存の投稿にコメントをして、削除する" file="./spec/system/comments_spec.rb" time="11.670523"></testcase>
+<testcase classname="spec.system.edit_user_registration_spec" name="EditUserRegistration ユーザー情報を編集する" file="./spec/system/edit_user_registration_spec.rb" time="3.817033"></testcase>
+<testcase classname="spec.system.likes_spec" name="Likes 投稿をいいね/いいね解除する" file="./spec/system/likes_spec.rb" time="3.958000"></testcase>
+<testcase classname="spec.system.posts_spec" name="Posts 新規投稿したあと、その投稿を編集して最後に削除する" file="./spec/system/posts_spec.rb" time="3.813214"></testcase>
+<testcase classname="spec.system.posts_spec" name="Posts フィードページから正しく投稿を削除できること" file="./spec/system/posts_spec.rb" time="5.159642"></testcase>
+<testcase classname="spec.system.relationships_spec" name="Relationships ユーザーをフォロー/フォロー解除する" file="./spec/system/relationships_spec.rb" time="2.795310"></testcase>
+<testcase classname="spec.system.reset_password_spec" name="ResetPassword 非ログイン状態から、ユーザーのパスワードを再設定する" file="./spec/system/reset_password_spec.rb" time="0.527027"></testcase>
+<testcase classname="spec.system.search_spec" name="Search 投稿/ユーザーを検索する" file="./spec/system/search_spec.rb" time="4.444374"></testcase>
+<testcase classname="spec.system.sign_in_spec" name="SignIn ユーザーネームとメールアドレスのどちらでもログインできること" file="./spec/system/sign_in_spec.rb" time="2.585728"></testcase>
+<testcase classname="spec.system.sign_in_spec" name="SignIn メールアドレスが未承認のユーザーではログインできないこと" file="./spec/system/sign_in_spec.rb" time="0.149450"></testcase>
+<testcase classname="spec.system.sign_in_spec" name="SignIn ゲストユーザーとしてログインする" file="./spec/system/sign_in_spec.rb" time="1.165785"></testcase>
+<testcase classname="spec.system.sign_in_spec" name="SignIn 管理ユーザーとしてログインする" file="./spec/system/sign_in_spec.rb" time="1.640557"></testcase>
+<testcase classname="spec.system.sign_up_spec" name="SignUp ユーザーを作成したあと、確認メールからアカウントを有効化してログインする" file="./spec/system/sign_up_spec.rb" time="0.433107"></testcase>
+<testcase classname="spec.system.sign_up_spec" name="SignUp 再送信された確認メールからアカウントを有効化してログインする" file="./spec/system/sign_up_spec.rb" time="0.377964"></testcase>
 </testsuite>

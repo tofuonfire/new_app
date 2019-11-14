@@ -105,6 +105,19 @@ $color-black: #212529;
 
 .nav-item {
   margin-left: 10px;
+
+  .nav-username {
+    max-width: 120px;
+    line-height: 17px;
+    border-bottom: 1px solid $color-black;
+
+    .nav-username-text {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  
   .avatar-img {
     width: 32px;
     height: 32px;
@@ -114,6 +127,12 @@ $color-black: #212529;
       width: 40px;
       height: 40px;
     }
+  }
+
+  .avatar-user-name.nav-link {
+    color: $color-black;
+
+    &:hover { color: $color-black; }
   }
 }
 @include sm {
@@ -148,6 +167,10 @@ $color-black: #212529;
 }
 
 a.navbar-search-btn {
+  color: $color-black;
+}
+
+a.navbar-users {
   color: $color-black;
 }
 
