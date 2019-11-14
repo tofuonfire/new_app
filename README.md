@@ -13,15 +13,7 @@ https://mewblr.com/
 ## 使用技術
 * Ruby 2.6.5, Rails 6.0.0
 * Nginx, Puma
-* AWS
-  * VPC
-  * EC2
-  * S3
-  * RDS for MySQL
-  * ALB
-  * Route53
-  * SES
-  * ACM
+* AWS (EC2, RDS for MySQL, S3, VPC, Route53, SES, ALB, ACM)
 * Docker
 * CircleCI
 * Capistrano
