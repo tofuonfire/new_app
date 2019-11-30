@@ -16,7 +16,7 @@ COPY . /mewblr
 RUN bundle install
 RUN yarn install
 
-RUN mkdir -p /mewblr/tmp/sockets
+RUN mkdir -p /mewblr/tmp/sockets /mewblr/tmp/pids
 
 RUN mkdir -p /tmp/public && \
     cp -rf /mewblr/public/* /tmp/public

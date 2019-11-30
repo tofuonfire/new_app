@@ -25,7 +25,7 @@ services:
       - db
     command: sh scripts/launch.sh
   nginx:
-    build: 
+    build:
       context: ./nginx
     ports:
       - 80:80

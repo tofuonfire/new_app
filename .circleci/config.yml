@@ -29,10 +29,10 @@ jobs:
           paths:
             - ./vendor/bundle
           key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-      
+
       - run: mv config/database.yml config/database.yml.org
 
-      - run: mv config/database.yml.ci config/database.yml 
+      - run: mv config/database.yml.ci config/database.yml
 
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
@@ -76,7 +76,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "23:cc:00:e7:8d:d6:64:1c:da:48:de:44:0b:b3:1f:e5"
+            - "95:94:d6:9b:41:f4:31:a5:31:a3:8c:be:fa:84:01:b5"
 
       - deploy:
           name: Capistrano Deploy
