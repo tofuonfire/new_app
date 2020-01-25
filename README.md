@@ -1,8 +1,8 @@
 # Mewblr
 <img src="https://raw.githubusercontent.com/wiki/tofuonfire/mewblr/images/demo1.gif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://raw.githubusercontent.com/wiki/tofuonfire/mewblr/images/demo2.gif">
 
-インスタグラム風の画像投稿SNSです（ミューブラーと読みます）<br>
-就活用のポートフォリオとして作成しました。
+就活用のポートフォリオとして制作した自作アプリです（ミューブラーと読みます。）<br />
+簡易的な画像投稿SNSになります。機能としてはシンプルですが、開発環境にDockerやCircleCI、インフラにAWSを使用しています。またRSpecによる単体テスト・統合テスト機能を追加し、UI/UX周りもこだわりました。
 
 ## URL
 https://mewblr.com/
