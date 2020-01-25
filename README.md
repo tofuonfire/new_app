@@ -1,4 +1,6 @@
 # Mewblr
+<img src="https://raw.githubusercontent.com/wiki/tofuonfire/mewblr/images/demo1.gif" style="margin-right: 20px"><img src="https://raw.githubusercontent.com/wiki/tofuonfire/mewblr/images/demo2.gif">
+
 インスタグラム風の画像投稿SNSです（ミューブラーと読みます）<br>
 就活用のポートフォリオとして作成しました。
 
