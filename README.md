@@ -22,6 +22,10 @@ https://mewblr.com/
 * RSpec
 * SASS, Bootstrap, JQuery
 
+## AWS構成図
+<img src="https://raw.githubusercontent.com/wiki/tofuonfire/mewblr/images/aws_architecture.png" width="640px">
+
+
 ## 機能一覧
 * CircleCIを用いたCI/CD機能
 * Rspecによる自動テスト機能
